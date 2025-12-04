@@ -791,3 +791,103 @@ h2 {
         max-width: 100%;
     }
 }
+
+
+
+/* Coin Details page CSS file */
+
+/* COIN DETAILS */
+    .coin-header {
+        padding: 15px;
+        border-bottom: 1px solid #222;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #111;
+    }
+    .coin-name {
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .coin-info-box {
+        background: #151515;
+        padding: 12px;
+        border-radius: 8px;
+        display: flex;
+        gap: 25px;
+        font-size: 15px;
+    }
+    .coin-info-box div b {
+        display: block;
+        font-size: 13px;
+        color: #bbb;
+    }
+
+    /* Timeframes */
+    #timeframes {
+        padding: 10px 15px;
+        background: #111;
+        border-bottom: 1px solid #222;
+    }
+    #timeframes button {
+        padding: 6px 14px;
+        margin-right: 8px;
+        border: none;
+        background: #333;
+        color: #fff;
+        cursor: pointer;
+    }
+    #timeframes button.active {
+        background: #0a84ff;
+    }
+
+    /* Chart + Trades Layout */
+    .main-content {
+        display: flex;
+        height: calc(100vh - 190px);
+    }
+
+    #chart {
+        flex: 3.5;
+        height: 100%;
+    }
+
+    /* Trades section */
+    .trades-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .trade-box {
+        background: #111;
+        padding: 20px;
+        border-radius: 8px;
+        height: 48%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .trade-box h3 {
+        margin: 0 0 10px 0;
+        font-size: 16px;
+        text-align: center;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #333;
+    }
+
+    .trade-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 6px;
+        font-size: 14px;
+    }
+
+    .trade {
+        display: flex;
+        justify-content: space-between;
+        padding: 4px 0;
+    }

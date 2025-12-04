@@ -53,4 +53,12 @@ class HomeController extends Controller
         // return view('vendor.platform.home', ['coinMap' => $coinMap]);
         return view('layout.home', ['coinMap' => $coinMap]);
     }
+
+    public function coinDetails($symbol)
+    {   
+        //attach USDT with symbol
+        $symbol = strtoupper($symbol) . 'USDT';
+        return view('layout.coin-details', compact('symbol'));
+    }
+
 }
