@@ -1,19 +1,1529 @@
 @extends('layout.home-layout')
+
+@section('styles')
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --bg-card: rgba(20, 20, 30, 0.6);
+            --bg-card-hover: rgba(30, 30, 45, 0.8);
+            --primary: #00E0FF;
+            /* Cyber Blue */
+            --accent: #9D00FF;
+            /* Neon Purple */
+            --success: #00FFA3;
+            --text-main: #ffffff;
+            --text-muted: #8F9BB3;
+            --border: rgba(255, 255, 255, 0.08);
+            --glass: blur(12px) saturate(180%);
+            --gradient-text: linear-gradient(135deg, #00E0FF 0%, #9D00FF 100%);
+            --gradient-bg: linear-gradient(135deg, rgba(0, 224, 255, 0.1) 0%, rgba(157, 0, 255, 0.1) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(157, 0, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 224, 255, 0.1) 0%, transparent 40%);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Utility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .text-gradient {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #000;
+            border: none;
+            box-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 224, 255, 0.5);
+            background: #33eaff;
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: white;
+            backdrop-filter: var(--glass);
+            border-color: var(--primary);
+            background: rgba(0, 224, 255, 0.1);
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3rem;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.05em;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--text-main);
+            border-radius: 999px;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 80px;
+            /* open below fixed header */
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: var(--bg-dark);
+            z-index: 900;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .mobile-nav.open {
+            pointer-events: auto;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .mobile-nav-inner {
+            max-width: 100%;
+            margin-left: auto;
+            padding: 18px 24px 24px;
+            border-radius: 0;
+            background: var(--bg-dark);
+            /* solid background for drawer */
+            border-left: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .mobile-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .mobile-logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .mobile-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .mobile-menu a.active {
+            color: var(--primary);
+        }
+
+        .mobile-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mobile-actions a {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 180px 0 100px;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .badge-new {
+            background: rgba(157, 0, 255, 0.2);
+            color: #d8b4fe;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(157, 0, 255, 0.4);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* Floating 3D Cards Animation */
+        .hero-cards {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-coin {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .c1 {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .c2 {
+            top: 30%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .c3 {
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* SECTION 0: Stats (New) */
+        .stats-section {
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: var(--glass);
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+
+        /* SECTION 1: Calculator (Interactive) - Existing */
+        .calculator-section {
+            padding: 100px 0;
+        }
+
+        .calc-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            backdrop-filter: var(--glass);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .calc-controls h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .calc-input-group {
+            margin-top: 30px;
+        }
+
+        .calc-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .range-slider {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .calc-result-card {
+            background: linear-gradient(145deg, rgba(30, 30, 40, 0.8), rgba(20, 20, 30, 0.9));
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calc-result-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-text);
+        }
+
+        .roi-text {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--success);
+            margin: 20px 0;
+            text-shadow: 0 0 20px rgba(0, 255, 163, 0.3);
+        }
+
+        /* SECTION 2: How It Works (New) */
+        .how-it-works-section {
+            padding: 100px 0;
+            background: #0f0f15;
+        }
+
+        .steps-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            position: relative;
+        }
+
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background: var(--border);
+            z-index: 1;
+        }
+
+        .step-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .step-icon {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 70px;
+            background: var(--bg-dark);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            z-index: 2;
+        }
+
+        .step-item h3 {
+            margin: 15px 0 10px;
+        }
+
+        .step-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+
+        /* SECTION 3: Learn to Earn - Existing */
+        .learn-section {
+            padding: 100px 0;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            group: cursor;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 224, 255, 0.1);
+        }
+
+        .course-image {
+            height: 180px;
+            background: #1a1a1a;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .course-image i {
+            font-size: 2.5rem;
+            opacity: 0.2;
+        }
+
+        .reward-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--success);
+            color: var(--success);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .course-content {
+            padding: 25px;
+        }
+
+        .course-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .course-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+
+        /* SECTION 4: Roadmap */
+        .roadmap-section {
+            padding: 65px 0;
+            background: linear-gradient(to bottom, var(--bg-dark), #0f0f15);
+        }
+
+        .roadmap-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+        }
+
+        .roadmap-heading {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .roadmap-heading .highlight {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .roadmap-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0px 0 0px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 78px;
+            /* horizontal line height */
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--text-muted);
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .timeline-items {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timeline-icon {
+            width: 80px;
+            height: 80px;
+            margin: 40px auto 0;
+            /* 40px from top; center at 40px+40px = 80px */
+
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            padding: 10px;
+        }
+
+        .timeline-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .timeline-year {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+
+        .timeline-description {
+            color: var(--text-main);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* SECTION 5: Testimonials (New) */
+        .testimonials-section {
+            padding: 100px 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(157, 0, 255, 0.15);
+        }
+
+        .quote-icon {
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .author-meta {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .author-details p {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .author-details span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--border);
+            background: #020205;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 2fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.05em;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-column h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--text-main);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+
+        @media(max-width: 992px) {
+            .calc-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .steps-grid {
+                flex-direction: column;
+                gap: 60px;
+            }
+
+            .steps-grid::before {
+                display: none;
+            }
+
+            .step-item {
+                padding-top: 0;
+                text-align: left;
+            }
+
+            .step-icon {
+                position: static;
+                transform: none;
+                margin-bottom: 15px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width: 890px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .nav-links,
+            .nav-actions {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: inline-flex;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap-heading {
+                font-size: 2rem;
+                margin-bottom: 50px;
+            }
+
+            .timeline-items {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .timeline-line {
+                display: none;
+            }
+        }
+
+        /* Crypto Table Section */
+        .crypto-table-section {
+            padding: 80px 0;
+            background: var(--bg-dark);
+            color: var(--text-main);
+        }
+
+        .crypto-table-section h2 {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        /* Search and Controls */
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            color: var(--text-main);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(0, 224, 255, 0.25);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .per-page-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .per-page-select {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            padding: 0.5rem 2.2rem 0.5rem 0.75rem;
+            /* extra right padding for arrow spacing */
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23ffffff'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z' clip-rule='evenodd'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.7rem center;
+            background-size: 0.75rem;
+        }
+
+        .per-page-select:focus {
+            border-color: var(--primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            /* Allow wrapping on smaller screens */
+            gap: 15px;
+            /* Space between items */
+        }
+
+        .search-container {
+            position: relative;
+            flex-grow: 1;
+            /* Allow search input to take more space */
+            max-width: 400px;
+            /* Limit max width of search */
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 10px 10px 35px;
+            /* Add padding for icon */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        .per-page-selector label {
+            margin-right: 10px;
+            font-weight: bold;
+            /* color: #333; */
+        }
+
+        /* .per-page-select styles defined above (theme-aware) */
+
+        .table-container {
+            overflow-x: auto;
+            /* Enable horizontal scrolling for small screens */
+            border: 1px solid #00e0ff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .crypto-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+            /* Ensure minimum width for better display */
+        }
+
+        .crypto-table th,
+        .crypto-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .crypto-table thead th {
+            background-color: rgba(255, 255, 255, 0.02);
+            font-weight: bold;
+            color: var(--text-muted);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            cursor: pointer;
+            /* Indicate sortable columns */
+        }
+
+        .crypto-table tbody tr:hover {
+            background-color: rgba(0, 224, 255, 0.08);
+            /* Highlight row on hover */
+            color: var(--text-main);
+        }
+
+        .crypto-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Column specific styles */
+        .coin-name-col {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .coin-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: contain;
+        }
+
+        /* Text colors for change */
+        .text-success {
+            color: #28a745;
+            /* Green */
+        }
+
+        .text-danger {
+            color: #dc3545;
+            /* Red */
+        }
+
+        /* Pagination styles */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            list-style: none;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .pagination .page-item {
+            margin: 0 5px;
+        }
+
+        .pagination .page-link {
+            display: block;
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .pagination .page-link:hover:not(.disabled) {
+            background-color: rgba(0, 224, 255, 0.1);
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+        }
+
+        .pagination .page-item.disabled .page-link {
+            color: var(--text-muted);
+            pointer-events: none;
+            background-color: transparent;
+        }
+
+        .pagination .page-item span.page-link {
+            /* For "..." */
+            background-color: transparent;
+            border-color: transparent;
+            color: var(--text-muted);
+            cursor: default;
+        }
+
+        /* Sort indicators */
+        .sortable {
+            position: relative;
+            padding-right: 25px;
+            /* Make space for the arrow */
+        }
+
+        .sortable::after {
+            content: '';
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 4px solid transparent;
+            opacity: 0.3;
+            /* Faded arrow by default */
+        }
+
+        .sortable.asc::after {
+            border-bottom-color: #555;
+            /* Up arrow */
+            opacity: 1;
+        }
+
+        .sortable.desc::after {
+            border-top-color: #555;
+            /* Down arrow */
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .table-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-container {
+                max-width: 100%;
+            }
+
+            .pagination {
+                justify-content: center;
+                gap: 0.25rem;
+            }
+
+            .pagination .page-item {
+                margin: 0 2px;
+            }
+
+            .step-item {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero-right .countdown {
+                justify-content: center;
+            }
+        }
+
+        .hero-buttons {
+            gap: 12px;
+            display: flex;
+            justify-content: center;
+        }
+
+        @media (max-width: 425px) {
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .calc-container {
+                padding: 25px;
+            }
+
+            .calc-controls p {
+                text-align: center;
+            }
+
+            .calc-input-group {
+                width: 83%;
+            }
+
+            .calc-input-group div .btn-outline {
+                padding: 7px 22px;
+                font-size: 12px;
+            }
+
+            .roi-text {
+                font-size: 30px;
+
+            }
+
+        }
+
+        /* secure section */
+
+        .hero-section {
+            background: #0f0f15;
+            padding: 80px 0;
+            color: #fff;
+        }
+
+        .hero-container {
+            width: 75%;
+            max-width: 1300px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-left img {
+            width: 450px;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .time-box h2 {
+            font-size: 42px;
+            font-weight: 700;
+        }
+
+        .time-box p {
+            font-size: 14px;
+            margin-top: -8px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 45px;
+            font-weight: 700;
+            line-height: 1.2;
+            background: rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            padding: 5px 10px;
+            margin-bottom: 20px;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            width: 90%;
+            font-size: 15px;
+            margin-bottom: 30px;
+            color: #d7e4ff;
+        }
+
+        .hero-btn {
+            background: var(--primary);
+            color: #000;
+            border: none;
+            box-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba #00e0ff80 (0, 224, 255, 0.5);
+            background: #33eaff;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-left img {
+                width: 350px;
+            }
+
+            .hero-description {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 425px) {
+            .hero-left img {
+                width: 286px;
+            }
+        }
+
+        /* FAQ */
+
+        .faq-section-container {
+            background: #0f0f15;
+            padding: 80px 0px;
+        }
+
+        .faq-section {
+            max-width: 1200px;
+            width: 85%;
+            margin: 0px auto;
+            color: #bfc7d5;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .faq-item {
+            background: #0e1117;
+            border: 1px solid #2a2f3a;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            transition: background 0.3s ease;
+            overflow: hidden;
+        }
+
+        .faq-header {
+            width: 100%;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            gap: 1rem;
+            cursor: pointer;
+            justify-content: space-between;
+        }
+
+        .faq-number {
+            background: transparent;
+            border: 1px solid #2a2f3a;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .faq-title {
+            flex: 1;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: 0.3s ease;
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            line-height: 1.6;
+            padding: 0 25px;
+            transition: max-height 0.4s ease;
+            opacity: 0;
+        }
+
+        .faq-item.active {
+            background: #1a2538;
+        }
+
+        .faq-item.active .faq-content {
+            padding: 14px 25px 18px;
+            max-height: 300px;
+            opacity: 1;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+    </style>
+@endsection
 @section('content')
     <section class="hero">
         <div class="hero-cards">
-            <div class="floating-coin c1"><i class="fa-brands fa-bitcoin" style="color:#F7931A; font-size: 24px;"></i></div>
-            <div class="floating-coin c2"><i class="fa-brands fa-ethereum" style="color:#627EEA; font-size: 24px;"></i></div>
+            <div class="floating-coin c1"><i class="fa-brands fa-bitcoin" style="color:#F7931A; font-size: 24px;"></i>
+            </div>
+            <div class="floating-coin c2"><i class="fa-brands fa-ethereum" style="color:#627EEA; font-size: 24px;"></i>
+            </div>
             <div class="floating-coin c3"><i class="fa-solid fa-shield-halved" style="color:#00E0FF; font-size: 24px;"></i>
             </div>
         </div>
         <div class="container hero-content">
             <h1>Diversify with Crypto <br><span class="text-gradient">Baskets</span></h1>
-            <p>Vcoins aggregates yield, automates staking, and simplifies DeFi. Earn up to 12% APY on stablecoins with our
-                audited smart baskets.</p>
+            <p>Vcoins aggregates yield, automates staking, and simplifies DeFi. Earn up to 12% APY on stablecoins with
+                our audited smart baskets.</p>
             <div class="hero-buttons">
                 <a href="#staking" class="btn btn-primary">Start Earning <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="{{ route('platform.baskets') }}" class="btn btn-outline">View Baskets</a>
+                <a href="#" class="btn btn-outline">View Baskets</a>
             </div>
         </div>
     </section>
@@ -91,60 +1601,6 @@
             </div>
         </div>
     </section>
-    {{-- <section class="crypto-table-section" id="crypto-prices">
-        <div class="container">
-            <h2>Live Crypto Prices</h2>
-            <p class="section-subtitle">Track the performance of major crypto currencies in real-time</p>
-
-            <!-- Search and Controls -->
-            <div class="table-controls">
-                <div class="search-container">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" id="cryptoSearch" class="search-input" placeholder="Search crypto currencies...">
-                </div>
-                <div class="per-page-selector">
-                    <label for="perPage">Show:</label>
-                    <select id="perPage" class="per-page-select">
-                        <option value="5">5</option>
-                        <option value="10" selected>10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                    </select>
-                    <span>per page</span>
-                </div>
-            </div>
-
-            <div class="table-container">
-
-
-                <table class="table crypto-table" id="crypto-table">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Name</th>
-                            <th>Symbol</th>
-                            <th>Price</th>
-                            <th>24h Change</th>
-                            <th>Market Cap</th>
-                            <th>Volume (24h)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="crypto-body">
-                        <!-- Table rows will be populated by JavaScript -->
-                    </tbody>
-                </table>
-                <div id="noResults" class="no-results" style="display: none;">
-                    <p>No cryptocurrencies found matching your search.</p>
-                </div>
-            </div>
-
-            <!-- Pagination -->
-            <div class="pagination" id="pagination">
-                <!-- Pagination will be populated by JavaScript -->
-            </div>
-        </div>
-    </section> --}}
-
     <section class="crypto-table-section" id="crypto-prices">
         <div class="container">
             <h2>Live Crypto Prices</h2>
@@ -155,16 +1611,16 @@
                 {{-- <div class="search-container">
                     <input type="text" id="cryptoSearch" class="search-input" placeholder="Search crypto currencies...">
                 </div> --}}
-                <div class="search-container">
+                {{-- <div class="search-container">
                     <span class="search-icon">🔍</span>
                     <input type="text" id="searchInput" class="search-input" placeholder="Search crypto currencies...">
-                </div>
-                <div id="paginationControls" class="per-page-selector"
+                </div> --}}
+                {{-- <div id="paginationControls" class="per-page-selector"
                     style="display: flex; gap: 8px; align-items: center;">
                     <button id="prevPageBtn" disabled>Previous</button>
                     <span id="pageInfo">Page 1 of 1</span>
                     <button id="nextPageBtn" disabled>Next</button>
-                </div>
+                </div> --}}
             </div>
 
             <div class="table-container table-wrap">
@@ -189,6 +1645,11 @@
                 <div id="noResults" class="no-results" style="display: none;">
                     <p>No cryptocurrencies found matching your search.</p>
                 </div>
+
+                <!-- Show More Button -->
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="{{route('platform.markets')}}" class="btn btn-primary">Show More</a>
             </div>
 
         </div>
@@ -198,8 +1659,8 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="text-gradient">How Vcoins Works</h2>
-                <p style="color:var(--text-muted); max-width:600px; margin: 0 auto;">Our intelligent system simplifies the
-                    complex DeFi landscape to maximize your yield safely.</p>
+                <p style="color:var(--text-muted); max-width:600px; margin: 0 auto;">Our intelligent system simplifies
+                    the complex DeFi landscape to maximize your yield safely.</p>
             </div>
 
             <div class="steps-grid">
@@ -218,8 +1679,8 @@
                 <div class="step-item">
                     <div class="step-icon"><i class="fa-solid fa-arrow-up-right-dots"></i></div>
                     <h3>3. Auto-Compound</h3>
-                    <p>Your yield is harvested and reinvested back into the basket, automatically compounding your returns.
-                    </p>
+                    <p>Your yield is harvested and reinvested back into the basket, automatically compounding your
+                        returns.</p>
                 </div>
 
                 <div class="step-item">
@@ -378,15 +1839,15 @@
         <div class="container">
             <div class="section-header">
                 <h2>Trusted by the Community</h2>
-                <p style="color:var(--text-muted); max-width:500px; margin: 0 auto;">Don't just take our word for it. Hear
-                    from our users who are growing their wealth.</p>
+                <p style="color:var(--text-muted); max-width:500px; margin: 0 auto;">Don't just take our word for it.
+                    Hear from our users who are growing their wealth.</p>
             </div>
 
             <div class="testimonial-grid">
                 <div class="testimonial-card">
                     <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-                    <p>“Vcoins is a game changer. The 12% stablecoin APY is fantastic, and the automated rebalancing gives
-                        me peace of mind. Truly set-and-forget DeFi.”</p>
+                    <p>“Vcoins is a game changer. The 12% stablecoin APY is fantastic, and the automated rebalancing
+                        gives me peace of mind. Truly set-and-forget DeFi.”</p>
                     <div class="author-meta">
                         <div class="author-avatar">J.D.</div>
                         <div class="author-details">
@@ -398,8 +1859,8 @@
 
                 <div class="testimonial-card">
                     <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-                    <p>“The Learn & Earn academy is brilliant! I got paid to understand liquidity pools. It's the perfect
-                        platform for new users to start their journey.”</p>
+                    <p>“The Learn & Earn academy is brilliant! I got paid to understand liquidity pools. It's the
+                        perfect platform for new users to start their journey.”</p>
                     <div class="author-meta">
                         <div class="author-avatar">A.S.</div>
                         <div class="author-details">
@@ -424,7 +1885,7 @@
             </div>
         </div>
     </section>
-    <div class="faq-section-container" id="faq">
+    <div class="faq-section-container">
 
         <section class="faq-section">
             <h2>Frequently Asked Questions</h2>
@@ -504,789 +1965,279 @@
 @endsection
 
 @section('scripts')
-    {{-- <script>
-            const binanceSocket = 'wss://stream.binance.com:9443/ws/!ticker@arr';
-            const coinMap = @json($coinMap); // Provided from your controller
-            const prices = {}; // Stores all incoming crypto data
-            let filteredAndSortedData = []; // Data after search and before pagination
-            let currentPage = 1;
-            let itemsPerPage = 10; // Default items per page, matching HTML default selected option
-            let currentSort = 'market_cap'; // Default sort key
-            let sortDirection = 'desc'; // Default sort direction (descending for market_cap)
+    <script>
+        /* ===================== CONFIG ===================== */
+        const COINGECKO_URL =
+            'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
 
-            // Elements
-            const cryptoBody = document.getElementById('crypto-body');
-            const cryptoSearchInput = document.getElementById('cryptoSearch'); // Corrected ID
-            const perPageSelect = document.getElementById('perPage'); // Corrected ID
-            const paginationContainer = document.getElementById('pagination');
-            const noResultsDiv = document.getElementById('noResults');
-            const loaderElement = document.getElementById('loader'); // Assuming you have a loader div
-            const cryptoTable = document.getElementById('crypto-table'); // Assuming you want to hide/show table
+        // Using the 24hr ticker stream for ALL symbols
+        const BINANCE_WS = 'wss://stream.binance.com:9443/ws/!ticker@arr';
+        const SUFFIXES = ['USDT', 'BUSD']; // Prioritized stablecoin pairs
 
-            // --- WebSocket Connection ---
-            function connectWebSocket() {
-                const ws = new WebSocket(binanceSocket);
-
-                ws.onopen = () => {
-                    console.log('WebSocket connected.');
-                    // Assuming 'error-msg' is for general connection errors
-                    const errorMsgElement = document.getElementById('error-msg');
-                    if (errorMsgElement) {
-                        errorMsgElement.classList.add('d-none');
-                    }
-                    if (loaderElement) {
-                        loaderElement.classList.add('d-none'); // Hide loader on successful connection
-                    }
-                    if (cryptoTable) {
-                        cryptoTable.classList.remove('d-none'); // Show table once connected
-                    }
-                };
-
-                ws.onmessage = (event) => {
-                    const updates = JSON.parse(event.data);
-                    updates.forEach(coin => {
-                        const symbol = coin.s;
-                        const baseSymbol = symbol.replace('USDT', ''); // e.g., BTCUSDT -> BTC
-
-                        if (coinMap[baseSymbol]) {
-                            // Update or add coin data
-                            prices[symbol] = {
-                                symbol: baseSymbol, // Use base symbol for easier mapping to CoinGecko data
-                                fullSymbol: symbol, // Keep full symbol if needed elsewhere
-                                name: coinMap[baseSymbol].name,
-                                logo: coinMap[baseSymbol].logo,
-                                market_cap: parseFloat(coinMap[baseSymbol].market_cap ||
-                                    0), // Ensure it's a number, default to 0
-                                price: parseFloat(coin.c),
-                                change: parseFloat(coin.P),
-                                volume: parseFloat(coin.q),
-                            };
-                        }
-                    });
-                    // Every time new data arrives, re-filter, re-sort, and re-paginate
-                    updateTableData();
-                };
-
-                ws.onerror = (error) => {
-                    console.error('WebSocket error:', error);
-                    const errorMsgElement = document.getElementById('error-msg');
-                    if (errorMsgElement) {
-                        errorMsgElement.classList.remove('d-none');
-                    }
-                };
-
-                ws.onclose = (event) => {
-                    console.warn('WebSocket closed:', event.code, event.reason);
-                    // Reconnect after a delay if connection is closed unexpectedly
-                    setTimeout(connectWebSocket, 3000);
-                };
-            }
-
-            // --- Data Processing and Rendering ---
-            function updateTableData() {
-                let data = Object.values(prices); // Get all current crypto data
-
-                // 1. Search Filtering
-                const search = cryptoSearchInput.value.toLowerCase(); // Use cryptoSearchInput
-                if (search) {
-                    data = data.filter(c =>
-                        c.name.toLowerCase().includes(search) ||
-                        c.symbol.toLowerCase().includes(search) ||
-                        c.fullSymbol.toLowerCase().includes(search) // Also search full symbol like BTCUSDT
-                    );
-                }
-
-                // Show/hide no results message
-                if (data.length === 0 && search) {
-                    noResultsDiv.style.display = 'block';
-                    cryptoBody.innerHTML = ''; // Clear table body
-                    paginationContainer.innerHTML = ''; // Clear pagination
-                    return; // No data to display
-                } else {
-                    noResultsDiv.style.display = 'none';
-                }
-
-                // 2. Sorting
-                data.sort((a, b) => {
-                    const valA = a[currentSort];
-                    const valB = b[currentSort];
-
-                    if (valA === undefined || valB === undefined) {
-                        // Handle cases where a sort key might be missing (e.g., market_cap not available for all)
-                        return 0;
-                    }
-
-                    if (sortDirection === 'asc') {
-                        return valA - valB;
-                    } else {
-                        return valB - valA;
-                    }
-                });
-
-                filteredAndSortedData = data; // Store for pagination
-
-                // 3. Pagination
-                paginateData(); // Call paginateData to render the current page
-            }
-
-
-            function paginateData() {
-                const totalPages = Math.ceil(filteredAndSortedData.length / itemsPerPage);
-                const startIndex = (currentPage - 1) * itemsPerPage;
-                const endIndex = startIndex + itemsPerPage;
-                const paginated = filteredAndSortedData.slice(startIndex, endIndex);
-
-                renderTable(paginated);
-                renderPagination(totalPages);
-            }
-
-            function renderTable(dataToRender) {
-                cryptoBody.innerHTML = ''; // Clear existing rows
-
-                if (dataToRender.length === 0) {
-                    // This case is already handled in updateTableData for search results
-                    return;
-                }
-
-                let rankOffset = (currentPage - 1) * itemsPerPage; // Calculate rank based on current page
-                dataToRender.forEach((coin, index) => {
-                    const rank = rankOffset + index + 1; // Rank is 1-based index on the current page
-
-                    // Determine text color for 24h Change
-                    const changeClass = coin.change >= 0 ? 'text-success' : 'text-danger';
-
-                    // Format numbers for display
-                    const formattedPrice = `$${coin.price.toFixed(2)}`;
-                    const formattedChange = `${coin.change.toFixed(2)}%`;
-                    const formattedVolume = `$${(coin.volume / 1e9).toFixed(2)}B`; // Billions
-                    const formattedMarketCap = coin.market_cap ? `$${(coin.market_cap / 1e9).toFixed(2)}B` :
-                        'N/A'; // Trillions, handle missing market_cap
-
-                    const row = `
-                <tr>
-                    <td>${rank}</td>
-                    <td class="coin-name-col">
-                        <img src="${coin.logo}" alt="${coin.name} logo" class="coin-logo">
-                        <strong>${coin.name}</strong>
-                    </td>
-                    <td>${coin.symbol}</td> 
-                    <td>${formattedPrice}</td>
-                    <td class="${changeClass}">${formattedChange}</td>
-                    <td>${formattedMarketCap}</td>
-                    <td>${formattedVolume}</td>
-                </tr>
-            `;
-                    cryptoBody.insertAdjacentHTML('beforeend', row);
-                });
-            }
-
-
-            function renderPagination(totalPages) {
-                paginationContainer.innerHTML = ''; // Clear existing pagination
-
-                if (totalPages <= 1) {
-                    return; // No need for pagination if only one page
-                }
-
-                const createPaginationItem = (text, page, isActive = false, isDisabled = false) => {
-                    const li = document.createElement('li');
-                    li.className = 'page-item';
-                    if (isActive) li.classList.add('active');
-                    if (isDisabled) li.classList.add('disabled');
-
-                    const a = document.createElement('a');
-                    a.className = 'page-link';
-                    a.href = '#';
-                    a.innerHTML = text;
-
-                    if (!isDisabled) {
-                        a.addEventListener('click', (e) => {
-                            e.preventDefault();
-                            currentPage = page;
-                            paginateData();
-                        });
-                    }
-                    li.appendChild(a);
-                    return li;
-                };
-
-                // Previous button
-                paginationContainer.appendChild(createPaginationItem('‹', currentPage - 1, false, currentPage === 1));
-
-                // Page numbers
-                const maxPagesToShow = 7; // Max number of page buttons to display
-                let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
-                let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
-
-                if (endPage - startPage + 1 < maxPagesToShow) {
-                    startPage = Math.max(1, endPage - maxPagesToShow + 1);
-                }
-
-                if (startPage > 1) {
-                    paginationContainer.appendChild(createPaginationItem('1', 1));
-                    if (startPage > 2) {
-                        const liDots = document.createElement('li');
-                        liDots.className = 'page-item disabled';
-                        liDots.innerHTML = '<span class="page-link">...</span>';
-                        paginationContainer.appendChild(liDots);
-                    }
-                }
-
-                for (let i = startPage; i <= endPage; i++) {
-                    paginationContainer.appendChild(createPaginationItem(i, i, i === currentPage));
-                }
-
-                if (endPage < totalPages) {
-                    if (endPage < totalPages - 1) {
-                        const liDots = document.createElement('li');
-                        liDots.className = 'page-item disabled';
-                        liDots.innerHTML = '<span class="page-link">...</span>';
-                        paginationContainer.appendChild(liDots);
-                    }
-                    paginationContainer.appendChild(createPaginationItem(totalPages, totalPages));
-                }
-
-
-                // Next button
-                paginationContainer.appendChild(createPaginationItem('›', currentPage + 1, false, currentPage === totalPages));
-            }
-
-
-            // --- Event Listeners ---
-            cryptoSearchInput.addEventListener('input', () => {
-                currentPage = 1; // Reset to first page on new search
-                updateTableData();
-            });
-
-            perPageSelect.addEventListener('change', (e) => {
-                itemsPerPage = parseInt(e.target.value);
-                currentPage = 1; // Reset to first page when items per page changes
-                updateTableData();
-            });
-
-            // Add event listeners for sortable headers
-            document.querySelectorAll('.sortable').forEach(header => {
-                header.addEventListener('click', () => {
-                    const sortKey = header.dataset.sort;
-
-                    // Toggle sort direction if clicking the same column
-                    if (currentSort === sortKey) {
-                        sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
-                    } else {
-                        currentSort = sortKey;
-                        sortDirection = 'desc'; // Default to descending for new sort column
-                    }
-
-                    // Remove existing sort indicators
-                    document.querySelectorAll('.sortable').forEach(h => h.classList.remove('asc', 'desc'));
-
-                    // Add new sort indicator
-                    header.classList.add(sortDirection);
-
-                    currentPage = 1; // Reset to first page on sort change
-                    updateTableData();
-                });
-            });
-
-            // --- Initial Call ---
-            // Start WebSocket connection when the page loads
-            document.addEventListener('DOMContentLoaded', () => {
-                // Hide table and show loader initially
-                if (loaderElement) {
-                    loaderElement.classList.remove('d-none');
-                }
-                if (cryptoTable) {
-                    cryptoTable.classList.add('d-none');
-                }
-                connectWebSocket();
-            });
-        </script> --}}
-
-    {{-- <script>
-        const binanceSocket = 'wss://stream.binance.com:9443/ws/!ticker@arr';
-        const coinMap = @json($coinMap); // Provided from your controller
-        const prices = {}; // Stores all incoming crypto data
-        let filteredAndSortedData = []; // Data after search and before pagination
+        /* ===================== STATE ===================== */
+        let coins = []; // Array of CoinGecko objects (used for filtering/pagination)
+        let coinIndexBySymbol = {}; // Map for CoinGecko metadata access: { "BTC": {...} }
+        let liveTickers = {}; // Map for live Binance data: { "BTCUSDT": {...} }
+        let searchTerm = "";
         let currentPage = 1;
-        let itemsPerPage = 10; // Default items per page, matching HTML default selected option
-        let currentSort = 'market_cap'; // Default sort key
-        let sortDirection = 'desc'; // Default sort direction (descending for market_cap)
+        const coinsPerPage = 20;
 
-        // Elements
-        const cryptoBody = document.getElementById('crypto-body');
-        const cryptoSearchInput = document.getElementById('cryptoSearch'); // Corrected ID
-        const perPageSelect = document.getElementById('perPage'); // Corrected ID
-        const paginationContainer = document.getElementById('pagination');
-        const noResultsDiv = document.getElementById('noResults');
-        const loaderElement = document.getElementById('loader'); // Assuming you have a loader div
-        const cryptoTable = document.getElementById('crypto-table'); // Assuming you want to hide/show table
+        /* ===================== DOM ===================== */
+        const tbody = document.getElementById('coinTableBody');
+        const table = document.getElementById('coinTable');
+        const listLoadingEl = document.getElementById('listLoading');
 
-        // --- WebSocket Connection ---
-        function connectWebSocket() {
-            const ws = new WebSocket(binanceSocket);
+        // DOM elements for search and pagination
+        // const searchInput = document.getElementById('searchInput');
+        // const prevPageBtn = document.getElementById('prevPageBtn');
+        // const nextPageBtn = document.getElementById('nextPageBtn');
+        // const pageInfoEl = document.getElementById('pageInfo');
 
-            ws.onopen = () => {
-                console.log('WebSocket connected.');
-                // Assuming 'error-msg' is for general connection errors
-                const errorMsgElement = document.getElementById('error-msg');
-                if (errorMsgElement) {
-                    errorMsgElement.classList.add('d-none');
-                }
-                if (loaderElement) {
-                    loaderElement.classList.add('d-none'); // Hide loader on successful connection
-                }
-                if (cryptoTable) {
-                    cryptoTable.classList.remove('d-none'); // Show table once connected
-                }
-            };
 
-            ws.onmessage = (event) => {
-                const updates = JSON.parse(event.data);
-                updates.forEach(coin => {
-                    const symbol = coin.s;
-                    const baseSymbol = symbol.replace('USDT', ''); // e.g., BTCUSDT -> BTC
+        /* ===================== UTIL ===================== */
+        /**
+         * Formats large numbers with B (Billion) or T (Trillion) suffix.
+         */
+        function fmtNumber(n) {
+            if (!n || isNaN(n)) return '—';
+            const num = Number(n);
+            // if (num >= 1e12) return (num / 1e12).toFixed(2) + 'T';
+            // if (num >= 1e9) return (num / 1e9).toFixed(2) + 'B';
+            // if (num >= 1e6) return (num / 1e6).toFixed(2) + 'M';
+            // return num.toLocaleString();
 
-                    if (coinMap[baseSymbol]) {
-                        // Update or add coin data
-                        prices[symbol] = {
-                            symbol: baseSymbol, // Use base symbol for easier mapping to CoinGecko data
-                            fullSymbol: symbol, // Keep full symbol if needed elsewhere
-                            name: coinMap[baseSymbol].name,
-                            logo: coinMap[baseSymbol].logo,
-                            market_cap: parseFloat(coinMap[baseSymbol].market_cap * 1000 ||
-                                0), // Ensure it's a number, default to 0
-                            price: parseFloat(coin.c),
-                            change: parseFloat(coin.P),
-                            volume: parseFloat(coin.q),
-                        };
-                    }
+            return (num / 1e9).toFixed(2) + 'B';
+        }
+
+        /**
+         * Formats price with dollar sign and appropriate precision.
+         */
+        function fmtPrice(p) {
+            if (!p || isNaN(p)) return '—';
+            const price = Number(p);
+            return price >= 1 ? '$' + price.toLocaleString(undefined, {
+                    maximumFractionDigits: 2
+                }) :
+                '$' + price.toPrecision(6);
+        }
+
+        /**
+         * Formats percentage with color coding.
+         */
+        function pct(v) {
+            if (v === null || v === undefined || isNaN(v)) return '—';
+            const val = Number(v);
+            const p = val.toFixed(2) + '%';
+            return val >= 0 ? `<span class="change up">${p}</span>` :
+                `<span class="change down">${p}</span>`;
+        }
+
+        /**
+         * Attempts to find the best Binance pair symbol (e.g., BTCUSDT, BTCEUR, etc.)
+         */
+        function findBinanceSymbol(sym) {
+            for (const s of SUFFIXES) {
+                const x = sym + s;
+                if (liveTickers[x]) return x;
+            }
+            // Default to USDT, even if not found yet, as it's the most common
+            return sym + "USDT";
+        }
+
+        /* ===================== FETCH CoinGecko ===================== */
+        async function loadCoins() {
+            try {
+                const res = await fetch(COINGECKO_URL);
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
+                coins = await res.json();
+
+                // Create a quick lookup map for CoinGecko data
+                coins.forEach(c => {
+                    const s = c.symbol.toUpperCase();
+                    // Avoid overwriting if a symbol appears multiple times (unlikely here)
+                    if (!coinIndexBySymbol[s]) coinIndexBySymbol[s] = c;
                 });
-                // Every time new data arrives, re-filter, re-sort, and re-paginate
-                updateTableData();
+
+                renderTable(); // Initial render with CoinGecko data
+            } catch (error) {
+                console.error("Error loading coins from CoinGecko:", error);
+                listLoadingEl.textContent = "Error loading initial data. Please check the console.";
+            }
+        }
+
+        /* ===================== RENDER TABLE ===================== */
+        function renderTable() {
+            listLoadingEl.style.display = 'none';
+            table.style.display = 'table';
+            tbody.innerHTML = '';
+
+            // 1. FILTER: Apply the search term
+            const lowerSearchTerm = searchTerm.toLowerCase();
+            const filteredCoins = coins.filter(c =>
+                c.name.toLowerCase().includes(lowerSearchTerm) ||
+                c.symbol.toLowerCase().includes(lowerSearchTerm)
+            );
+
+            // // 2. PAGINATION: Calculate page details
+            // const totalPages = Math.ceil(filteredCoins.length / coinsPerPage);
+
+            // // Boundary checks for current page
+            // if (currentPage > totalPages && totalPages > 0) {
+            //     currentPage = totalPages;
+            // } else if (totalPages === 0) {
+            //     currentPage = 1;
+            // }
+
+            // const startIndex = (currentPage - 1) * coinsPerPage;
+            // const endIndex = startIndex + coinsPerPage;
+
+            // // 3. SLICE: Get only the coins for the current page
+            const coinsToDisplay = filteredCoins.slice(0, 10);
+
+            // 4. RENDER ROWS
+            coinsToDisplay.forEach(c => {
+                const s = c.symbol.toUpperCase();
+                const tr = document.createElement('tr');
+                tr.dataset.symbol = s;
+                const priceChangeClass = c.price_change_percentage_24h >= 0 ? 'text-success' : 'text-danger';
+
+                // Initial data comes from CoinGecko
+                tr.innerHTML = `
+                    <td class="coin-name-col"><img class="coin-logo" src="${c.image}" alt="${c.name} icon"><strong>${c.name}</strong></td>
+                    <td data-symbol-id="${s}">${s}</td>
+
+                    <td data-price-id="${s}" class="price">${fmtPrice(c.current_price)}</td>
+                    <td data-change-id="${s}" class="${priceChangeClass}">${pct(c.price_change_percentage_24h)}</td>
+                    <td data-volume-id="${s}">${fmtNumber(c.total_volume)}</td>
+                    <td>${fmtNumber(c.market_cap)}</td>
+                `;
+                //set tr as link that redirect to coin details page
+                tr.style.cursor = 'pointer';
+                tr.addEventListener('click', () => {
+                    window.location.href = `/coin/${s}`;
+                });
+
+                tbody.appendChild(tr);
+            });
+
+            // 5. UPDATE PAGINATION CONTROLS
+            updatePaginationControls(totalPages);
+
+            // Crucial: After rendering the table, immediately update the cells 
+            // with any available live ticker data.
+            updateTableCells();
+        }
+
+        /* ===================== LIVE UPDATE (WS) ===================== */
+        function setupWS() {
+            const ws = new WebSocket(BINANCE_WS);
+
+            ws.onmessage = e => {
+                const arr = JSON.parse(e.data);
+                if (!Array.isArray(arr)) return;
+
+                // Update the master liveTickers map
+                arr.forEach(t => liveTickers[t.s] = t);
+
+                // No need to re-render the whole table, just update the cells
+                updateTableCells();
             };
+
+            ws.onclose = () => {
+                console.log("WebSocket closed. Attempting reconnect in 3s...");
+                setTimeout(setupWS, 3000);
+            }
 
             ws.onerror = (error) => {
-                console.error('WebSocket error:', error);
-                const errorMsgElement = document.getElementById('error-msg');
-                if (errorMsgElement) {
-                    errorMsgElement.classList.remove('d-none');
-                }
-            };
-
-            ws.onclose = (event) => {
-                console.warn('WebSocket closed:', event.code, event.reason);
-                // Reconnect after a delay if connection is closed unexpectedly
-                setTimeout(connectWebSocket, 3000);
-            };
+                console.error("WebSocket error:", error);
+                ws.close();
+            }
         }
 
-        // --- Data Processing and Rendering ---
-        function updateTableData() {
-            let data = Object.values(prices); // Get all current crypto data
+        /* ===================== UPDATE TABLE CELLS ===================== */
+        /**
+         * Updates visible table cells based on the liveTickers map.
+         * This function is called frequently by the WS onmessage handler.
+         */
+        function updateTableCells() {
+            // Iterate over all coins that are currently displayed in the table
+            document.querySelectorAll('#coinTableBody tr').forEach(row => {
+                const s = row.dataset.symbol; // e.g., "BTC"
 
-            // 1. Search Filtering
-            const search = cryptoSearchInput.value.toLowerCase(); // Use cryptoSearchInput
-            if (search) {
-                data = data.filter(c =>
-                    c.name.toLowerCase().includes(search) ||
-                    c.symbol.toLowerCase().includes(search) ||
-                    c.fullSymbol.toLowerCase().includes(search) // Also search full symbol like BTCUSDT
-                );
-            }
+                // 1. Find the corresponding Binance symbol (e.g., "BTCUSDT")
+                const binSym = findBinanceSymbol(s);
+                const t = liveTickers[binSym]; // Live ticker data
 
-            // Show/hide no results message
-            if (data.length === 0 && search) {
-                noResultsDiv.style.display = 'block';
-                cryptoBody.innerHTML = ''; // Clear table body
-                paginationContainer.innerHTML = ''; // Clear pagination
-                return; // No data to display
-            } else {
-                noResultsDiv.style.display = 'none';
-            }
+                if (!t) return; // No live data available yet for this coin
 
-            // 2. Sorting
-            data.sort((a, b) => {
-                const valA = a[currentSort];
-                const valB = b[currentSort];
+                // 2. Locate and update the cells
+                const p = row.querySelector(`[data-price-id="${s}"]`);
+                const pc = row.querySelector(`[data-change-id="${s}"]`);
+                const pv = row.querySelector(`[data-volume-id="${s}"]`);
 
-                if (valA === undefined || valB === undefined) {
-                    // Handle cases where a sort key might be missing (e.g., market_cap not available for all)
-                    return 0;
+                if (p) {
+                    const newPrice = Number(t.c);
+                    const newChangeP = Number(t.P);
+                    const newVolume = Number(t.q);
+
+                    // --- Apply Live Updates ---
+
+                    // Price
+                    p.textContent = fmtPrice(newPrice);
+
+                    // 24h Change (%)
+                    pc.innerHTML = pct(newChangeP);
+
+                    // Volume (t.q is quote volume in USDT/BUSD)
+                    pv.textContent = fmtNumber(newVolume);
+
+                    // --- Optional Price Flash Effect ---
+                    // if (p.lastPrice !== newPrice) {
+                    //     const isUp = newPrice > (p.lastPrice || 0);
+                    //     p.style.backgroundColor = isUp ? '#ddffdd' : '#ffdddd';
+                    //     setTimeout(() => {
+                    //         p.style.backgroundColor = 'transparent';
+                    //     }, 100);
+                    //     p.lastPrice = newPrice;
+                    // }
                 }
-
-                if (sortDirection === 'asc') {
-                    return valA - valB;
-                } else {
-                    return valB - valA;
-                }
-            });
-
-            filteredAndSortedData = data; // Store for pagination
-
-            // 3. Pagination
-            paginateData(); // Call paginateData to render the current page
-        }
-
-
-        function paginateData() {
-            const totalPages = Math.ceil(filteredAndSortedData.length / itemsPerPage);
-            const startIndex = (currentPage - 1) * itemsPerPage;
-            const endIndex = startIndex + itemsPerPage;
-            const paginated = filteredAndSortedData.slice(startIndex, endIndex);
-
-            renderTable(paginated);
-            renderPagination(totalPages);
-        }
-
-        function renderTable(dataToRender) {
-            cryptoBody.innerHTML = ''; // Clear existing rows
-
-            if (dataToRender.length === 0) {
-                // This case is already handled in updateTableData for search results
-                return;
-            }
-
-            let rankOffset = (currentPage - 1) * itemsPerPage; // Calculate rank based on current page
-            dataToRender.forEach((coin, index) => {
-                const rank = rankOffset + index + 1; // Rank is 1-based index on the current page
-
-                // Determine text color for 24h Change
-                const changeClass = coin.change >= 0 ? 'text-success' : 'text-danger';
-
-                // Format numbers for display
-                const formattedPrice = `$${coin.price.toFixed(2)}`;
-                const formattedChange = `${coin.change.toFixed(2)}%`;
-                const formattedVolume = `$${(coin.volume / 1e9).toFixed(2)}B`; // Billions
-                const formattedMarketCap = coin.market_cap ? `$${(coin.market_cap / 1e12).toFixed(2)}B` :
-                    'N/A'; // Trillions, handle missing market_cap
-
-                const row = `
-                <tr>
-                    <td>${rank}</td>
-                    <td class="coin-name-col">
-                        <img src="${coin.logo}" alt="${coin.name} logo" class="coin-logo">
-                        <strong>${coin.name}</strong>
-                    </td>
-                    <td>${coin.symbol}</td> 
-                    <td>${formattedPrice}</td>
-                    <td class="${changeClass}">${formattedChange}</td>
-                    <td>${formattedMarketCap}</td>
-                    <td>${formattedVolume}</td>
-                </tr>
-            `;
-                cryptoBody.insertAdjacentHTML('beforeend', row);
             });
         }
 
+        /* ===================== PAGINATION/SEARCH LOGIC ===================== */
 
-        function renderPagination(totalPages) {
-            paginationContainer.innerHTML = ''; // Clear existing pagination
+        function updatePaginationControls(totalPages) {
+            pageInfoEl.textContent = `Page ${currentPage} of ${totalPages || 1}`;
 
-            if (totalPages <= 1) {
-                return; // No need for pagination if only one page
-            }
-
-            const createPaginationItem = (text, page, isActive = false, isDisabled = false) => {
-                const li = document.createElement('li');
-                li.className = 'page-item';
-                if (isActive) li.classList.add('active');
-                if (isDisabled) li.classList.add('disabled');
-
-                const a = document.createElement('a');
-                a.className = 'page-link';
-                a.href = '#';
-                a.innerHTML = text;
-
-                if (!isDisabled) {
-                    a.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        currentPage = page;
-                        paginateData();
-                    });
-                }
-                li.appendChild(a);
-                return li;
-            };
-
-            // Previous button
-            paginationContainer.appendChild(createPaginationItem('‹', currentPage - 1, false, currentPage === 1));
-
-            // Page numbers
-            const maxPagesToShow = 7; // Max number of page buttons to display
-            let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
-            let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
-
-            if (endPage - startPage + 1 < maxPagesToShow) {
-                startPage = Math.max(1, endPage - maxPagesToShow + 1);
-            }
-
-            if (startPage > 1) {
-                paginationContainer.appendChild(createPaginationItem('1', 1));
-                if (startPage > 2) {
-                    const liDots = document.createElement('li');
-                    liDots.className = 'page-item disabled';
-                    liDots.innerHTML = '<span class="page-link">...</span>';
-                    paginationContainer.appendChild(liDots);
-                }
-            }
-
-            for (let i = startPage; i <= endPage; i++) {
-                paginationContainer.appendChild(createPaginationItem(i, i, i === currentPage));
-            }
-
-            if (endPage < totalPages) {
-                if (endPage < totalPages - 1) {
-                    const liDots = document.createElement('li');
-                    liDots.className = 'page-item disabled';
-                    liDots.innerHTML = '<span class="page-link">...</span>';
-                    paginationContainer.appendChild(liDots);
-                }
-                paginationContainer.appendChild(createPaginationItem(totalPages, totalPages));
-            }
-
-
-            // Next button
-            paginationContainer.appendChild(createPaginationItem('›', currentPage + 1, false, currentPage === totalPages));
+            prevPageBtn.disabled = currentPage === 1 || totalPages === 0;
+            nextPageBtn.disabled = currentPage >= totalPages;
         }
 
+        function handleSearch(event) {
+            searchTerm = event.target.value.trim();
+            currentPage = 1;
+            renderTable(); // Re-render table on search/filter change
+        }
 
-        // --- Event Listeners ---
-        cryptoSearchInput.addEventListener('input', () => {
-            currentPage = 1; // Reset to first page on new search
-            updateTableData();
-        });
+        function changePage(direction) {
+            currentPage += direction;
+            renderTable();
+            document.querySelector('.table-wrap').scrollTop = 0; // Scroll to top of table
+        }
 
-        perPageSelect.addEventListener('change', (e) => {
-            itemsPerPage = parseInt(e.target.value);
-            currentPage = 1; // Reset to first page when items per page changes
-            updateTableData();
-        });
+        /* ===================== INIT ===================== */
 
-        // Add event listeners for sortable headers
-        document.querySelectorAll('.sortable').forEach(header => {
-            header.addEventListener('click', () => {
-                const sortKey = header.dataset.sort;
+        // searchInput.addEventListener('input', handleSearch);
+        // prevPageBtn.addEventListener('click', () => changePage(-1));
+        // nextPageBtn.addEventListener('click', () => changePage(1));
 
-                // Toggle sort direction if clicking the same column
-                if (currentSort === sortKey) {
-                    sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
-                } else {
-                    currentSort = sortKey;
-                    sortDirection = 'desc'; // Default to descending for new sort column
-                }
+        // Start by loading static CoinGecko data
+        loadCoins();
 
-                // Remove existing sort indicators
-                document.querySelectorAll('.sortable').forEach(h => h.classList.remove('asc', 'desc'));
-
-                // Add new sort indicator
-                header.classList.add(sortDirection);
-
-                currentPage = 1; // Reset to first page on sort change
-                updateTableData();
-            });
-        });
-
-        // --- Initial Call ---
-        // Start WebSocket connection when the page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            // Hide table and show loader initially
-            if (loaderElement) {
-                loaderElement.classList.remove('d-none');
-            }
-            if (cryptoTable) {
-                cryptoTable.classList.add('d-none');
-            }
-            connectWebSocket();
-        });
-
-        // Features Slider Functionality
-        (function() {
-            const featuresGrid = document.getElementById('featuresGrid');
-            const prevButton = document.getElementById('featuresSliderPrev');
-            const nextButton = document.getElementById('featuresSliderNext');
-
-            if (!featuresGrid || !prevButton || !nextButton) return;
-
-            const cards = featuresGrid.querySelectorAll('.feature-card');
-            let currentIndex = 0;
-
-            function getCardsPerView() {
-                return window.innerWidth <= 768 ? 1 : 3;
-            }
-
-            function getTotalSlides() {
-                const cardsPerView = getCardsPerView();
-                return Math.max(0, cards.length - cardsPerView);
-            }
-
-            function updateSlider() {
-                const cardsPerView = getCardsPerView();
-                const totalSlides = getTotalSlides();
-
-                if (cards.length === 0) return;
-
-                const container = featuresGrid.parentElement;
-                const containerWidth = container.offsetWidth;
-                const computedGap = window.getComputedStyle(featuresGrid).gap;
-                const gapValue = parseFloat(computedGap) || 48;
-                const cardWidth = (containerWidth - (cardsPerView - 1) * gapValue) / cardsPerView;
-                const translateX = -currentIndex * (cardWidth + gapValue);
-
-                featuresGrid.style.transform = `translateX(${translateX}px)`;
-
-                prevButton.classList.toggle('disabled', currentIndex === 0);
-                nextButton.classList.toggle('disabled', currentIndex >= totalSlides);
-            }
-
-            function handleResize() {
-                const totalSlides = getTotalSlides();
-                if (currentIndex > totalSlides) {
-                    currentIndex = totalSlides;
-                }
-                updateSlider();
-            }
-
-            prevButton.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateSlider();
-                }
-            });
-
-            nextButton.addEventListener('click', () => {
-                const totalSlides = getTotalSlides();
-                if (currentIndex < totalSlides) {
-                    currentIndex++;
-                    updateSlider();
-                }
-            });
-
-            window.addEventListener('resize', handleResize);
-
-            updateSlider();
-        })();
-
-        // FAQ
-
-        document.querySelectorAll(".faq-item").forEach(item => {
-            item.querySelector(".faq-header").addEventListener("click", () => {
-                item.classList.toggle("active");
-            });
-        });
-
-        // CTA Navigation Buttons Functionality
-        (function() {
-            const ctaButtons = document.querySelectorAll('.cta-nav-btn');
-            const ctaContent = {
-                'BASKETS': {
-                    leftIcon: '📊',
-                    leftText: 'CryptoVault',
-                    rightIcon: '💼',
-                    rightText: 'Baskets',
-                    textIcon: '💼',
-                    title: 'Baskets',
-                    description: 'CryptoVault is now available to millions of investors as a trusted platform for crypto basket investments. CryptoVault is built for diversified portfolios, professional curation, and risk management through expertly managed crypto collections.',
-                    learnMore: 'LEARN MORE ABOUT CRYPTO BASKETS'
-                },
-                'GAMING': {
-                    leftIcon: '🎮',
-                    leftText: 'CryptoVault',
-                    rightIcon: '🎯',
-                    rightText: 'Gaming',
-                    textIcon: '🎯',
-                    title: 'Gaming',
-                    description: 'Invest in the future of blockchain gaming with our curated Gaming crypto basket. This collection includes leading gaming tokens, metaverse projects, and play-to-earn platforms that are revolutionizing the gaming industry.',
-                    learnMore: 'LEARN MORE ABOUT GAMING BASKETS'
-                },
-                'DEFI': {
-                    leftIcon: '💱',
-                    leftText: 'CryptoVault',
-                    rightIcon: '🏦',
-                    rightText: 'DeFi',
-                    textIcon: '🏦',
-                    title: 'DeFi',
-                    description: 'Access the decentralized finance ecosystem through our DeFi basket. This professionally curated collection includes top DeFi protocols, lending platforms, DEX tokens, and yield farming opportunities for maximum returns.',
-                    learnMore: 'LEARN MORE ABOUT DEFI BASKETS'
-                },
-                'LAYER 1': {
-                    leftIcon: '⚡',
-                    leftText: 'CryptoVault',
-                    rightIcon: '🔗',
-                    rightText: 'Layer 1',
-                    textIcon: '🔗',
-                    title: 'Layer 1',
-                    description: 'Build your portfolio with foundational blockchain networks through our Layer 1 basket. This collection features leading blockchain platforms, smart contract networks, and infrastructure tokens that power the crypto ecosystem.',
-                    learnMore: 'LEARN MORE ABOUT LAYER 1 BASKETS'
-                },
-                'TRADING': {
-                    leftIcon: '📈',
-                    leftText: 'CryptoVault',
-                    rightIcon: '💹',
-                    rightText: 'Trading',
-                    textIcon: '💹',
-                    title: 'Trading',
-                    description: 'Optimize your trading strategy with our Trading basket. This collection includes exchange tokens, trading platform coins, and liquidity provider tokens designed for active traders seeking enhanced trading benefits and rewards.',
-                    learnMore: 'LEARN MORE ABOUT TRADING BASKETS'
-                }
-            };
-
-            function updateContent(category) {
-                const content = ctaContent[category];
-                if (!content) return;
-
-                const textSection = document.querySelector('.cta-text-section');
-                const visualSection = document.querySelector('.cta-visual-section');
-
-                textSection.style.opacity = '0.5';
-                visualSection.style.opacity = '0.5';
-
-                setTimeout(() => {
-                    document.getElementById('ctaLeftIcon').textContent = content.leftIcon;
-                    document.getElementById('ctaLeftText').textContent = content.leftText;
-                    document.getElementById('ctaRightIcon').textContent = content.rightIcon;
-                    document.getElementById('ctaRightText').textContent = content.rightText;
-                    document.getElementById('ctaTextIcon').textContent = content.textIcon;
-                    document.getElementById('ctaTextTitle').textContent = content.title;
-                    document.getElementById('ctaDescription').textContent = content.description;
-                    document.getElementById('ctaLearnMore').innerHTML = content.learnMore +
-                        ' <i class="fas fa-arrow-up-right"></i>';
-
-                    textSection.style.opacity = '1';
-                    visualSection.style.opacity = '1';
-                }, 150);
-            }
-
-            ctaButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const category = button.textContent.trim();
-
-                    ctaButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-
-                    updateContent(category);
-                });
-            });
-        })();
-        // Mobile navigation
-        (function() {
-            const toggle = document.querySelector('.menu-toggle');
-            const mobileNav = document.getElementById('mobileNav');
-
-            if (!toggle || !mobileNav) return;
-
-            toggle.addEventListener('click', () => {
-                mobileNav.classList.toggle('open');
-            });
-
-            document.addEventListener('click', (e) => {
-                if (mobileNav.classList.contains('open')) {
-                    if (!mobileNav.contains(e.target) && !toggle.contains(e.target)) {
-                        mobileNav.classList.remove('open');
-                    }
-                }
-            });
-        })();
-    </script> --}}
+        // Setup WebSocket for live updates
+        setupWS();
+    </script>
     <script>
         // Default APY
         let currentAPY = 0.05;
@@ -1500,19 +2451,19 @@
         //             'N/A'; // Trillions, handle missing market_cap
 
         //         const row = `
-        //         <tr>
-        //             <td>${rank}</td>
-        //             <td class="coin-name-col">
-        //                 <img src="${coin.logo}" alt="${coin.name} logo" class="coin-logo">
-        //                 <strong>${coin.name}</strong>
-        //             </td>
-        //             <td>${coin.symbol}</td> 
-        //             <td>${formattedPrice}</td>
-        //             <td class="${changeClass}">${formattedChange}</td>
-        //             <td>${formattedMarketCap}</td>
-        //             <td>${formattedVolume}</td>
-        //         </tr>
-        //     `;
+    //         <tr>
+    //             <td>${rank}</td>
+    //             <td class="coin-name-col">
+    //                 <img src="${coin.logo}" alt="${coin.name} logo" class="coin-logo">
+    //                 <strong>${coin.name}</strong>
+    //             </td>
+    //             <td>${coin.symbol}</td> 
+    //             <td>${formattedPrice}</td>
+    //             <td class="${changeClass}">${formattedChange}</td>
+    //             <td>${formattedMarketCap}</td>
+    //             <td>${formattedVolume}</td>
+    //         </tr>
+    //     `;
         //         cryptoBody.insertAdjacentHTML('beforeend', row);
         //     });
         // }
@@ -1625,60 +2576,21 @@
         //     });
         // });
 
-        // --- Initial Call ---
-        // Start WebSocket connection when the page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            // Hide table and show loader initially
-            if (loaderElement) {
-                loaderElement.classList.remove('d-none');
-            }
-            if (cryptoTable) {
-                cryptoTable.classList.add('d-none');
-            }
-            connectWebSocket();
+        // // --- Initial Call ---
+        // // Start WebSocket connection when the page loads
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     // Hide table and show loader initially
+        //     if (loaderElement) {
+        //         loaderElement.classList.remove('d-none');
+        //     }
+        //     if (cryptoTable) {
+        //         cryptoTable.classList.add('d-none');
+        //     }
+        //     connectWebSocket();
 
-            // Mobile navigation
-            const menuToggle = document.querySelector('.menu-toggle');
-            const mobileNav = document.getElementById('mobileNav');
-
-            if (menuToggle && mobileNav) {
-                const toggleMobileNav = () => {
-                    mobileNav.classList.toggle('open');
-                };
-
-                menuToggle.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    toggleMobileNav();
-                });
-
-                // Close on click outside
-                document.addEventListener('click', (e) => {
-                    if (mobileNav.classList.contains('open')) {
-                        const isClickInside = mobileNav.contains(e.target) || menuToggle.contains(e.target);
-                        if (!isClickInside) {
-                            mobileNav.classList.remove('open');
-                        }
-                    }
-                });
-
-                // Close on navigation click
-                mobileNav.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileNav.classList.remove('open');
-                    });
-                });
-
-                // Ensure nav is closed when resizing to desktop
-                window.addEventListener('resize', () => {
-                    if (window.innerWidth >= 890) {
-                        mobileNav.classList.remove('open');
-                    }
-                });
-            }
-        });
+        // });
 
         // FAQ
-
         document.querySelectorAll(".faq-item").forEach(item => {
             item.querySelector(".faq-header").addEventListener("click", () => {
                 const openItem = document.querySelector(".faq-item.active");
@@ -1688,278 +2600,5 @@
                 item.classList.toggle("active");
             });
         });
-    </script>
-    <script>
-        /* ===================== CONFIG ===================== */
-        const COINGECKO_URL =
-            'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false';
-
-        // Using the 24hr ticker stream for ALL symbols
-        const BINANCE_WS = 'wss://stream.binance.com:9443/ws/!ticker@arr';
-        const SUFFIXES = ['USDT', 'BUSD']; // Prioritized stablecoin pairs
-
-        /* ===================== STATE ===================== */
-        let coins = []; // Array of CoinGecko objects (used for filtering/pagination)
-        let coinIndexBySymbol = {}; // Map for CoinGecko metadata access: { "BTC": {...} }
-        let liveTickers = {}; // Map for live Binance data: { "BTCUSDT": {...} }
-        let searchTerm = "";
-        let currentPage = 1;
-        const coinsPerPage = 20;
-
-        /* ===================== DOM ===================== */
-        const tbody = document.getElementById('coinTableBody');
-        const table = document.getElementById('coinTable');
-        const listLoadingEl = document.getElementById('listLoading');
-
-        // DOM elements for search and pagination
-        const searchInput = document.getElementById('searchInput');
-        const prevPageBtn = document.getElementById('prevPageBtn');
-        const nextPageBtn = document.getElementById('nextPageBtn');
-        const pageInfoEl = document.getElementById('pageInfo');
-
-
-        /* ===================== UTIL ===================== */
-        /**
-         * Formats large numbers with B (Billion) or T (Trillion) suffix.
-         */
-        function fmtNumber(n) {
-            if (!n || isNaN(n)) return '—';
-            const num = Number(n);
-            // if (num >= 1e12) return (num / 1e12).toFixed(2) + 'T';
-            // if (num >= 1e9) return (num / 1e9).toFixed(2) + 'B';
-            // if (num >= 1e6) return (num / 1e6).toFixed(2) + 'M';
-            // return num.toLocaleString();
-
-            return (num / 1e9).toFixed(2) + 'B';
-        }
-
-        /**
-         * Formats price with dollar sign and appropriate precision.
-         */
-        function fmtPrice(p) {
-            if (!p || isNaN(p)) return '—';
-            const price = Number(p);
-            return price >= 1 ? '$' + price.toLocaleString(undefined, {
-                    maximumFractionDigits: 2
-                }) :
-                '$' + price.toPrecision(6);
-        }
-
-        /**
-         * Formats percentage with color coding.
-         */
-        function pct(v) {
-            if (v === null || v === undefined || isNaN(v)) return '—';
-            const val = Number(v);
-            const p = val.toFixed(2) + '%';
-            return val >= 0 ? `<span class="change up">${p}</span>` :
-                `<span class="change down">${p}</span>`;
-        }
-
-        /**
-         * Attempts to find the best Binance pair symbol (e.g., BTCUSDT, BTCEUR, etc.)
-         */
-        function findBinanceSymbol(sym) {
-            for (const s of SUFFIXES) {
-                const x = sym + s;
-                if (liveTickers[x]) return x;
-            }
-            // Default to USDT, even if not found yet, as it's the most common
-            return sym + "USDT";
-        }
-
-        /* ===================== FETCH CoinGecko ===================== */
-        async function loadCoins() {
-            try {
-                const res = await fetch(COINGECKO_URL);
-                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-
-                coins = await res.json();
-
-                // Create a quick lookup map for CoinGecko data
-                coins.forEach(c => {
-                    const s = c.symbol.toUpperCase();
-                    // Avoid overwriting if a symbol appears multiple times (unlikely here)
-                    if (!coinIndexBySymbol[s]) coinIndexBySymbol[s] = c;
-                });
-
-                renderTable(); // Initial render with CoinGecko data
-            } catch (error) {
-                console.error("Error loading coins from CoinGecko:", error);
-                listLoadingEl.textContent = "Error loading initial data. Please check the console.";
-            }
-        }
-
-        /* ===================== RENDER TABLE ===================== */
-        function renderTable() {
-            listLoadingEl.style.display = 'none';
-            table.style.display = 'table';
-            tbody.innerHTML = '';
-
-            // 1. FILTER: Apply the search term
-            const lowerSearchTerm = searchTerm.toLowerCase();
-            const filteredCoins = coins.filter(c =>
-                c.name.toLowerCase().includes(lowerSearchTerm) ||
-                c.symbol.toLowerCase().includes(lowerSearchTerm)
-            );
-
-            // 2. PAGINATION: Calculate page details
-            const totalPages = Math.ceil(filteredCoins.length / coinsPerPage);
-
-            // Boundary checks for current page
-            if (currentPage > totalPages && totalPages > 0) {
-                currentPage = totalPages;
-            } else if (totalPages === 0) {
-                currentPage = 1;
-            }
-
-            const startIndex = (currentPage - 1) * coinsPerPage;
-            const endIndex = startIndex + coinsPerPage;
-
-            // 3. SLICE: Get only the coins for the current page
-            const coinsToDisplay = filteredCoins.slice(startIndex, endIndex);
-
-            // 4. RENDER ROWS
-            coinsToDisplay.forEach(c => {
-                const s = c.symbol.toUpperCase();
-                const tr = document.createElement('tr');
-                tr.dataset.symbol = s;
-                const priceChangeClass = c.price_change_percentage_24h >= 0 ? 'text-success' : 'text-danger';
-
-                // Initial data comes from CoinGecko
-                tr.innerHTML = `
-                    <td class="coin-name-col"><img class="coin-logo" src="${c.image}" alt="${c.name} icon"><strong>${c.name}</strong></td>
-                    <td data-symbol-id="${s}">${s}</td>
-
-                    <td data-price-id="${s}" class="price">${fmtPrice(c.current_price)}</td>
-                    <td data-change-id="${s}" class="${priceChangeClass}">${pct(c.price_change_percentage_24h)}</td>
-                    <td data-volume-id="${s}">${fmtNumber(c.total_volume)}</td>
-                    <td>${fmtNumber(c.market_cap)}</td>
-                `;
-                //set tr as link that redirect to coin details page
-                tr.style.cursor = 'pointer';
-                tr.addEventListener('click', () => {
-                    window.location.href = `/coin/${s}`;
-                });
-
-                tbody.appendChild(tr);
-            });
-
-            // 5. UPDATE PAGINATION CONTROLS
-            updatePaginationControls(totalPages);
-
-            // Crucial: After rendering the table, immediately update the cells 
-            // with any available live ticker data.
-            updateTableCells();
-        }
-
-        /* ===================== LIVE UPDATE (WS) ===================== */
-        function setupWS() {
-            const ws = new WebSocket(BINANCE_WS);
-
-            ws.onmessage = e => {
-                const arr = JSON.parse(e.data);
-                if (!Array.isArray(arr)) return;
-
-                // Update the master liveTickers map
-                arr.forEach(t => liveTickers[t.s] = t);
-
-                // No need to re-render the whole table, just update the cells
-                updateTableCells();
-            };
-
-            ws.onclose = () => {
-                console.log("WebSocket closed. Attempting reconnect in 3s...");
-                setTimeout(setupWS, 3000);
-            }
-
-            ws.onerror = (error) => {
-                console.error("WebSocket error:", error);
-                ws.close();
-            }
-        }
-
-        /* ===================== UPDATE TABLE CELLS ===================== */
-        /**
-         * Updates visible table cells based on the liveTickers map.
-         * This function is called frequently by the WS onmessage handler.
-         */
-        function updateTableCells() {
-            // Iterate over all coins that are currently displayed in the table
-            document.querySelectorAll('#coinTableBody tr').forEach(row => {
-                const s = row.dataset.symbol; // e.g., "BTC"
-
-                // 1. Find the corresponding Binance symbol (e.g., "BTCUSDT")
-                const binSym = findBinanceSymbol(s);
-                const t = liveTickers[binSym]; // Live ticker data
-
-                if (!t) return; // No live data available yet for this coin
-
-                // 2. Locate and update the cells
-                const p = row.querySelector(`[data-price-id="${s}"]`);
-                const pc = row.querySelector(`[data-change-id="${s}"]`);
-                const pv = row.querySelector(`[data-volume-id="${s}"]`);
-
-                if (p) {
-                    const newPrice = Number(t.c);
-                    const newChangeP = Number(t.P);
-                    const newVolume = Number(t.q);
-
-                    // --- Apply Live Updates ---
-
-                    // Price
-                    p.textContent = fmtPrice(newPrice);
-
-                    // 24h Change (%)
-                    pc.innerHTML = pct(newChangeP);
-
-                    // Volume (t.q is quote volume in USDT/BUSD)
-                    pv.textContent = fmtNumber(newVolume);
-
-                    // --- Optional Price Flash Effect ---
-                    // if (p.lastPrice !== newPrice) {
-                    //     const isUp = newPrice > (p.lastPrice || 0);
-                    //     p.style.backgroundColor = isUp ? '#ddffdd' : '#ffdddd';
-                    //     setTimeout(() => {
-                    //         p.style.backgroundColor = 'transparent';
-                    //     }, 100);
-                    //     p.lastPrice = newPrice;
-                    // }
-                }
-            });
-        }
-
-        /* ===================== PAGINATION/SEARCH LOGIC ===================== */
-
-        function updatePaginationControls(totalPages) {
-            pageInfoEl.textContent = `Page ${currentPage} of ${totalPages || 1}`;
-
-            prevPageBtn.disabled = currentPage === 1 || totalPages === 0;
-            nextPageBtn.disabled = currentPage >= totalPages;
-        }
-
-        function handleSearch(event) {
-            searchTerm = event.target.value.trim();
-            currentPage = 1;
-            renderTable(); // Re-render table on search/filter change
-        }
-
-        function changePage(direction) {
-            currentPage += direction;
-            renderTable();
-            document.querySelector('.table-wrap').scrollTop = 0; // Scroll to top of table
-        }
-
-        /* ===================== INIT ===================== */
-
-        searchInput.addEventListener('input', handleSearch);
-        prevPageBtn.addEventListener('click', () => changePage(-1));
-        nextPageBtn.addEventListener('click', () => changePage(1));
-
-        // Start by loading static CoinGecko data
-        loadCoins();
-
-        // Setup WebSocket for live updates
-        setupWS();
     </script>
 @endsection

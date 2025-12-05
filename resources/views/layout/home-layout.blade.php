@@ -9,6 +9,7 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo.svg') }}" />
 
     @include('layout.header')
+    @yield('styles')
 </head>
 
 <body>
@@ -20,5 +21,6 @@
 
     @yield('scripts')
 </body>
+
 
 </html>

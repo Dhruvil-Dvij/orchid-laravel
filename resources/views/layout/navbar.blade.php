@@ -23,91 +23,19 @@
 <a href="#" class="cta-button">Sign up</a> --}}
 
 
-{{-- <header class="main-header">
-    <nav class="nav-container">
-        <a href="#" class="logo">
-            <img src="{{ asset('/images/logo.svg') }}" alt="Vcoins">
-            <p>Vcoins</p>
-        </a>
-        <div class="header-left">
-            <ul class="nav-menu">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Press</a></li>
-                <li><a href="#">Blog</a></li>
-            </ul>
-        </div>
-
-        <div class="header-right">
-            @if (auth()->check())
-                <a href="{{ route('platform.baskets') }}" class="login-btn">Dashboard</a>
-
-                <form method="POST" action="{{ route('platform.logout') }}">
-                    @csrf
-                    <button type="submit" id="logout_btn"
-                        style="background: #F0B90B;
-                        color: #000;
-                        padding: 8px 20px;
-                        border-radius: 6px;
-                        font-weight: 600;
-                        text-decoration: none;">
-                        Sign out</button>
-                </form>
-            @else
-                <a href="{{ route('platform.login') }}" class="login-btn">Log In</a>
-                <a href="{{ route('platform.register') }}" class="signup-btn">Sign Up</a>
-            @endif
-
-        </div>
-
-        <button class="menu-toggle" aria-label="Open menu">
-            <i class="fa-solid fa-list"></i>
-        </button>
-    </nav>
-
-    <div class="mobile-nav" id="mobileNav">
-        <div class="mobile-nav-inner">
-            <ul class="mobile-nav-menu">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Press</a></li>
-                <li><a href="#">Blog</a></li>
-            </ul>
-            <div class="mobile-nav-actions">
-                @if (auth()->check())
-                    <a href="{{ route('platform.baskets') }}" class="signup-btn">Dashboard</a>
-
-                    <form method="POST" action="{{ route('platform.logout') }}">
-                        @csrf
-                        <button type="submit" id="logout_btn"
-                            style="background: #F0B90B;
-                        color: #000;
-                        padding: 8px 20px;
-                        border-radius: 6px;
-                        font-weight: 600;
-                        text-decoration: none;">
-                            Sign out</button>
-                    </form>
-                @else
-                    <a href="{{ route('platform.login') }}" class="login-btn">Log In</a>
-                    <a href="{{ route('platform.register') }}" class="signup-btn">Sign Up</a>
-                @endif
-            </div>
-        </div>
-    </div>
-</header> --}}
-
 <header>
     <div class="container">
         <nav>
-            <div class="logo">
-                <img src="{{ asset('images/logo.svg') }}" alt="Vcoins">
-                <span>Vcoins</span>
-            </div>
+             <a class="logo" href="{{ route('platform.index') }}">
+                    <img src="{{ asset('images/logo.svg') }}" alt="Vcoins">
+                    <span>Vcoins</span>
+                </a>
             <div class="nav-links">
-                <a href="#home" class="active">Home</a>
-                <a href="#about">About</a>
-                <a href="#crypto-prices">Markets</a>
-                <a href="#contact">Contact Us</a>
-                <a href="#faq">FAQ</a>
+                <a href="{{route('platform.index')}}">Home</a>
+                <a href="{{route('platform.about')}}">About</a>
+                <a href="{{route('platform.markets')}}">Markets</a>
+                <a href="{{route('platform.contact')}}">Contact Us</a>
+                <a href="{{route('platform.faq')}}">FAQ</a>
             </div>
             <div class="nav-actions">
                 @if (auth()->check())
@@ -141,11 +69,11 @@
         <div class="mobile-nav-inner">
 
             <nav class="mobile-menu">
-                <a href="#home" class="active">Home</a>
-                <a href="#about">About</a>
-                <a href="#market">Markets</a>
-                <a href="#contact">Contact Us</a>
-                <a href="#faq">FAQ</a>
+                <a href="{{route('platform.index')}}">Home</a>
+                <a href="{{route('platform.about')}}">About</a>
+                <a href="{{route('platform.markets')}}">Markets</a>
+                <a href="{{route('platform.contact')}}">Contact Us</a>
+                <a href="{{route('platform.faq')}}">FAQ</a>
             </nav>
             <div class="mobile-actions">
                 @if (auth()->check())
