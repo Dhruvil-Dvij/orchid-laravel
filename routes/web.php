@@ -19,3 +19,7 @@ Route::get('/', [HomeController::class, 'index'])
     ->breadcrumbs(fn($trail) => $trail
         ->push(__('Home'), route('platform.index')));
 
+Route::get('/coin/{symbol}', [HomeController::class, 'coinDetail'])
+    ->name('platform.index')
+    ->breadcrumbs(fn($trail) => $trail
+        ->push(__('Home'), route('platform.index')));
