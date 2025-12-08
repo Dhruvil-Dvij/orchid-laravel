@@ -2,7 +2,7 @@
 @section('title',__('Sign up to create account'))
 
 @section('content')
-    <h1 class="h4 text-body-emphasis mb-4">{{__('Sign up to create account')}}</h1>
+    <h1 class="h4 text-body-emphasis mb-4 signIN-title">{{__('Sign up to create account')}}</h1>
 
     <form class="m-t-md"
           role="form"

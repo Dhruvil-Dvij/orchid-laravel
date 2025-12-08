@@ -1,5 +1,5 @@
 <div class="mb-3">
-    <label class="form-label">
+    <label class="form-label login-lables">
         {{__('Name')}}
     </label>
     {!!  \Orchid\Screen\Fields\Input::make('name')
@@ -9,11 +9,12 @@
         ->autofocus()
         ->autocomplete('name')
         ->placeholder(__('Enter your name'))
+        ->class("login-input")
     !!}
 </div>
 
 <div class="mb-3">
-    <label class="form-label">
+    <label class="form-label login-lables">
         {{__('Email address')}}
     </label>
     {!!  \Orchid\Screen\Fields\Input::make('email')
@@ -24,11 +25,12 @@
         ->autocomplete('email')
         ->inputmode('email')
         ->placeholder(__('Enter your email'))
+        ->class("login-input")
     !!}
 </div>
 
 <div class="mb-3">
-    <label class="form-label w-100">
+    <label class="form-label w-100 login-lables">
         {{__('Password')}}
     </label>
     {!!  \Orchid\Screen\Fields\Password::make('password')
@@ -36,11 +38,12 @@
         ->autocomplete('current-password')
         ->tabindex(3)
         ->placeholder(__('Enter your password'))
+        ->class("login-input")
     !!}
 </div>
 
 <div class="mb-3">
-    <label class="form-label w-100">
+    <label class="form-label w-100 login-lables">
         {{__('Confirm Password')}}
     </label>
     {!!  \Orchid\Screen\Fields\Password::make('password_confirmation')
@@ -48,17 +51,19 @@
         ->autocomplete('off')
         ->tabindex(4)
         ->placeholder(__('Confirm your password'))
+        ->class("login-input")
     !!}
 </div>
 
 <div class="mb-3">
-    <label class="form-label w-100">
+    <label class="form-label w-100 login-lables">
         {{__('Referral Code (optional)')}}
     </label>
     {!!  \Orchid\Screen\Fields\Input::make('referral_code')
         ->tabindex(5)
         ->autocomplete('off')
         ->placeholder(__('Enter your referral code'))
+        ->class("login-input")
     !!}
 </div>
 
@@ -72,7 +77,7 @@
         </label>
     </div>
     <div class="col-md-6 col-xs-12">
-        <button id="button-login" type="submit" class="btn btn-default btn-block" tabindex="6">
+        <button id="button-login" type="submit" class="btn btn-default btn-block login-btn" tabindex="6">
             <x-orchid-icon path="bs.box-arrow-in-right" class="small me-2"/>
             {{__('Sign Up')}}
         </button>

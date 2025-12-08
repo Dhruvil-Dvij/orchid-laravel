@@ -4,7 +4,7 @@
     </div>
     <div class="d-flex flex-column overflow-hidden small">
         <span class="text-ellipsis">{{ $lockUser->presenter()->title() }}</span>
-        <span class="text-muted d-block text-ellipsis">{{ $lockUser->presenter()->subTitle() }}</span>
+        <span class="text-muted d-block text-ellipsis admin-text">{{ $lockUser->presenter()->subTitle() }}</span>
     </div>
     <input type="hidden" name="email" required value="{{ $lockUser->email }}">
 </div>
@@ -18,6 +18,7 @@
             ->tabindex(1)
             ->autofocus()
             ->placeholder(__('Enter your password'))
+            ->class("login-input")
     !!}
 
     @error('email')
@@ -29,12 +30,12 @@
 
 <div class="row align-items-center">
     <div class="col-md-6 col-xs-12">
-        <a href="{{ route('platform.login.lock') }}" class="small">
+        <a href="{{ route('platform.login.lock') }}" class="small other-user-text">
             {{__('Sign in with another user.')}}
         </a>
     </div>
     <div class="col-md-6 col-xs-12">
-        <button id="button-login" type="submit" class="btn btn-default btn-block" tabindex="2">
+        <button id="button-login" type="submit" class="btn btn-default btn-block login-btn" tabindex="2">
             <x-orchid-icon path="bs.box-arrow-in-right" class="small me-2"/>
             {{__('Login')}}
         </button>

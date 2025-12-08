@@ -49,13 +49,14 @@
     @if(!empty(config('platform.vite', [])))
         @vite(config('platform.vite'))
     @endif
-    <link href="{{ asset('css/orchid-custom.css') }}" rel="stylesheet">
+
+    @yield('styles')
 
 </head>
 
 <body class="{{ \Orchid\Support\Names::getPageNameClass() }}" data-controller="pull-to-refresh">
 
-<div class="container-fluid" data-controller="@yield('controller')" @yield('controller-data')>
+<div class="container-fluid main-fluid" data-controller="@yield('controller')" @yield('controller-data')>
 
     <div class="row justify-content-center d-md-flex h-100">
         @yield('aside')
