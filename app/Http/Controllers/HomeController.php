@@ -113,4 +113,30 @@ class HomeController extends Controller
         // return view('vendor.platform.home', ['coinMap' => $coinMap]);
         return view('layout.markets', ['coinMap' => $coinMap]);
     }
+
+    public function getCoins()
+    {
+        $allCoins = [];
+
+        for ($page = 1; $page <= 3; $page++) {
+            $response = Http::get("https://api.coingecko.com/api/v3/coins/markets", [
+                'vs_currency' => 'usd',
+                'order' => 'market_cap_desc',
+                'per_page' => 250,
+                'page' => $page,
+                'sparkline' => false
+            ]);
+
+            if ($response->failed()) {
+                return response()->json([
+                    'error' => 'Failed to fetch from CoinGecko',
+                    'status' => $response->status()
+                ], 500);
+            }
+
+            $allCoins = array_merge($allCoins, $response->json());
+        }
+
+        return $allCoins;
+    }
 }

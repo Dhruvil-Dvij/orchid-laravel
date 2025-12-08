@@ -515,13 +515,12 @@
             <div class="faq-item active">
                 <button class="faq-header">
                     <span class="faq-number">1</span>
-                    <span class="faq-title">Why is Binance the best exchange for crypto traders?</span>
+                    <span class="faq-title">Why is Vcoins the best for crypto traders?</span>
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-content">
                     <p>
-                        Binance offers low fees, fast transactions and support for Bitcoin, Ethereum, Tether and 350+
-                        cryptocurrencies...
+                         Vcoins stands out for crypto traders with its low fees, fast transaction speeds, and support for 350+ coins including Bitcoin, Ethereum, and Tether.
                     </p>
                 </div>
             </div>
@@ -529,22 +528,22 @@
             <div class="faq-item">
                 <button class="faq-header">
                     <span class="faq-number">2</span>
-                    <span class="faq-title">What products does Binance provide?</span>
+                    <span class="faq-title">What products does Vcoins provide?</span>
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-content">
-                    <p>Spot Trading, Futures, P2P, Earn, Launchpad & more...</p>
+                    <p>Vcoins provides a crypto basket product that allows users to invest in a diversified selection of digital assets effortlessly.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <button class="faq-header">
                     <span class="faq-number">3</span>
-                    <span class="faq-title">How to buy Bitcoin and other cryptocurrencies?</span>
+                    <span class="faq-title">How can I start investing in Vcoins’ crypto baskets?</span>
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-content">
-                    <p>Buy with Debit card, Credit card, UPI, Wallets & Bank transfer...</p>
+                    <p>You can buy a crypto basket by creating an account on Vcoins, completing verification, adding funds to your wallet, and selecting the basket you want to invest in. Once you confirm the purchase, your basket will be added to your portfolio instantly.</p>
                 </div>
             </div>
 
@@ -555,11 +554,11 @@
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-content">
-                    <p>Use Binance price charts, live market analytics & coin info...</p>
+                    <p>You can easily monitor real-time market movements using our live market dashboard. Vcoins provides instant price updates, market trends, volume changes, and other key metrics so you can stay informed and make smarter trading decisions at any moment.</p>
                 </div>
             </div>
 
-            <div class="faq-item">
+            {{-- <div class="faq-item">
                 <button class="faq-header">
                     <span class="faq-number">5</span>
                     <span class="faq-title">How to trade cryptocurrencies?</span>
@@ -568,16 +567,16 @@
                 <div class="faq-content">
                     <p>Spot trading, Margin, Futures & Copy trading available...</p>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="faq-item">
                 <button class="faq-header">
-                    <span class="faq-number">6</span>
-                    <span class="faq-title">How to earn from crypto?</span>
+                    <span class="faq-number">5</span>
+                    <span class="faq-title">How to earn from crypto baskets?</span>
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-content">
-                    <p>Earn passive rewards using Stake, Earn, Launchpool & More...</p>
+                    <p>diversify your portfolio instantly with curated baskets designed around themes, performance, and risk levels. This reduces volatility and increases long-term earning potential.</p>
                 </div>
             </div>
 

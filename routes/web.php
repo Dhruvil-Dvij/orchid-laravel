@@ -77,3 +77,7 @@ Route::get('/terms', function () {
     ->name('platform.terms')
     ->breadcrumbs(fn($trail) => $trail
         ->push(__('Terms'), route('platform.terms')));
+
+Route::get('/get-coins', [HomeController::class, 'getCoins'])
+    ->name('platform.getcoins');
+

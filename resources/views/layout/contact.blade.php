@@ -572,7 +572,7 @@
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                         <h3>Email Us</h3>
-                        <p>support@vcoins.co.in</p>
+                        <p>Vcoins.app@gmail.com</p>
                         <p style="margin-top: 8px; color: var(--text-muted);">We typically respond within 24 hours</p>
                     </div>
 

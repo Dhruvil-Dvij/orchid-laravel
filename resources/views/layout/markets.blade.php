@@ -760,7 +760,7 @@
             </div>
 
             <div class="table-container table-wrap">
-                <div class="center" id="listLoading">Loading coins from CoinGecko...</div>
+                <div class="center" id="listLoading">Loading coins...</div>
 
 
                 <table class="table crypto-table" id="coinTable" style="display:none;">
@@ -1089,6 +1089,7 @@
     </script> --}}
 
     <script>
+        // console.log('All Coins: ', @json($coinMap));
         /* ===================== CONFIG ===================== */
         const COINGECKO_URL =
             'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false';
@@ -1170,11 +1171,13 @@
         /* ===================== FETCH CoinGecko ===================== */
         async function loadCoins() {
             try {
-                const res = await fetch(COINGECKO_URL);
-                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-
+                
+                let res = await fetch('/get-coins');
                 coins = await res.json();
+                // let res = await fetch(COINGECKO_URL);
+                // if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
+                // coins = await res.json();
                 // Create a quick lookup map for CoinGecko data
                 coins.forEach(c => {
                     const s = c.symbol.toUpperCase();
@@ -1183,6 +1186,8 @@
                 });
 
                 renderTable(); // Initial render with CoinGecko data
+                
+
             } catch (error) {
                 console.error("Error loading coins from CoinGecko:", error);
                 listLoadingEl.textContent = "Error loading initial data. Please check the console.";
