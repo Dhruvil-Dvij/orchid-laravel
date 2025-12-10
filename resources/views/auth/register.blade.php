@@ -2,6 +2,10 @@
 @section('title',__('Sign up to create account'))
 
 @section('content')
+<a class="login-logo" href="index.html">
+                    <img src="images/logo.svg" alt="Vcoins">
+                    <span>Vcoins</span>
+                </a>
     <h1 class="h4 text-body-emphasis mb-4 signIN-title">{{__('Sign up to create account')}}</h1>
 
     <form class="m-t-md"

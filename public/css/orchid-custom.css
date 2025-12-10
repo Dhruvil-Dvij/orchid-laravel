@@ -23,12 +23,32 @@
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
 }
-
+.login-logo{
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: -0.05em;
+    text-decoration: none;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.login-logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+.login-logo span {
+    color: var(--primary);
+}
 
 .login-entire-container {
     background-color: var(--bg-card) !important;
     border: 1px solid var(--border);
     border-radius: 24px !important;
+    padding: 2rem !important;
 }
 
 .login-btn {
@@ -56,6 +76,10 @@
 .btn-container {
     display: flex;
     justify-content: flex-end;
+}
+
+html, body {
+    min-height: 100vh;
 }
 
 .main-fluid {
