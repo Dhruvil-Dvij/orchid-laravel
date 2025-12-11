@@ -2,6 +2,7 @@
 
 namespace App\Orchid\Screens\CryptoBasket;
 
+use App\Events\BasketPurchase as EventsBasketPurchase;
 use App\Models\BasketPurchase;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Toast;
@@ -173,6 +174,17 @@ class CryptoBasketListScreen extends Screen
             'snapshot' => json_encode($snapshot),
             'amount' => $amount,
         ]);
+
+        $mailData = [
+            'user_name' => $user->name,
+            'user_email' => $user->email,
+            'basket_name' => $basket->name,
+            'amount' => $amount,
+            'snapshot' => $snapshot,
+            'purchase_date' => now()->toDateTimeString(),
+        ];
+
+        event(new EventsBasketPurchase($mailData));
 
         Toast::success('Investment successful! You have invested ' . $amount . ' in the basket.');
         return redirect()->route('platform.baskets');
