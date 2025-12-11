@@ -2,8 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Orchid\Screens\ReferralSettingsScreen;
+
+Route::get('/.well-known/appspecific/com.chrome.devtools.json', function () {
+    return redirect('/');
+});
 
 Route::get('/register', function () {
     return view('auth.register');
@@ -81,3 +86,5 @@ Route::get('/terms', function () {
 Route::get('/get-coins', [HomeController::class, 'getCoins'])
     ->name('platform.getcoins');
 
+Route::post('/contact/submit', [ContactController::class, 'contactSubmit'])
+    ->name('platform.contact.submit');

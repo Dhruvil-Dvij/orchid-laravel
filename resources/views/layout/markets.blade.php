@@ -1190,7 +1190,9 @@
 
             } catch (error) {
                 console.error("Error loading coins from CoinGecko:", error);
-                listLoadingEl.textContent = "Error loading initial data. Please check the console.";
+                setTimeout(loadCoins, 2000);
+
+                // listLoadingEl.textContent = "Error loading initial data. Please check the console.";
             }
         }
 

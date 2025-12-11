@@ -656,15 +656,54 @@
                     const subject = document.getElementById('subject').value;
                     const message = document.getElementById('message').value;
 
-                    formMessage.textContent = 'Thank you for your message! We will get back to you soon.';
-                    formMessage.className = 'form-message success';
+                    // use ajax call to submit the form data to the server
+                    fetch('{{ route('platform.contact.submit') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            name: name,
+                            email: email,
+                            subject: subject,
+                            message: message
+                        })
+                    }).then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            formMessage.textContent = 'Thank you for your message! We will get back to you soon.';
+                            formMessage.className = 'form-message success';
+                            contactForm.reset();
+                        } else {
+                            formMessage.textContent = 'There was an error sending your message. Please try again later.';
+                            formMessage.className = 'form-message error';
+                        }
+                        contactForm.reset();
 
-                    contactForm.reset();
+                        setTimeout(() => {
+                            formMessage.className = 'form-message';
+                            formMessage.style.display = 'none';
+                        }, 5000);
+                    }).catch(error => {
+                        console.error('Error:', error);
+                        formMessage.textContent = 'There was an error sending your message. Please try again later.';
+                        formMessage.className = 'form-message error';
+                        contactForm.reset();
 
-                    setTimeout(() => {
-                        formMessage.className = 'form-message';
-                        formMessage.style.display = 'none';
-                    }, 5000);
+                        setTimeout(() => {
+                            formMessage.className = 'form-message';
+                            formMessage.style.display = 'none';
+                        }, 5000);
+                    });
+                    // formMessage.textContent = 'Thank you for your message! We will get back to you soon.';
+                    // formMessage.className = 'form-message success';
+
+
+                    // setTimeout(() => {
+                    //     formMessage.className = 'form-message';
+                    //     formMessage.style.display = 'none';
+                    // }, 5000);
                 });
             }
         });

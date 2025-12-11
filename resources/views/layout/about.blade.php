@@ -607,7 +607,7 @@
                     <div class="stat-label">Total Value Locked</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-value text-gradient">25,000+</div>
+                    <div class="stat-value text-gradient">50,000+</div>
                     <div class="stat-label">Active Users</div>
                 </div>
                 <div class="stat-item">
@@ -746,7 +746,7 @@
                         <i class="fa-solid fa-user"></i>
                     </div>
                     <h3>Alex Chen</h3>
-                    <div class="role">Co-Founder & CEO</div>
+                    <div class="role">Lead Protocol Architect</div>
                     <p>Former DeFi protocol architect with 10+ years in blockchain technology. Led development of multiple
                         successful DeFi platforms before founding Vcoins.</p>
                 </div>
@@ -755,7 +755,7 @@
                         <i class="fa-solid fa-user"></i>
                     </div>
                     <h3>Sarah Kim</h3>
-                    <div class="role">Co-Founder & CTO</div>
+                    <div class="role">Lead Smart Contract Auditor</div>
                     <p>Blockchain security expert and smart contract auditor. Previously worked on securing over $500M in
                         DeFi protocols. Passionate about making DeFi accessible.</p>
                 </div>

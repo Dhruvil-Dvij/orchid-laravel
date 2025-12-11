@@ -97,6 +97,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.user.kyc.requests')
                 ->permission('platform.user.kyc.requests'),
 
+            Menu::make(__('Contact Requests'))
+                ->icon('bs.envelope')
+                ->route('platform.user.contact.requests')
+                ->permission('platform.user.contact.requests'),
+
             Menu::make(__('Users'))
                 ->icon('bs.people')
                 ->route('platform.systems.users')
@@ -143,7 +148,8 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.systems.users', __('Users'))
                 ->addPermission('platform.systems.settings', __('Referral Settings'))
                 ->addPermission('platform.systems.pending.requests', __('Pending Requests'))
-                ->addPermission('platform.user.kyc.requests', __('KYC Requests')),
+                ->addPermission('platform.user.kyc.requests', __('KYC Requests'))
+                ->addPermission('platform.user.contact.requests', __('Contact Requests')),
             ItemPermission::group(__('Funds'))
                 ->addPermission('platform.funds.wallet', __('Wallet'))
                 ->addPermission('platform.funds.edit', __('Wallet Transactions'))

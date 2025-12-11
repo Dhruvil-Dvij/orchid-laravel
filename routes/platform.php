@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Screens\Contact\ContactListScreen;
 use App\Orchid\Screens\User\ActivityHistoryScreen;
 use App\Orchid\Screens\CryptoBasket\CryptoBasketEditScreen;
 use App\Orchid\Screens\CryptoBasket\CryptoBasketListScreen;
@@ -200,3 +201,9 @@ Route::screen('kyc-requests/view/{id}', KycSubmissionViewScreen::class)
     ->breadcrumbs(fn($trail, $id) => $trail
         ->parent('platform.user.kyc.requests')
         ->push($id, route('platform.user.kyc.requests.view', $id)));
+
+Route::screen('contacts', ContactListScreen::class)
+    ->name('platform.user.contact.requests')
+    ->breadcrumbs(fn($trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Contact Requests'), route('platform.user.contact.requests')));

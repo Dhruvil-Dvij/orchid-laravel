@@ -114,29 +114,57 @@ class HomeController extends Controller
         return view('layout.markets', ['coinMap' => $coinMap]);
     }
 
+    // public function getCoins()
+    // {
+    //     $allCoins = [];
+
+    //     for ($page = 1; $page <= 3; $page++) {
+    //         $response = Http::get("https://api.coingecko.com/api/v3/coins/markets", [
+    //             'vs_currency' => 'usd',
+    //             'order' => 'market_cap_desc',
+    //             'per_page' => 250,
+    //             'page' => $page,
+    //             'sparkline' => false
+    //         ]);
+
+    //         if ($response->failed()) {
+    //             return response()->json([
+    //                 'error' => 'Failed to fetch from CoinGecko',
+    //                 'status' => $response->status()
+    //             ], 500);
+    //         }
+
+    //         $allCoins = array_merge($allCoins, $response->json());
+    //     }
+
+    //     return $allCoins;
+    // }
+
     public function getCoins()
     {
-        $allCoins = [];
+        return Cache::remember('all_coins', now()->addMinutes(2), function () {
 
-        for ($page = 1; $page <= 3; $page++) {
-            $response = Http::get("https://api.coingecko.com/api/v3/coins/markets", [
-                'vs_currency' => 'usd',
-                'order' => 'market_cap_desc',
-                'per_page' => 250,
-                'page' => $page,
-                'sparkline' => false
-            ]);
+            $allCoins = [];
 
-            if ($response->failed()) {
-                return response()->json([
-                    'error' => 'Failed to fetch from CoinGecko',
-                    'status' => $response->status()
-                ], 500);
+            for ($page = 1; $page <= 3; $page++) {
+
+                $response = Http::retry(3, 200)
+                    ->get("https://api.coingecko.com/api/v3/coins/markets", [
+                        'vs_currency' => 'usd',
+                        'order' => 'market_cap_desc',
+                        'per_page' => 250,
+                        'page' => $page,
+                        'sparkline' => false
+                    ]);
+
+                if ($response->failed()) {
+                    throw new \Exception("CoinGecko failed with status ". $response->status());
+                }
+
+                $allCoins = array_merge($allCoins, $response->json());
             }
 
-            $allCoins = array_merge($allCoins, $response->json());
-        }
-
-        return $allCoins;
+            return $allCoins;
+        });
     }
 }
