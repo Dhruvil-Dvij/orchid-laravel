@@ -24,7 +24,8 @@ class UserReferralLayout extends Rows
                 ->title(__('Referral Code'))
                 ->rawAttributes([
                     'data-referral-code' => $this->query->get('user.referral_code') ?? '',
-                ]),
+                ])
+                ->class('account-all-input'),
 
         ];
     }

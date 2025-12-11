@@ -1,8 +1,12 @@
 @extends(config('platform.workspace', 'platform::workspace.compact'))
 
+@section('styles')
+    <link href="{{ asset('css/orchid-dashboard.css') }}" rel="stylesheet">
+
+@endsection
 @section('aside')
-    <div class="aside col-xs-12 col-xxl-2 bg-dark d-flex flex-column" data-controller="menu" data-bs-theme="dark">
-        <header class="d-xl-block p-3 mt-xl-4 w-100 d-flex align-items-center">
+    <div class="aside col-xs-12 col-xxl-2 bg-dark d-flex flex-column dashboard-sidebar" data-controller="menu" data-bs-theme="dark">
+        <header class="d-xl-block p-3 mt-xl-4 w-100 d-flex align-items-center logo-sidebar">
             <a href="#" class="header-toggler d-xl-none me-auto order-first d-flex align-items-center lh-1 link-body-emphasis"
                data-action="click->menu#toggle">
                 <x-orchid-icon path="bs.three-dots-vertical" class="icon-menu"/>
@@ -10,7 +14,7 @@
                 <span class="ms-2">@yield('title')</span>
             </a>
 
-            <a class="header-brand order-last link-body-emphasis" href="{{ route(config('platform.index')) }}">
+            <a class="header-brand order-last link-body-emphasis logo-img" href="{{ route(config('platform.index')) }}">
                 <img src="{{asset('/images/logo.svg')}}" alt="Vcoins logo" srcset="">
                 {{-- @includeFirst([config('platform.template.header'), 'platform::header']) --}}
             </a>
@@ -38,7 +42,7 @@
             </div>
 
             <footer class="position-sticky bottom-0">
-                <div class="bg-dark position-relative overflow-hidden" style="padding-bottom: 10px;">
+                <div class="bg-dark position-relative overflow-hidden sidebar-admin sidebar-bottom" style="padding-bottom: 10px;">
                     @includeWhen(Auth::check(), 'platform::partials.profile')
                 </div>
             </footer>
@@ -51,7 +55,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb px-4 mb-2">
                 <x-tabuna-breadcrumbs
-                    class="breadcrumb-item"
+                    class="breadcrumb-item home-tab"
                     active="active"
                 />
             </ol>
@@ -59,13 +63,13 @@
     @endif
 
     <div class="order-last order-md-0 command-bar-wrapper">
-        <div class="@hasSection('navbar') @else d-none d-md-block @endif layout d-md-flex align-items-center">
+        <div class="@hasSection('navbar') @else d-none d-md-block @endif layout d-md-flex align-items-center Basket-main">
             <header class="d-none d-md-block col-xs-12 col-md p-0 me-3">
-                <h1 class="m-0 fw-light h3 text-body-emphasis">@yield('title')</h1>
-                <small class="text-muted" title="@yield('description')">@yield('description')</small>
+                <h1 class="m-0 fw-light h3 text-body-emphasis Basket-heading">@yield('title')</h1>
+                <small class="text-muted account-semi-heading" title="@yield('description')">@yield('description')</small>
             </header>
-            <nav class="col-xs-12 col-md-auto ms-md-auto p-0">
-                <ul class="nav command-bar justify-content-sm-end justify-content-start d-flex align-items-center gap-2 flex-wrap-reverse flex-sm-nowrap">
+            <nav class="col-xs-12 col-md-auto ms-md-auto p-0 ">
+                <ul class="nav command-bar justify-content-sm-end justify-content-start d-flex align-items-center gap-2 flex-wrap-reverse flex-sm-nowrap Basket-button">
                     @yield('navbar')
                 </ul>
             </nav>

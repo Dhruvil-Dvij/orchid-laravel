@@ -1,4 +1,4 @@
-<div class="form-group mb-0">
+<div class="form-group mb-0 account-all-button">
 
     @isset($title)
         <label for="{{$id}}" class="form-label mb-0">

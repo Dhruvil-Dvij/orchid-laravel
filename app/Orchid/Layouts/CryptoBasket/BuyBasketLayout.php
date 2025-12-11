@@ -46,7 +46,8 @@ class BuyBasketLayout extends Rows
                 ->min(1)
                 ->title('Investment Amount')
                 ->required()
-                ->help('Enter the amount you want to invest in this basket.'),
+                ->help('Enter the amount you want to invest in this basket.')
+                ->class('account-all-input'),
 
             // Group::make($checkboxes)
             //     ->autoWidth()

@@ -76,20 +76,20 @@
 
 <button type="button" class="btn btn-primary mt-2" onclick="addCryptoRow()">+ Add Currency</button> --}}
 
-<div class="block bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-4 rounded shadow-sm mb-4">
-    <div class="form-group">
+<div class="block bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-4 rounded shadow-sm mb-4 account-main-box">
+    <div class="form-group account-all-button">
         <!-- Common Heading -->
-        <label class="form-label text-gray-800 dark:text-white font-semibold mb-2">
+        <label class="form-label text-gray-800 dark:text-white font-semibold mb-2 return-cycles">
             Cryptocurrency Basket <span class="text-danger">*</span>
         </label>
 
         <!-- Column Labels -->
         <div class="row mb-2">
             <div class="col-md-6 d-flex align-items-center">
-                <label class="mb-0 text-muted fw-semibold">Cryptocurrency <span class="text-danger">*</span></label>
+                <label class="mb-0 text-muted fw-semibold return-cycles-label">Cryptocurrency <span class="text-danger">*</span></label>
             </div>
             <div class="col-md-4 d-flex align-items-center">
-                <label class="mb-0 text-muted fw-semibold">Percentage <span class="text-danger">*</span></label>
+                <label class="mb-0 text-muted fw-semibold return-cycles-label">Percentage <span class="text-danger">*</span></label>
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -104,7 +104,7 @@
             @for($i = 0; $i < $count; $i++)
                 <div class="row mb-2 crypto-basket-row align-items-center">
                     <div class="col-md-6">
-                        <select name="basket[cryptocurrencies][]" class="form-control crypto-select select2" required>
+                        <select name="basket[cryptocurrencies][]" class="form-control crypto-select select2 account-all-input" required>
                             <option value="">Select</option>
                             @foreach($cryptos as $symbol => $crypto)
                                 <option value="{{ $symbol }}"
@@ -120,7 +120,7 @@
                     </div>
 
                     <div class="col-md-4">
-                        <input type="number" name="basket[percentages][]" class="form-control"
+                        <input type="number" name="basket[percentages][]" class="form-control account-all-input"
                                placeholder="%" min="0" max="100" step="0.01" required
                                value="{{ $oldPercentages[$i] ?? '' }}">
                     </div>

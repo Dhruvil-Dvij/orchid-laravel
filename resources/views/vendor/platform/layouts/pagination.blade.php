@@ -1,7 +1,7 @@
 <footer class="pb-3 w-100 v-md-center px-4 d-flex flex-wrap">
         <div class="col-auto me-auto">
             @if(isset($columns) && \Orchid\Screen\TD::isShowVisibleColumns($columns))
-                <div class="btn-group dropup d-inline-block">
+                <div class="btn-group dropup d-inline-block configure-columns">
                     <button type="button"
                             class="btn btn-sm btn-link dropdown-toggle p-0 m-0"
                             data-bs-toggle="dropdown"
@@ -20,7 +20,7 @@
             @endif
 
             @if($paginator instanceof \Illuminate\Contracts\Pagination\LengthAwarePaginator)
-                <small class="text-muted d-block">
+                <small class="text-muted d-block configure-columns">
                     {{ __('Displayed records: :from-:to of :total',[
                         'from' => ($paginator->currentPage() -1 ) * $paginator->perPage() + 1,
                         'to' => ($paginator->currentPage() -1 ) * $paginator->perPage() + count($paginator->items()),

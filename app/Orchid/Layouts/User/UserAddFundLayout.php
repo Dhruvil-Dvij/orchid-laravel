@@ -23,7 +23,8 @@ class UserAddFundLayout extends Rows
                 ->min(0)
                 ->required()
                 ->title(__('Funds'))
-                ->placeholder(__('Enter amount to add')),
+                ->placeholder(__('Enter amount to add'))
+                ->class('account-all-input'),
 
         ];
     }

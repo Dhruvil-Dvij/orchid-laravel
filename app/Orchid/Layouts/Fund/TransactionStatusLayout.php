@@ -28,13 +28,15 @@ class TransactionStatusLayout extends Rows
                     'rejected'  => 'Rejected',
                 ])
                 ->required()
-                ->id('status-select'),
+                ->id('status-select')
+                ->class('account-all-input'),
 
                 TextArea::make('transaction.admin_comment')
                 ->title('Rejection Comment')
                 ->placeholder('Enter rejection reason...')
                 ->rows(4)
                 ->id('admin-comment') // We will toggle this field using JS
+                ->class('rejection-textarea'),
 
         ];
     }

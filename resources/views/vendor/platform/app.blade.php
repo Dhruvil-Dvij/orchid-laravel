@@ -51,14 +51,13 @@
     @endif
 
     @yield('styles')
-
 </head>
 
 <body class="{{ \Orchid\Support\Names::getPageNameClass() }}" data-controller="pull-to-refresh">
 
 <div class="container-fluid main-fluid" data-controller="@yield('controller')" @yield('controller-data')>
 
-    <div class="row justify-content-center d-md-flex h-100">
+    <div class="row justify-content-center d-md-flex h-100 dashboard-main-comtainer">
         @yield('aside')
 
         <div class="col-xxl col-xl-9 col-12 mx-auto">

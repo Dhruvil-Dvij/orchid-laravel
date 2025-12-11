@@ -79,7 +79,12 @@ class CryptoBasketListLayout extends Table
                             align-items: center !important;
                         }
                         #{$buttonId}:hover {
-                            background-color: rgba(25, 135, 84, 0.2) !important;
+                            transform: translateY(-2px) !important;
+                            box-shadow: 0 0 30px rgba(0, 224, 255, 0.5) !important;
+                            background-color: #33eaff !important;
+                            color: black !important;
+                            boredr: none !important;
+                            // backgr`ound-color: rgba(25, 135, 84, 0.2) !important;
                         }
                     </style>";
                     

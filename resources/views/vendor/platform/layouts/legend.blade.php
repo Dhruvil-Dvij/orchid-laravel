@@ -2,13 +2,13 @@
 
     @empty(!$title)
         <div class="col p-0 px-3">
-            <legend class="text-body-emphasis mt-2 mx-2">
+            <legend class="text-body-emphasis mt-2 mx-2 payment-details-title">
                 {{ $title }}
             </legend>
         </div>
     @endempty
 
-    <dl class="bg-white rounded shadow-sm p-4 py-4 d-flex flex-column">
+    <dl class="bg-white rounded shadow-sm p-4 py-4 d-flex flex-column payment-details-main">
         @foreach($columns as $column)
             <div class="d2-grid py-3 {{ $loop->first ? '' : 'border-top' }}">
                 <dt class="text-muted fw-normal me-3">

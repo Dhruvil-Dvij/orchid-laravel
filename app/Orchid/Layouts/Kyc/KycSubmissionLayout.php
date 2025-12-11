@@ -27,28 +27,32 @@ class KycSubmissionLayout extends Rows
                 ->required()
                 ->title(__('Account Holder Name'))
                 ->placeholder(__('Account Holder Name'))
-                ->horizontal(),
+                ->horizontal()
+                ->class('account-all-input'),
 
             Input::make('kyc.bank_account_number')
                 ->type('text')
                 ->required()
                 ->title(__('Account Number'))
                 ->placeholder(__('Account Number'))
-                ->horizontal(),
+                ->horizontal()
+                ->class('account-all-input'),
 
             Input::make('kyc.bank_ifsc')
                 ->type('text')
                 ->required()
                 ->title(__('IFSC Code'))
                 ->placeholder(__('IFSC Code'))
-                ->horizontal(),
+                ->horizontal()
+                ->class('account-all-input'),
 
             Input::make('kyc.bank_name')
                 ->type('text')
                 ->required()
                 ->title(__('Bank Name'))
                 ->placeholder(__('Bank Name'))
-                ->horizontal(),
+                ->horizontal()
+                ->class('account-all-input'),
 
             // Bank Book Image
             Group::make([

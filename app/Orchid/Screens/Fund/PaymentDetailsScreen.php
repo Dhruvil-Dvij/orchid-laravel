@@ -92,11 +92,13 @@ class PaymentDetailsScreen extends Screen
                     ->title('Amount')
                     ->type('number')
                     ->placeholder('Enter the amount you transferred')
-                    ->required(),
+                    ->required()
+                    ->class('account-all-input'),
 
                 Input::make('utr_number')
                     ->title('UTR / Transaction ID')
-                    ->required(),
+                    ->required()
+                    ->class('account-all-input'),
 
                 Upload::make('payment_screenshot')
                     ->title('Payment Screenshot')

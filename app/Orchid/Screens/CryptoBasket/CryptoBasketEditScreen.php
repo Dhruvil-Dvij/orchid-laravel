@@ -141,7 +141,8 @@ class CryptoBasketEditScreen extends Screen
                 Input::make('basket.name')
                     ->title('Basket Name')
                     ->required()
-                    ->value($this->cryptoBasket->name ?? ''),
+                    ->value($this->cryptoBasket->name ?? '')
+                    ->class('account-all-input'),
 
                 // Group::make([
                 //     Input::make('return_cycles[0][months]')

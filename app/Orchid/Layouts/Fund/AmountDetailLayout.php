@@ -22,7 +22,8 @@ class AmountDetailLayout extends Rows
                 ->type('number')
                 ->required()
                 ->title(__('Amount'))
-                ->placeholder(__('Amount')),
+                ->placeholder(__('Amount'))
+                ->class('account-all-input'),
         ];
     }
 }

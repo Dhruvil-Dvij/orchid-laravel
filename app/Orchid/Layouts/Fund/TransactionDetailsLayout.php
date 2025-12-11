@@ -21,7 +21,8 @@ class TransactionDetailsLayout extends Rows
         return [
             Input::make('transaction.utr')
                 ->title('UTR Number')
-                ->readonly(),
+                ->readonly()
+                ->class('account-all-input'),
 
             Picture::make('transaction.screenshot')
                 ->title('Transaction Screenshot')

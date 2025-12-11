@@ -15,9 +15,9 @@
     <input type="hidden" name="return_cycles_json" id="return_cycles_json">
 </div> --}}
 
-<div class="block bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-4 rounded shadow-sm mb-4">
+<div class="block bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-4 rounded shadow-sm mb-4 account-main-box">
     <div class="form-group">
-        <label class="form-label text-gray-800 dark:text-white font-semibold mb-2">
+        <label class="form-label text-gray-800 dark:text-white font-semibold mb-2 return-cycles">
             Return Cycles <span class="text-danger">*</span>
         </label>
 
@@ -26,7 +26,7 @@
 
             {{-- <button type="button" class="btn btn-primary mt-3" onclick="addReturnCycle()"><x-orchid-icon path="bs.plus-circle" class="w-6 h-6 me-1"/> Add Return Cycle</button> --}}
 
-            <button type="button" class="btn btn-info rounded px-4 py-2 fw-bold mt-3" onclick="addReturnCycle()"><x-orchid-icon path="bs.plus-circle" class="w-6 h-6 me-1"/> Add Return Cycle</button>
+            <button type="button" class="btn btn-info rounded px-4 py-2 fw-bold mt-3 account-model-button" onclick="addReturnCycle()"><x-orchid-icon path="bs.plus-circle" class="w-6 h-6 me-1"/> Add Return Cycle</button>
 
             <!-- Hidden input for submitting JSON -->
             <input type="hidden" name="return_cycles_json" id="return_cycles_json">
@@ -61,12 +61,12 @@
 
         container.innerHTML = `
             <div class="col-md-4 d-flex align-items-center gap-2">
-                <label class="mb-0" style="min-width: 60px;">Months<span class="text-danger">*</span></label>
-                <input type="number" class="form-control months-input" value="${cycle.months}" required>
+                <label class="mb-0 return-cycles-label" style="min-width: 60px;">Months<span class="text-danger">*</span></label>
+                <input type="number" class="form-control months-input account-all-input" value="${cycle.months}" required>
             </div>
             <div class="col-md-4 d-flex align-items-center gap-2">
-                <label class="mb-0" style="min-width: 75px;">Return (%)<span class="text-danger">*</span></label>
-                <input type="number" class="form-control percentage-input" placeholder="%" value="${cycle.return_percentage}" required min="0" step="0.01">
+                <label class="mb-0 return-cycles-label" style="min-width: 75px;">Return (%)<span class="text-danger">*</span></label>
+                <input type="number" class="form-control percentage-input account-all-input" placeholder="%" value="${cycle.return_percentage}" required min="0" step="0.01">
             </div>
             <div class="col-md-2 d-flex align-items-center">
                 <button type="button" class="btn bg-danger bg-opacity-10 text-danger rounded remove-btn" onclick="removeReturnCycle(this)">

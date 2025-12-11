@@ -100,11 +100,13 @@ class UserBankDetailScreen extends Screen
                     ->required()
                     ->value(function () {
                         return $this->walletWithdrawal->amount;
-                    }),
+                    })
+                    ->class('account-all-input'),
 
                 Input::make('utr_number')
                     ->title('UTR / Transaction ID')
-                    ->required(),
+                    ->required()
+                    ->class('account-all-input'),
 
                 Upload::make('payment_screenshot')
                     ->title('Payment Screenshot')

@@ -23,25 +23,29 @@ class KycSubmissionViewLayout extends Rows
                 ->type('text')
                 ->readonly()
                 ->title(__('Bank Account Holder'))
-                ->placeholder(__('Enter your bank account holder name')),
+                ->placeholder(__('Enter your bank account holder name'))
+                ->class('account-all-input'),
 
             Input::make('kyc_data.bank_account_number')
                 ->type('text')
                 ->readonly()
                 ->title(__('Bank Account Number'))
-                ->placeholder(__('Enter your bank account number')),
+                ->placeholder(__('Enter your bank account number'))
+                ->class('account-all-input'),
 
             Input::make('kyc_data.bank_ifsc')
                 ->type('text')
                 ->readonly()
                 ->title(__('Bank IFSC Code'))
-                ->placeholder(__('Enter your bank IFSC code')),
+                ->placeholder(__('Enter your bank IFSC code'))
+                ->class('account-all-input'),
 
             Input::make('kyc_data.bank_name')
                 ->type('text')
                 ->readonly()
                 ->title(__('Bank Name'))
-                ->placeholder(__('Enter your bank name')),
+                ->placeholder(__('Enter your bank name'))
+                ->class('account-all-input'),
 
         ];
     }

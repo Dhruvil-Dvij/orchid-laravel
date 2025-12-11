@@ -57,12 +57,14 @@ class ReferralSettingsScreen extends Screen
                 Input::make('setting.referrer_discount')
                     ->title('Discount for Referrer (%)')
                     ->type('number')
-                    ->step(0.01),
+                    ->step(0.01)
+                    ->class('account-all-input'),
 
                 Input::make('setting.referee_reward')
                     ->title('Reward for Referee (%)')
                     ->type('number')
-                    ->step(0.01),
+                    ->step(0.01)
+                    ->class('account-all-input'),
 
                 CheckBox::make('setting.is_active')
                     ->title('Enable Referral System')

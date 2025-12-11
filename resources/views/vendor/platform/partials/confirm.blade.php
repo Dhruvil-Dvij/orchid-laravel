@@ -4,7 +4,7 @@
      tabindex="-1"
      aria-hidden="true">
     <div class="modal-dialog modal-fullscreen-md-down">
-        <div class="modal-content">
+        <div class="modal-content remove-model model-main-div">
             <div class="modal-header">
                 <h4 class="modal-title text-body-emphasis fw-light">
                     {{ __('Are you sure?') }}
@@ -17,12 +17,12 @@
 
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer model-delete">
                 <button type="button" class="btn btn-link" data-bs-dismiss="modal">
                     {{__('Cancel')}}
                 </button>
 
-                <div data-confirm-target="button">
+                <div data-confirm-target="button" class="account-all-button">
 
                 </div>
             </div>

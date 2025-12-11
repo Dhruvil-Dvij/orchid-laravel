@@ -1,6 +1,6 @@
 <div class="col-md-12" data-controller="filter">
     <div class="btn-group ps-4" role="group">
-        <button class="btn btn-link dropdown-toggle ps-0 d-flex align-items-center text-decoration-none"
+        <button class="btn btn-link dropdown-toggle ps-0 d-flex align-items-center text-decoration-none user-filter-btn"
                 data-bs-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false">
@@ -21,10 +21,10 @@
                     @endforeach
                 </div>
 
-                <div class="bg-light p-3 w-md">
+                <div class="bg-light p-3 w-md filter-button-main">
                     <button type="submit"
                             form="filters"
-                            class="btn btn-link btn-sm w-100 border"
+                            class="btn btn-link btn-sm w-100 border account-model-button"
                             data-action="click->filter#submit">
                         <span class="w-100 text-center">{{__('Apply')}}</span>
                     </button>

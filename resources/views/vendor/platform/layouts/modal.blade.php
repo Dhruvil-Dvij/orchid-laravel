@@ -16,7 +16,7 @@
              role="document"
              id="screen-modal-type-{{$key}}"
         >
-            <form class="modal-content"
+            <form class="modal-content remove-model model-main-div"
                   action="{{ $method }}"
                   id="screen-modal-form-{{$key}}"
                   method="post"
@@ -76,7 +76,7 @@
                         </div>
                     </x-orchid-stream>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer model-delete">
                     @if(!$withoutCloseButton)
                         <button type="button" class="btn btn-link" data-bs-dismiss="modal">
                             {{ $close }}
@@ -88,7 +88,7 @@
                             <button type="submit"
                                     id="submit-modal-{{$key}}"
                                     data-turbo="{{ var_export($turbo) }}"
-                                    class="btn btn-default">
+                                    class="btn btn-default account-model-button">
                                 {{ $apply }}
                             </button>
                         @endif

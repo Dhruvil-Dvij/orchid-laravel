@@ -39,7 +39,7 @@
             </div>
             <div class="nav-actions">
                 @if (auth()->check())
-                    <div class="nav-links">
+                    <div class="nav-links dash-btn">
                         <a href="{{ route('platform.baskets') }}">Dashboard</a>
                     </div>
                     <form method="POST" action="{{ route('platform.logout') }}">
@@ -77,7 +77,7 @@
             </nav>
             <div class="mobile-actions">
                 @if (auth()->check())
-                    <nav class="mobile-menu">
+                    <nav class="mobile-menu dash-btn">
                         <a href="{{ route('platform.baskets') }}">Dashboard</a>
                     </nav>
                     <form method="POST" action="{{ route('platform.logout') }}">

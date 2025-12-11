@@ -24,12 +24,12 @@
                 <input type="file" value="" multiple/>
             </div>
             <div class="visual-dropzone sortable-dropzone dropzone-previews">
-                <div class="dz-message dz-preview dz-processing dz-image-preview">
-                    <div class="bg-light d-flex justify-content-center align-items-center border r-2x"
+                <div class="dz-message dz-preview dz-processing dz-image-preview kyc-upload-main">
+                    <div class="bg-light d-flex justify-content-center align-items-center border r-2x kyc-upload-file"
                          style="min-height: 112px;">
                         <div class="px-2 py-4">
                             <x-orchid-icon path="bs.cloud-arrow-up" class="h3"/>
-                            <small class="text-muted d-block mt-1">{{__('Upload file')}}</small>
+                            <small class="text-muted d-block mt-1 upload-file-text">{{__('Upload file')}}</small>
                         </div>
                     </div>
                 </div>

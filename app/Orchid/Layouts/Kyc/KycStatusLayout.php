@@ -26,7 +26,8 @@ class KycStatusLayout extends Rows
                     'rejected'  => 'Rejected',
                 ])
                 ->required()
-                ->id('status-select'),
+                ->id('status-select')
+                ->class('account-all-input'),
         ];
     }
 }

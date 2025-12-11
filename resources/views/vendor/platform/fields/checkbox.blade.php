@@ -8,7 +8,7 @@
                        {{ $attributes }}
                        @if(isset($attributes['value']) && $attributes['value']) checked @endif
                 >
-                <label class="form-check-label" for="{{$id}}">{{$placeholder ?? ''}}</label>
+                <label class="form-check-label System-label" for="{{$id}}">{{$placeholder ?? ''}}</label>
             </div>
         @else
             <div class="form-check">

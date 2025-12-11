@@ -31,7 +31,8 @@ class UserPasswordLayout extends Rows
             Password::make('user.password')
                 ->placeholder($placeholder)
                 ->title(__('Password'))
-                ->required(! $exists),
+                ->required(! $exists)
+                ->class('account-all-input'),
         ];
     }
 }

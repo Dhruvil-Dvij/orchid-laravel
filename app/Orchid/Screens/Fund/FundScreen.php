@@ -130,7 +130,8 @@ class FundScreen extends Screen
                     ->title('Amount')
                     ->type('number')
                     ->placeholder('Enter the amount you want to withdraw')
-                    ->required(),
+                    ->required()
+                    ->class('account-all-input'),
 
             ]))->title('Withdrawal')
                 ->applyButton('Submit'),

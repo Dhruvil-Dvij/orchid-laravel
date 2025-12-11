@@ -24,7 +24,8 @@ class RoleEditLayout extends Rows
                 ->required()
                 ->title(__('Name'))
                 ->placeholder(__('Name'))
-                ->help(__('Role display name')),
+                ->help(__('Role display name'))
+                ->class('account-all-input'),
 
             Input::make('role.slug')
                 ->type('text')
@@ -32,7 +33,8 @@ class RoleEditLayout extends Rows
                 ->required()
                 ->title(__('Slug'))
                 ->placeholder(__('Slug'))
-                ->help(__('Actual name in the system')),
+                ->help(__('Actual name in the system'))
+                ->class('account-all-input'),
         ];
     }
 }

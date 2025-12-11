@@ -8,12 +8,12 @@
     </fieldset>
 @endempty
 
-<div class="bg-white rounded shadow-sm mb-3 overflow-hidden"
+<div class="bg-white rounded shadow-sm mb-3 overflow-hidden Basket-main"
      data-controller="table"
      data-table-slug="{{$slug}}"
 >
 
-    <div class="table-responsive">
+    <div class="table-responsive crypto-baskets-tabel">
         <table @class([
                     'table',
                     'table-compact'  => $compact,
@@ -55,7 +55,7 @@
     </div>
 
     @if($rows->isEmpty())
-        <div class="d-md-flex align-items-center px-md-0 px-2 pt-4 pb-5 w-100 text-md-start text-center">
+        <div class="d-md-flex align-items-center px-md-0 px-2 pt-4 pb-5 w-100 text-md-start text-center ">
 
             @isset($iconNotFound)
                 <div class="col-auto mx-md-4 mb-3 mb-md-0">
@@ -63,8 +63,8 @@
                 </div>
             @endisset
 
-            <div>
-                <h3 class="fw-light">
+            <div class="child-main">
+                <h3 class="fw-light child-sec">
                     {!!  $textNotFound !!}
                 </h3>
 
