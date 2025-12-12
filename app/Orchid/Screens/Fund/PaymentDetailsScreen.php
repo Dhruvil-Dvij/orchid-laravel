@@ -69,23 +69,23 @@ class PaymentDetailsScreen extends Screen
     public function layout(): iterable
     {
         return [
-            // Layout::view('orchid.funds.payment_details'),
-            Layout::legend('payment_details', [
-                Sight::make('description', '')
-                    ->render(fn () => '<p class="text-muted">Please transfer the amount to the following details:</p>'),
+            Layout::view('orchid.funds.payment_options'),
+            // Layout::legend('payment_details', [
+            //     Sight::make('description', '')
+            //         ->render(fn () => '<p class="text-muted">Please transfer the amount to the following details:</p>'),
                 
-                Sight::make('bank_name', 'Bank Name')
-                    ->render(fn ($payment) => $payment->bank_name),
+            //     Sight::make('bank_name', 'Bank Name')
+            //         ->render(fn ($payment) => $payment->bank_name),
                 
-                Sight::make('account_number', 'Account Number')
-                    ->render(fn ($payment) => $payment->account_number),
+            //     Sight::make('account_number', 'Account Number')
+            //         ->render(fn ($payment) => $payment->account_number),
                 
-                Sight::make('ifsc_code', 'IFSC Code')
-                    ->render(fn ($payment) => $payment->ifsc_code),
+            //     Sight::make('ifsc_code', 'IFSC Code')
+            //         ->render(fn ($payment) => $payment->ifsc_code),
                 
-                Sight::make('upi_id', 'UPI ID')
-                    ->render(fn ($payment) => $payment->upi_id),
-            ])->title('Payment Details'),
+            //     Sight::make('upi_id', 'UPI ID')
+            //         ->render(fn ($payment) => $payment->upi_id),
+            // ])->title('Payment Details'),
 
             Layout::modal('confirmPaymentModal', Layout::rows([
                 Input::make('amount')
