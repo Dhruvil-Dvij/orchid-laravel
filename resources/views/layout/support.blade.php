@@ -419,6 +419,101 @@
             color: var(--primary);
         }
 
+        .faq-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .faq-modal.active {
+            display: flex;
+        }
+
+        .faq-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body.modal-open {
+            overflow-y: scroll;
+            position: fixed;
+            width: 100%;
+        }
+
+        .faq-modal-content {
+            position: relative;
+            background: #0f0f15;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            backdrop-filter: var(--glass);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .faq-modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .faq-modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .faq-modal-question {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 0 1.5rem 0;
+            padding-right: 3rem;
+            line-height: 1.4;
+        }
+
+        .faq-modal-answer {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
         .announcements {
             padding: 60px 0;
         }
@@ -719,15 +814,15 @@
                 <div class="faq-category">
                     <h3>Account & Registration</h3>
                     <ul class="faq-list">
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> How do I create an
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="How do I create an account?" data-answer="To create an account, click on the 'Sign Up' button in the top right corner of the homepage. Fill in your email address, create a strong password, and verify your email. Once verified, you can complete your profile and start using Vcoins."><i class="fa-solid fa-chevron-right"></i> How do I create an
                                 account?</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> How do I verify my
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="How do I verify my account?" data-answer="To verify your account, go to your profile settings and click on 'Verify Account'. You'll need to provide a government-issued ID and complete the KYC (Know Your Customer) process. Verification typically takes 24-48 hours."><i class="fa-solid fa-chevron-right"></i> How do I verify my
                                 account?</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> I forgot my
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="I forgot my password" data-answer="If you've forgotten your password, click on 'Forgot Password' on the login page. Enter your registered email address, and we'll send you a password reset link. Click the link in the email to create a new password."><i class="fa-solid fa-chevron-right"></i> I forgot my
                                 password</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> How do I update my
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="How do I update my email?" data-answer="To update your email, go to Account Settings > Profile. Click on 'Change Email' and enter your new email address. You'll receive a verification email at the new address. Once verified, your email will be updated."><i class="fa-solid fa-chevron-right"></i> How do I update my
                                 email?</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Account security
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Account security best practices" data-answer="For optimal security, enable two-factor authentication (2FA), use a strong unique password, never share your credentials, enable email notifications for account activity, and regularly review your account settings. Always log out when using shared devices."><i class="fa-solid fa-chevron-right"></i> Account security
                                 best practices</a></li>
                     </ul>
                 </div>
@@ -735,15 +830,15 @@
                 <div class="faq-category">
                     <h3>Smart Baskets</h3>
                     <ul class="faq-list">
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> What are Smart
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="What are Smart Baskets?" data-answer="Smart Baskets are diversified investment portfolios that automatically manage your crypto assets. They allow you to invest in multiple cryptocurrencies through a single basket, reducing risk through diversification and automated rebalancing."><i class="fa-solid fa-chevron-right"></i> What are Smart
                                 Baskets?</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> How do I create a
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="How do I create a Smart Basket?" data-answer="To create a Smart Basket, go to the 'Baskets' section in your dashboard. Click 'Create New Basket', choose your preferred cryptocurrencies and allocation percentages, set your investment amount, and confirm. Your basket will start managing your investments automatically."><i class="fa-solid fa-chevron-right"></i> How do I create a
                                 Smart Basket?</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> How are yields
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="How are yields calculated?" data-answer="Yields are calculated based on the performance of the cryptocurrencies in your basket. The system tracks price appreciation, staking rewards, and other income sources. Yields are displayed as an annual percentage rate (APR) and updated in real-time."><i class="fa-solid fa-chevron-right"></i> How are yields
                                 calculated?</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> What is
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="What is auto-compounding?" data-answer="Auto-compounding automatically reinvests your earnings back into your Smart Basket. This means any rewards, staking income, or profits are automatically added to your principal, allowing your investment to grow exponentially over time."><i class="fa-solid fa-chevron-right"></i> What is
                                 auto-compounding?</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Can I withdraw
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Can I withdraw anytime?" data-answer="Yes, you can withdraw from your Smart Basket at any time. Go to your basket details, click 'Withdraw', enter the amount you want to withdraw, and confirm. Withdrawals are typically processed within 24-48 hours, depending on the blockchain network."><i class="fa-solid fa-chevron-right"></i> Can I withdraw
                                 anytime?</a></li>
                     </ul>
                 </div>
@@ -751,15 +846,15 @@
                 <div class="faq-category">
                     <h3>Deposits & Withdrawals</h3>
                     <ul class="faq-list">
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> How do I deposit
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="How do I deposit funds?" data-answer="To deposit funds, go to your Wallet section and click 'Deposit'. Choose your preferred cryptocurrency, copy the deposit address or scan the QR code, and send funds from your external wallet. Deposits are usually confirmed within a few minutes after network confirmation."><i class="fa-solid fa-chevron-right"></i> How do I deposit
                                 funds?</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> How long do
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="How long do withdrawals take?" data-answer="Withdrawal processing time varies by cryptocurrency. Most withdrawals are processed within 24-48 hours after approval. Network congestion can sometimes cause delays. You'll receive email notifications at each stage of the withdrawal process."><i class="fa-solid fa-chevron-right"></i> How long do
                                 withdrawals take?</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> What are the
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="What are the fees?" data-answer="Vcoins charges competitive fees: deposit fees are free, withdrawal fees vary by cryptocurrency (typically 0.0005-0.001 BTC equivalent), and trading fees are 0.1% per transaction. Smart Basket management fees are 2% annually, charged monthly."><i class="fa-solid fa-chevron-right"></i> What are the
                                 fees?</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Minimum deposit
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Minimum deposit amount" data-answer="The minimum deposit amount varies by cryptocurrency. For Bitcoin, the minimum is 0.001 BTC. For Ethereum, it's 0.01 ETH. Most altcoins have a minimum equivalent to approximately $10 USD. Check the deposit page for specific minimums."><i class="fa-solid fa-chevron-right"></i> Minimum deposit
                                 amount</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Supported
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Supported cryptocurrencies" data-answer="Vcoins supports 350+ cryptocurrencies including Bitcoin (BTC), Ethereum (ETH), Tether (USDT), Binance Coin (BNB), Cardano (ADA), Solana (SOL), and many more. We regularly add new cryptocurrencies based on user demand and market conditions."><i class="fa-solid fa-chevron-right"></i> Supported
                                 cryptocurrencies</a></li>
                     </ul>
                 </div>
@@ -767,15 +862,15 @@
                 <div class="faq-category">
                     <h3>Security</h3>
                     <ul class="faq-list">
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> How secure is
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="How secure is Vcoins?" data-answer="Vcoins employs bank-level security measures including cold storage for 95% of funds, multi-signature wallets, SSL encryption, regular security audits, and compliance with international security standards. We've never experienced a security breach."><i class="fa-solid fa-chevron-right"></i> How secure is
                                 Vcoins?</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Enable two-factor
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Enable two-factor authentication" data-answer="To enable 2FA, go to Account Settings > Security. Click 'Enable Two-Factor Authentication' and scan the QR code with an authenticator app like Google Authenticator or Authy. Enter the verification code to complete setup."><i class="fa-solid fa-chevron-right"></i> Enable two-factor
                                 authentication</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> What if I suspect
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="What if I suspect fraud?" data-answer="If you suspect fraudulent activity, immediately contact our security team at security@vcoins.com or use the 'Report Issue' feature in your account. Change your password immediately and enable 2FA if not already enabled. We investigate all reports within 24 hours."><i class="fa-solid fa-chevron-right"></i> What if I suspect
                                 fraud?</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Smart contract
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Smart contract audits" data-answer="All Vcoins smart contracts undergo rigorous third-party audits by leading blockchain security firms. Audit reports are publicly available. We also conduct regular internal security reviews and bug bounty programs to ensure ongoing security."><i class="fa-solid fa-chevron-right"></i> Smart contract
                                 audits</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Insurance
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Insurance coverage" data-answer="Vcoins maintains comprehensive insurance coverage for digital assets held in custody. Our insurance policy covers losses due to security breaches, theft, and operational errors. Coverage details are available in our Terms of Service."><i class="fa-solid fa-chevron-right"></i> Insurance
                                 coverage</a></li>
                     </ul>
                 </div>
@@ -783,15 +878,15 @@
                 <div class="faq-category">
                     <h3>Fees & Limits</h3>
                     <ul class="faq-list">
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> What fees does
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="What fees does Vcoins charge?" data-answer="Vcoins charges transparent fees: trading fees (0.1% per trade), withdrawal fees (varies by crypto, typically 0.0005-0.001 BTC equivalent), Smart Basket management fees (2% annually), and network gas fees (passed through at cost). Deposit fees are free."><i class="fa-solid fa-chevron-right"></i> What fees does
                                 Vcoins charge?</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Gas fees
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Gas fees explained" data-answer="Gas fees are network fees paid to blockchain networks (like Ethereum) to process transactions. These fees vary based on network congestion and transaction complexity. Vcoins passes these fees through at cost - we don't profit from gas fees."><i class="fa-solid fa-chevron-right"></i> Gas fees
                                 explained</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Deposit and
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Deposit and withdrawal limits" data-answer="Deposit limits: No maximum for verified accounts. Withdrawal limits: Unverified accounts can withdraw up to $1,000 daily. Verified accounts have higher limits (up to $50,000 daily). Limits can be increased by completing additional verification."><i class="fa-solid fa-chevron-right"></i> Deposit and
                                 withdrawal limits</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Performance
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Performance fees" data-answer="Smart Basket performance fees are 20% of profits, charged only when you withdraw. If your basket doesn't generate profits, no performance fee is charged. This aligns our success with yours - we only earn when you profit."><i class="fa-solid fa-chevron-right"></i> Performance
                                 fees</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Fee structure
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Fee structure breakdown" data-answer="Complete fee breakdown: Trading (0.1%), Withdrawals (network-dependent, ~0.0005-0.001 BTC), Smart Baskets (2% annual management fee, 20% performance fee on profits), Deposits (free), Gas fees (at cost). All fees are clearly displayed before transactions."><i class="fa-solid fa-chevron-right"></i> Fee structure
                                 breakdown</a></li>
                     </ul>
                 </div>
@@ -799,21 +894,32 @@
                 <div class="faq-category">
                     <h3>Technical Support</h3>
                     <ul class="faq-list">
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Transaction
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Transaction stuck or pending" data-answer="If your transaction is stuck, it's usually due to network congestion. Wait 24-48 hours for network confirmation. If still pending, check the transaction hash on a blockchain explorer. For urgent issues, contact support with your transaction ID."><i class="fa-solid fa-chevron-right"></i> Transaction
                                 stuck or pending</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Connection
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Connection issues" data-answer="If experiencing connection issues, try: clearing browser cache, disabling VPN/proxy, checking internet connection, trying a different browser, or using incognito mode. If problems persist, contact our technical support team."><i class="fa-solid fa-chevron-right"></i> Connection
                                 issues</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Browser
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Browser compatibility" data-answer="Vcoins works best on Chrome, Firefox, Safari, and Edge (latest versions). We recommend keeping your browser updated. Some features may not work on older browsers. For optimal experience, use Chrome or Firefox with JavaScript enabled."><i class="fa-solid fa-chevron-right"></i> Browser
                                 compatibility</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> Mobile app
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="Mobile app support" data-answer="Vcoins mobile app is available for iOS and Android. Download from the App Store or Google Play. The app includes all features: trading, Smart Baskets, deposits, withdrawals, and account management. Push notifications keep you updated on your investments."><i class="fa-solid fa-chevron-right"></i> Mobile app
                                 support</a></li>
-                        <li class="faq-item"><a href="#"><i class="fa-solid fa-chevron-right"></i> API
+                        <li class="faq-item"><a href="#" class="faq-link" data-question="API documentation" data-answer="Our REST API documentation is available at api.vcoins.com/docs. It includes authentication, endpoints, rate limits, and code examples. API keys can be generated in Account Settings > API. For advanced features, check our WebSocket API documentation."><i class="fa-solid fa-chevron-right"></i> API
                                 documentation</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="faq-modal" id="faqModal">
+        <div class="faq-modal-overlay"></div>
+        <div class="faq-modal-content">
+            <button class="faq-modal-close" id="faqModalClose">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="faq-modal-question" id="faqModalQuestion"></h3>
+            <div class="faq-modal-answer" id="faqModalAnswer"></div>
+        </div>
+    </div>
 
     <section class="announcements">
         <div class="container">
@@ -881,4 +987,57 @@
 @endsection
 
 @section('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const faqModal = document.getElementById('faqModal');
+    const faqModalQuestion = document.getElementById('faqModalQuestion');
+    const faqModalAnswer = document.getElementById('faqModalAnswer');
+    const faqModalClose = document.getElementById('faqModalClose');
+    const faqLinks = document.querySelectorAll('.faq-link');
+
+    let scrollPosition = 0;
+
+    function openModal(question, answer) {
+        faqModalQuestion.textContent = question;
+        faqModalAnswer.textContent = answer;
+        faqModal.classList.add('active');
+        
+        scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        document.body.classList.add('modal-open');
+        document.body.style.top = `-${scrollPosition}px`;
+    }
+
+    function closeModal() {
+        faqModal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+        document.body.style.top = '';
+        window.scrollTo(0, scrollPosition);
+    }
+
+    faqLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const question = this.getAttribute('data-question');
+            const answer = this.getAttribute('data-answer');
+            if (question && answer) {
+                openModal(question, answer);
+            }
+        });
+    });
+
+    faqModalClose.addEventListener('click', closeModal);
+
+    faqModal.addEventListener('click', function(e) {
+        if (e.target === faqModal || e.target.classList.contains('faq-modal-overlay')) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && faqModal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+});
+</script>
 @endsection

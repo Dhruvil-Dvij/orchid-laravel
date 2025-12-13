@@ -129,3 +129,18 @@ html, body {
 .login-lables{
     color: #fff;
 }
+.spinner-border {
+    border-color: #000 !important;
+    border-right-color: #029ca7 !important;
+}
+
+.btn.btn-loading,
+.btn:disabled.btn-loading {
+    background: #00e0ff !important;
+    border-color: #0077ff !important;
+    color: white !important;
+}
+
+.btn-loading .spinner-loading {
+    border-radius: 12px !important;
+}

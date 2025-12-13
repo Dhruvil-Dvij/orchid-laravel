@@ -10,10 +10,9 @@
                 <p style="color: var(--text-muted); font-size: 0.95rem;">Intelligent Crypto Wealth: Aggregating the
                     best DeFi yield with AI-powered security and auto-compounding for maximum returns.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-discord"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                    <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
 

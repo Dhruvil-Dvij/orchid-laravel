@@ -707,6 +707,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 }
 
 .payment-method-item:hover {
@@ -782,7 +783,6 @@ input[type=number]::-webkit-outer-spin-button {
     justify-content: center;
     flex-shrink: 0;
     transition: transform 0.3s ease;
-    cursor: pointer;
     background: #fff !important;
     border: 1px solid var(--border);
     border-radius: 50%;
@@ -1558,4 +1558,215 @@ input[type=number]::-webkit-outer-spin-button {
     }
 }
 
+@media screen and (max-width: 1000px) {
+    .payment-method-item{
+        flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    }
+}
+@media screen and (max-width: 969px) {
+    .payment-method-item{
+        flex-direction: row;
+    gap: 0px;
+    align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-options-container {
+        padding: 1rem;
+        margin: 0.5rem;
+        border-radius: 16px;
+    }
+
+    .payment-options-title {
+        font-size: 1.1rem;
+    }
+
+    .payment-options-left {
+        padding: 0.75rem;
+        gap: 1rem;
+    }
+
+    .payment-section-title {
+        font-size: 0.95rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .payment-method-item {
+        padding: 0.75rem;
+        gap: 0.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .payment-method-name {
+        font-size: 0.9rem;
+    }
+
+    .payment-method-icons .payment-icon, .payment-method-item:nth-child(2) .payment-method-icons .payment-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .payment-method-icons {
+        gap: 0.4rem;
+    }
+
+    .payment-method-header .savings-badge {
+        font-size: 0.65rem;
+        padding: 0.15rem 0.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100px;
+    }
+    .upi-qr-info .savings-badge {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 210px;
+    }
+
+    .payment-panels {
+        gap: 1rem;
+    }
+
+    .upi-qr-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .qr-code-placeholder {
+        width: 160px;
+        height: 160px;
+    }
+
+    .qr-instruction {
+        font-size: 0.8rem;
+    }
+
+    .upi-apps-icons .payment-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .upi-id-title {
+        font-size: 0.9rem;
+    }
+
+    .upi-id-value {
+        font-size: 0.85rem;
+    }
+
+    .upi-id-btn {
+        padding: 0.65rem 0.875rem;
+        font-size: 0.875rem;
+    }
+
+    .nb-section-title {
+        font-size: 1rem;
+    }
+
+    .nb-steps {
+        font-size: 0.85rem;
+        padding-left: 1.25rem;
+    }
+
+    .nb-account-card {
+        padding: 0.875rem;
+    }
+
+    .nb-detail-label {
+        font-size: 0.85rem;
+    }
+
+    .nb-detail-value {
+        font-size: 0.85rem;
+    }
+
+    .nb-instructions-title {
+        font-size: 0.9rem;
+    }
+
+    .nb-instructions-list {
+        font-size: 0.85rem;
+        padding-left: 1.25rem;
+    }
+
+    .nb-download-btn {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .coming-soon-section {
+        padding: 1.5rem 1rem;
+        min-height: 200px;
+    }
+
+    .coming-soon-icon {
+        font-size: 2rem;
+    }
+
+    .coming-soon-title {
+        font-size: 1.1rem;
+    }
+
+    .coming-soon-text {
+        font-size: 0.85rem;
+    }
+
+    .more-options-btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+    .upi-id-row{
+        grid-template-columns: 1fr;
+    }
+    .payment-method-header {
+        flex-direction: row;
+        width: 100%;
+    }
+}
+
+@media (max-width: 360px) {
+    .payment-options-container {
+        padding: 0.75rem;
+        margin: 0.25rem;
+    }
+
+    .payment-options-title {
+        font-size: 1rem;
+    }
+
+    .payment-method-item {
+        padding: 0.625rem;
+    }
+
+    .qr-code-placeholder {
+        width: 140px;
+        height: 140px;
+    }
+
+    .upi-apps-icons .payment-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .coming-soon-section {
+        padding: 1.25rem 0.75rem;
+        min-height: 180px;
+    }
+
+    .coming-soon-icon {
+        font-size: 1.75rem;
+    }
+
+    .coming-soon-title {
+        font-size: 1rem;
+    }
+}
 

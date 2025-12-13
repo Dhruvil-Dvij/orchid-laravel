@@ -479,7 +479,7 @@
         <div class="container">
             <div class="blog-grid">
                 <article class="blog-card">
-                    <div class="blog-image" style="background-image: linear-gradient(135deg, rgba(0,224,255,0.18), rgba(157,0,255,0.25));">
+                    <div class="blog-image" style="background-image: url('{{ asset('images/blog_img_1.jpg') }}');">
                         <span class="blog-tag">DeFi Basics</span>
                     </div>
                     <div class="blog-content">
@@ -500,7 +500,7 @@
                 </article>
 
                 <article class="blog-card">
-                    <div class="blog-image" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.2), rgba(0,224,255,0.2));">
+                <div class="blog-image" style="background-image: url('{{ asset('images/blog_img_2.jpg') }}');">
                         <span class="blog-tag">Yield Strategies</span>
                     </div>
                     <div class="blog-content">
@@ -521,7 +521,7 @@
                 </article>
 
                 <article class="blog-card">
-                    <div class="blog-image" style="background-image: linear-gradient(135deg, rgba(157,0,255,0.28), rgba(0,224,255,0.18));">
+                <div class="blog-image" style="background-image: url('{{ asset('images/blog_img_3.jpg') }}');">
                         <span class="blog-tag">Security</span>
                     </div>
                     <div class="blog-content">

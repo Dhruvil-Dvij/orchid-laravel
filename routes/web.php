@@ -88,3 +88,10 @@ Route::get('/get-coins', [HomeController::class, 'getCoins'])
 
 Route::post('/contact/submit', [ContactController::class, 'contactSubmit'])
     ->name('platform.contact.submit');
+    
+    Route::get('/news', function () {
+        return view('layout.news');
+    })
+        ->name('platform.news')
+        ->breadcrumbs(fn($trail) => $trail
+            ->push(__('News'), route('platform.news')));

@@ -153,21 +153,12 @@
                 </div>
 
                 <div class="payment-panel" data-panel="cards">
-                    <div class="card-form">
-                        <h3 class="payment-section-title">Add a new card</h3>
-                        <div class="card-form-fields">
-                            <input type="text" class="card-input" placeholder="Card Number">
-                            <div class="card-input-row">
-                                <input type="text" class="card-input" placeholder="MM / YY">
-                                <input type="text" class="card-input" placeholder="CVV">
-                            </div>
-                            <input type="text" class="card-input" placeholder="Enter name on card">
+                    <div class="coming-soon-section">
+                        <div class="coming-soon-content">
+                            <i class="fa-solid fa-credit-card coming-soon-icon"></i>
+                            <h3 class="coming-soon-title">Coming Soon</h3>
+                            <p class="coming-soon-text">Card payment options will be available soon.</p>
                         </div>
-                        <label class="card-save-checkbox">
-                            <input type="checkbox">
-                            <span>Save this card as per RBI guidelines</span>
-                        </label>
-                        <button class="continue-btn">Coming Soon</button>
                     </div>
                 </div>
 
