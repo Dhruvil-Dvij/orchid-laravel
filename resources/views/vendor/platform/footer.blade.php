@@ -26,11 +26,11 @@
 @else
 
     <div class="text-center user-select-none my-4 d-none d-lg-block version-text">
-        <p class="small mb-0">
-            {{ __('The application code is published under the MIT license.') }} 2016 - {{date('Y')}}<br>
-            <a href="http://orchid.software" target="_blank" rel="noopener">
+        <p class="small mb-0"> © {{date('Y')}}
+            {{ __(' Vcoins Decentralized Platform. All rights reserved. | Built for the future of finance.') }}<br>
+            {{-- <a href="http://orchid.software" target="_blank" rel="noopener">
                 {{ __('Version') }}: {{\Orchid\Platform\Dashboard::version()}}
-            </a>
+            </a> --}}
         </p>
     </div>
 @endguest

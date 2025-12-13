@@ -10,6 +10,10 @@ Route::get('/.well-known/appspecific/com.chrome.devtools.json', function () {
     return redirect('/');
 });
 
+Route::get('/images/privacy_data_5.svg', function () {
+    return redirect('/');
+});
+
 Route::get('/register', function () {
     return view('auth.register');
 })->name('platform.register');
@@ -83,15 +87,21 @@ Route::get('/terms', function () {
     ->breadcrumbs(fn($trail) => $trail
         ->push(__('Terms'), route('platform.terms')));
 
+Route::get('/news', function () {
+    return view('layout.news');
+})
+    ->name('platform.news')
+    ->breadcrumbs(fn($trail) => $trail
+        ->push(__('News'), route('platform.news')));
+
 Route::get('/get-coins', [HomeController::class, 'getCoins'])
     ->name('platform.getcoins');
 
 Route::post('/contact/submit', [ContactController::class, 'contactSubmit'])
     ->name('platform.contact.submit');
     
-    Route::get('/news', function () {
-        return view('layout.news');
-    })
-        ->name('platform.news')
-        ->breadcrumbs(fn($trail) => $trail
-            ->push(__('News'), route('platform.news')));
+Route::get('/news', function () {
+    return view('layout.news');
+})->name('platform.news')
+    ->breadcrumbs(fn($trail) => $trail
+        ->push(__('News'), route('platform.news')));

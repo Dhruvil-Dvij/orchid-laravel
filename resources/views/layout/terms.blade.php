@@ -667,10 +667,10 @@
                 <h2>16. Contact Information</h2>
                 <p>If you have any questions about these Terms, please contact us at:</p>
                 <p>
-                    <strong>Email:</strong> <a href="mailto:legal@vcoins.co.in">legal@vcoins.co.in</a><br>
-                    <strong>Support:</strong> <a href="mailto:support@vcoins.co.in">support@vcoins.co.in</a>
+                    <strong>Email:</strong> <a href="mailto:Vcoins.app@gmail.com">Vcoins.app@gmail.com</a><br>
+                    {{-- <strong>Support:</strong> <a href="mailto:Vcoins.app@gmail.com">Vcoins.app@gmail.com</a> --}}
                 </p>
-                <p>You can also visit our <a href="contact.html">Contact Us</a> page for additional ways to reach us.</p>
+                <p>You can also visit our <a href="{{route('platform.contact')}}">Contact Us</a> page for additional ways to reach us.</p>
             </div>
         </div>
     </section>

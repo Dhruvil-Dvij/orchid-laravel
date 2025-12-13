@@ -34,6 +34,7 @@
                 <a href="{{route('platform.index')}}">Home</a>
                 <a href="{{route('platform.about')}}">About</a>
                 <a href="{{route('platform.markets')}}">Markets</a>
+                <a href="{{route('platform.news')}}">News</a>
                 <a href="{{route('platform.contact')}}">Contact Us</a>
                 <a href="{{route('platform.faq')}}">FAQ</a>
             </div>
@@ -50,7 +51,8 @@
                         padding: 8px 20px;
                         border-radius: 6px;
                         font-weight: 600;
-                        text-decoration: none;" class="btn-primary">
+                        text-decoration: none;
+                        cursor:pointer" class="btn-primary">
                             Sign out</button>
                     </form>
                 @else
@@ -72,6 +74,7 @@
                 <a href="{{route('platform.index')}}">Home</a>
                 <a href="{{route('platform.about')}}">About</a>
                 <a href="{{route('platform.markets')}}">Markets</a>
+                <a href="{{route('platform.news')}}">News</a>
                 <a href="{{route('platform.contact')}}">Contact Us</a>
                 <a href="{{route('platform.faq')}}">FAQ</a>
             </nav>
@@ -88,7 +91,8 @@
                         padding: 8px 20px;
                         border-radius: 6px;
                         font-weight: 600;
-                        text-decoration: none;" class="btn-primary">
+                        text-decoration: none;
+                        cursor:pointer" class="btn-primary">
                             Sign out</button>
                     </form>
                 @else

@@ -1358,7 +1358,7 @@
                         We believe in clear, honest communication about how we handle your data. Our privacy policies
                         are written in plain language, and we regularly update you about any changes to our practices.
                     </p>
-                    <a href="#" class="principle-link">Check our Privacy Notice <i class="fas fa-arrow-right"></i></a>
+                    {{-- <a href="#" class="principle-link">Check our Privacy Notice <i class="fas fa-arrow-right"></i></a> --}}
                 </div>
 
                 <div class="principle-card">
@@ -1370,7 +1370,7 @@
                         We adhere to international data protection regulations including GDPR, CCPA, and other
                         applicable laws. Our compliance team ensures we meet the highest standards of data protection.
                     </p>
-                    <a href="#" class="principle-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    {{-- <a href="#" class="principle-link">Learn More <i class="fas fa-arrow-right"></i></a> --}}
                 </div>
 
                 <div class="principle-card">
@@ -1383,7 +1383,7 @@
                         audits. We employ multiple layers of security to keep your information safe from unauthorized
                         access.
                     </p>
-                    <a href="#" class="principle-link">Check our Privacy Notice <i class="fas fa-arrow-right"></i></a>
+                    {{-- <a href="#" class="principle-link">Check our Privacy Notice <i class="fas fa-arrow-right"></i></a> --}}
                 </div>
 
                 <div class="principle-card">
@@ -1395,7 +1395,7 @@
                         You have the right to access, modify, or delete your personal data at any time. Our platform
                         provides easy-to-use tools for managing your privacy preferences and data.
                     </p>
-                    <a href="#" class="principle-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    {{-- <a href="#" class="principle-link">Learn More <i class="fas fa-arrow-right"></i></a> --}}
                 </div>
 
                 <div class="principle-card">
@@ -1407,7 +1407,7 @@
                         We only collect the data necessary to provide you with our services. We don't sell your personal
                         information to third parties, and we minimize data collection wherever possible.
                     </p>
-                    <a href="#" class="principle-link">Check our Privacy Notice <i class="fas fa-arrow-right"></i></a>
+                    {{-- <a href="#" class="principle-link">Check our Privacy Notice <i class="fas fa-arrow-right"></i></a> --}}
                 </div>
 
                 <div class="principle-card">
@@ -1419,7 +1419,7 @@
                         We regularly review and update our privacy practices to ensure they meet the highest standards.
                         We listen to user feedback and continuously improve our data protection measures.
                     </p>
-                    <a href="#" class="principle-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    {{-- <a href="#" class="principle-link">Learn More <i class="fas fa-arrow-right"></i></a> --}}
                 </div>
             </div>
         </div>
@@ -1449,7 +1449,7 @@
                             number, location data, IP address, transaction history, and any other information you
                             provide when using our platform.
                         </p>
-                        <a href="#" class="privacy-notice-btn">Check our full Privacy Notice</a>
+                        <a href="{{ route('platform.terms') }}" class="privacy-notice-btn">Check our full terms Notice</a>
                     </div>
                 </div>
 
@@ -1571,9 +1571,9 @@
                     </div>
                     <div class="rights-answer">
                         <div class="rights-answer-content">
-                            Vcoins provides comprehensive support through our <a href="#">Privacy Center</a>, which
+                            Vcoins provides comprehensive support through our <a href="{{route('platform.contact')}}">Privacy Center</a>, which
                             includes step-by-step guides and tools for managing your data. You can also contact our Data
-                            Protection Officer via <a href="mailto:dpo@vcoins.co.in">email</a> for assistance with any
+                            Protection Officer via <a href="mailto:Vcoins.app@gmail.com">email</a> for assistance with any
                             privacy-related requests or questions.
                         </div>
                     </div>
@@ -1620,8 +1620,8 @@
                         <p class="dpo-question">STILL HAVE QUESTIONS REGARDING YOUR PRIVACY AND DATA PROTECTION AT
                             VCOINS?</p>
                         <p class="dpo-contact">
-                            <a href="mailto:dpo@vcoins.co.in">Click here to contact our DPO via email:
-                                dpo@vcoins.co.in</a>
+                            <a href="mailto:Vcoins.app@gmail.com">Click here to contact our DPO via email:
+                                Vcoins.app@gmail.com</a>
                         </p>
                     </div>
                     <div class="dpo-graphic">

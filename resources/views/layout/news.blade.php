@@ -722,7 +722,7 @@
    document.addEventListener("DOMContentLoaded", function () {
 
     async function loadCryptoNews() {
-    const url = "https://newsdata.io/api/1/latest?apikey=pub_4da97ab67e1d47e2b6277cf73405721e&q=crypto";
+    const url = "https://newsdata.io/api/1/latest?apikey=pub_4da97ab67e1d47e2b6277cf73405721e&q=crypto,cryptocurrency,blockchain,bitcoin,ethereum&language=en";
 
     try {
         const res = await fetch(url);

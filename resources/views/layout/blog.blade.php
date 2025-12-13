@@ -500,7 +500,7 @@
                 </article>
 
                 <article class="blog-card">
-                <div class="blog-image" style="background-image: url('{{ asset('images/blog_img_2.jpg') }}');">
+                    <div class="blog-image" style="background-image: url('{{ asset('images/blog_img_2.jpg') }}');">
                         <span class="blog-tag">Yield Strategies</span>
                     </div>
                     <div class="blog-content">

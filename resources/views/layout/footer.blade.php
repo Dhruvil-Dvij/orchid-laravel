@@ -10,9 +10,9 @@
                 <p style="color: var(--text-muted); font-size: 0.95rem;">Intelligent Crypto Wealth: Aggregating the
                     best DeFi yield with AI-powered security and auto-compounding for maximum returns.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://x.com/VcoinsApp" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/vcoins.app?igsh=amYwbTZ6eG5vN3Ry" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/16rUu9CQAc/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
 
@@ -22,6 +22,7 @@
                     <li><a href="{{ route('platform.index') }}">Home</a></li>
                     <li><a href="{{ route('platform.about') }}">About</a></li>
                     <li><a href="{{ route('platform.markets') }}">Markets</a></li>
+                    <li><a href="{{ route('platform.news') }}">News</a></li>
                     <li><a href="{{ route('platform.contact') }}">Contact Us</a></li>
                     <li><a href="{{ route('platform.faq') }}">FAQ</a></li>
                 </ul>

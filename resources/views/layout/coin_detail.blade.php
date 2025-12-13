@@ -803,23 +803,50 @@
         /* -----------------------------------------------------------
             LOAD KLINES
         ----------------------------------------------------------- */
+        function handleKlineError() {
+            // For Orchid, we use query param and redirect
+            window.location.href = document.referrer + "?error=coin_not_available";
+        }
+
         async function loadKlines() {
-            candleSeries.setData([]);
+            try {
+                candleSeries.setData([]);
 
-            let url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${timeframe}&limit=200`;
-            const data = await fetch(url).then(r => r.json());
+                const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${timeframe}&limit=200`;
 
-            const formatted = data.map(d => ({
-                time: d[0] / 1000,
-                open: parseFloat(d[1]),
-                high: parseFloat(d[2]),
-                low: parseFloat(d[3]),
-                close: parseFloat(d[4])
-            }));
+                const response = await fetch(url);
 
-            candleSeries.setData(formatted);
+                // If fetch fails due to CORS, network, 429, etc.
+                if (!response.ok) {
+                    handleKlineError();
+                    return;
+                }
 
-            setupLiveKline();
+                const data = await response.json();
+
+                // Binance returns [] when symbol doesn't exist
+                if (!Array.isArray(data) || data.length === 0) {
+                    handleKlineError();
+                    return;
+                }
+
+                // Format candles
+                const formatted = data.map(d => ({
+                    time: d[0] / 1000,
+                    open: parseFloat(d[1]),
+                    high: parseFloat(d[2]),
+                    low: parseFloat(d[3]),
+                    close: parseFloat(d[4])
+                }));
+
+                candleSeries.setData(formatted);
+
+                setupLiveKline();
+
+            } catch (err) {
+                console.error("Kline fetch error:", err);
+                handleKlineError();
+            }
         }
 
         loadKlines();
