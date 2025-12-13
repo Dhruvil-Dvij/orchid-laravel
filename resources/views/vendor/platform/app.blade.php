@@ -11,7 +11,7 @@
             - {{ config('app.name') }}
         @endif
     </title>
-    <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}" />
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo.svg') }}" />
     <meta name="csrf_token" content="{{ csrf_token() }}" id="csrf_token">
     <meta name="auth" content="{{ Auth::check() }}" id="auth">
     @if (\Orchid\Support\Locale::isRtl())

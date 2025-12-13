@@ -108,8 +108,8 @@
                         <div class="upi-qr-header">
                             <h3 class="payment-section-title">UPI QR</h3>
                             <div class="qr-timer">
-                                <i class="fa-solid fa-clock"></i>
-                                <span>6:07</span>
+                                {{-- <i class="fa-solid fa-clock"></i>
+                                <span>6:07</span> --}}
                             </div>
                         </div>
                         <div class="upi-qr-content">
@@ -153,7 +153,7 @@
                 </div>
 
                 <div class="payment-panel" data-panel="cards">
-                    <div class="card-form">
+                    {{-- <div class="card-form">
                         <h3 class="payment-section-title">Add a new card</h3>
                         <div class="card-form-fields">
                             <input type="text" class="card-input" placeholder="Card Number">
@@ -168,6 +168,14 @@
                             <span>Save this card as per RBI guidelines</span>
                         </label>
                         <button class="continue-btn">Coming Soon</button>
+                    </div> --}}
+
+                    <div class="coming-soon-section">
+                        <div class="coming-soon-content">
+                            <i class="fa-solid fa-wallet coming-soon-icon"></i>
+                            <h3 class="coming-soon-title">Coming Soon</h3>
+                            <p class="coming-soon-text">Cards payment options will be available soon.</p>
+                        </div>
                     </div>
                 </div>
 
@@ -178,14 +186,14 @@
                         <div class="nb-account-details">
                             <div class="nb-account-header">
                                 <h3 class="nb-section-title">Account Details</h3>
-                                <button class="nb-copy-btn" type="button" onclick="copyAccountDetails()">
+                                <button class="nb-copy-btn" type="button" id="copyAccountDetailsBtn">
                                     <i class="fa-solid fa-copy"></i> Copy
                                 </button>
                             </div>
                             <div class="nb-account-card">
                                 <div class="nb-detail-row">
                                     <span class="nb-detail-label">Bank Name:</span>
-                                    <span class="nb-detail-value" id="beneficiaryName">IDBI Bank</span>
+                                    <span class="nb-detail-value" id="bankName">IDBI Bank</span>
                                 </div>
                                 <div class="nb-detail-row">
                                     <span class="nb-detail-label">Account:</span>
@@ -197,7 +205,7 @@
                                 </div>
                                 <div class="nb-detail-row">
                                     <span class="nb-detail-label">A/c Holder Name:</span>
-                                    <span class="nb-detail-value">KETANKUMAR BHARATBHAI PATEL</span>
+                                    <span class="nb-detail-value" id="accountHolderName">KETANKUMAR BHARATBHAI PATEL</span>
                                 </div>
                             </div>
                         </div>
@@ -238,7 +246,7 @@ function copyUpiId(event) {
 
 @push('scripts')
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbo:load', () => {
     const items = document.querySelectorAll('.payment-method-item[data-target-panel]');
     const panels = document.querySelectorAll('.payment-panel');
 
@@ -315,45 +323,71 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function copyAccountDetails() {
-        const accountDetails = `Account: 2223232073362070\nIFSC: UTIB000RAZP\nBeneficiary Name: Razorpay\nAmount Expected: ₹1`;
-        const btn = event.target.closest('.nb-copy-btn');
-        const originalText = btn.innerHTML;
-        
-        if (navigator.clipboard && window.isSecureContext) {
-            navigator.clipboard.writeText(accountDetails).then(function() {
+    const copyAccountDetailsBtn = document.getElementById('copyAccountDetailsBtn');
+    if (copyAccountDetailsBtn) {
+        copyAccountDetailsBtn.addEventListener('click', function() {
+            const bankNameEl = document.getElementById('bankName');
+            const accountNumberEl = document.getElementById('accountNumber');
+            const ifscCodeEl = document.getElementById('ifscCode');
+            const accountHolderEl = document.getElementById('accountHolderName');
+            
+            const bankName = bankNameEl ? bankNameEl.textContent.trim() : '';
+            const accountNumber = accountNumberEl ? accountNumberEl.textContent.trim() : '';
+            const ifscCode = ifscCodeEl ? ifscCodeEl.textContent.trim() : '';
+            const accountHolder = accountHolderEl ? accountHolderEl.textContent.trim() : '';
+            
+            const accountDetails = `Bank Name: ${bankName}\nAccount: ${accountNumber}\nIFSC: ${ifscCode}\nA/c Holder Name: ${accountHolder}`;
+            
+            const btn = this;
+            const originalText = btn.innerHTML;
+            const originalBg = btn.style.background || '';
+            const originalColor = btn.style.color || '';
+            
+            const copyToClipboard = (text) => {
+                if (navigator.clipboard && window.isSecureContext) {
+                    return navigator.clipboard.writeText(text);
+                } else {
+                    return new Promise((resolve, reject) => {
+                        const textArea = document.createElement('textarea');
+                        textArea.value = text;
+                        textArea.style.position = 'fixed';
+                        textArea.style.left = '-999999px';
+                        textArea.style.top = '-999999px';
+                        document.body.appendChild(textArea);
+                        textArea.focus();
+                        textArea.select();
+                        
+                        try {
+                            const successful = document.execCommand('copy');
+                            document.body.removeChild(textArea);
+                            if (successful) {
+                                resolve();
+                            } else {
+                                reject(new Error('Copy command failed'));
+                            }
+                        } catch (err) {
+                            document.body.removeChild(textArea);
+                            reject(err);
+                        }
+                    });
+                }
+            };
+            
+            copyToClipboard(accountDetails).then(function() {
                 btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
                 btn.style.background = '#00FFA3';
                 btn.style.color = '#000';
                 setTimeout(function() {
                     btn.innerHTML = originalText;
-                    btn.style.background = '';
-                    btn.style.color = '';
+                    btn.style.background = originalBg;
+                    btn.style.color = originalColor;
                 }, 2000);
             }).catch(function(err) {
                 console.error('Failed to copy account details:', err);
+                alert('Failed to copy account details. Please copy manually:\n\n' + accountDetails);
             });
-        } else {
-            const textArea = document.createElement('textarea');
-            textArea.value = accountDetails;
-            textArea.style.position = 'fixed';
-            textArea.style.left = '-999999px';
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
-            btn.style.background = '#00FFA3';
-            btn.style.color = '#000';
-            setTimeout(function() {
-                btn.innerHTML = originalText;
-                btn.style.background = '';
-                btn.style.color = '';
-            }, 2000);
-        }
+        });
     }
-    
-    window.copyAccountDetails = copyAccountDetails;
 });
 </script>
 @endpush
