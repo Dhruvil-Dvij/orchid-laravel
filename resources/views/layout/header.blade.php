@@ -30,5 +30,16 @@
     background: #33eaff !important;
     color: #000 !important;
     }
+    .signup-login{
+    padding: 10px 19px !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    width: fit-content !important;
+}
+    @media (max-width: 992px) {
+    .nav-links {
+        gap: 30px !important;
+    }
+}
 </style>
 </head>

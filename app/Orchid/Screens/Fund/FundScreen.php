@@ -83,7 +83,7 @@ class FundScreen extends Screen
             Link::make(__('Add Funds'))
                 ->icon('bs.cash-stack')
                 ->route('platform.funds.payment_details')
-                ->class('btn btn-success rounded px-3 py-2 me-2')
+                ->class('btn btn-success rounded px-3 py-2 activity-history-btn')
                 ->style('gap: 8px; transition: transform 0.2s ease;')
                 ->canSee(auth()->user()?->hasAccess('platform.funds.wallet')),
 
@@ -97,7 +97,7 @@ class FundScreen extends Screen
             Link::make(__('Activity History'))
                 ->icon('bs.clock-history')
                 ->route('platform.funds.activity_history')
-                ->class('btn btn-info rounded px-3 py-2')
+                ->class('btn btn-info rounded px-3 py-2 activity-history-btn')
                 ->style('gap: 8px; transition: transform 0.2s ease;')
                 ->canSee(auth()->user()?->hasAccess('platform.funds.wallet')),
 

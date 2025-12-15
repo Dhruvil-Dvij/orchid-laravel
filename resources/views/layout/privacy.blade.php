@@ -1327,6 +1327,863 @@
                 top: -26px;
             }
         }
+
+        /* ============================================
+           COMPREHENSIVE RESPONSIVE MEDIA QUERIES
+           ============================================ */
+
+        /* Large Tablets and Small Desktops (1024px and below) */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .privacy-hero {
+                padding: 130px 0 0px;
+            }
+
+            .privacy-hero-title {
+                font-size: 3.5rem;
+            }
+
+            .privacy-hero-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .privacy-hero-description {
+                font-size: 1.05rem;
+            }
+
+            .lock-icon {
+                width: 280px;
+                height: 280px;
+            }
+
+            .lock-body {
+                width: 180px;
+                height: 180px;
+            }
+
+            .lock-shackle {
+                width: 110px;
+                height: 70px;
+            }
+
+            .small-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .section-title {
+                font-size: 2.3rem;
+                margin-bottom: 45px;
+            }
+
+            .principle-card {
+                padding: 28px;
+            }
+
+            .principle-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.4rem;
+            }
+
+            .principle-title {
+                font-size: 1.2rem;
+            }
+
+            .tab-content.active {
+                gap: 50px;
+            }
+
+            .tab-content-image img {
+                max-width: 450px;
+            }
+
+            .tab-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .data-icons {
+                gap: 14px;
+            }
+
+            .data-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.4rem;
+            }
+
+            .rights-question {
+                padding: 18px 22px;
+            }
+
+            .rights-item.active .rights-answer {
+                padding: 0 22px 22px 60px;
+            }
+
+            .dpo-content {
+                gap: 50px;
+            }
+
+            .dpo-title {
+                font-size: 2.3rem;
+            }
+
+            .laptop-icon {
+                width: 280px;
+                height: 190px;
+            }
+
+            footer {
+                padding: 60px 0 35px;
+            }
+
+            .footer-grid {
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+        }
+
+        /* Tablets (768px and below) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            header {
+                padding: 15px 0;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .logo img {
+                height: 36px;
+            }
+
+            .privacy-hero {
+                padding: 120px 0 0px;
+            }
+
+            .privacy-hero-container {
+                padding: 0 16px;
+            }
+
+            .privacy-hero-title {
+                font-size: 2.5rem;
+                line-height: 1.2;
+                margin-bottom: 14px;
+            }
+
+            .privacy-hero-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 18px;
+            }
+
+            .privacy-hero-description {
+                font-size: 1rem;
+            }
+
+            .lock-icon {
+                width: 250px;
+                height: 250px;
+            }
+
+            .lock-body {
+                width: 160px;
+                height: 160px;
+            }
+
+            .lock-shackle {
+                width: 100px;
+                height: 65px;
+                top: -55px;
+            }
+
+            .lock-keyhole {
+                width: 35px;
+                height: 35px;
+            }
+
+            .small-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-container {
+                padding: 0 16px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 35px;
+            }
+
+            .principles-grid {
+                gap: 22px;
+            }
+
+            .principle-card {
+                padding: 24px;
+            }
+
+            .principle-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1.3rem;
+                margin-bottom: 18px;
+            }
+
+            .principle-title {
+                font-size: 1.15rem;
+                margin-bottom: 10px;
+            }
+
+            .principle-description {
+                font-size: 0.95rem;
+            }
+
+            .tabs-section {
+                margin-top: 50px;
+            }
+
+            .tabs-nav {
+                margin-bottom: 28px;
+                padding-bottom: 14px;
+            }
+
+            .tab-link {
+                font-size: 0.95rem;
+            }
+
+            .tab-content.active {
+                gap: 35px;
+            }
+
+            .tab-content-image img {
+                max-width: 100%;
+            }
+
+            .tab-subtitle {
+                font-size: 1.3rem;
+                margin-bottom: 14px;
+            }
+
+            .tab-description {
+                font-size: 0.95rem;
+                margin-bottom: 22px;
+            }
+
+            .privacy-notice-btn {
+                padding: 12px 28px;
+                font-size: 0.95rem;
+            }
+
+            .rights-accordion {
+                margin-top: 35px;
+            }
+
+            .rights-item {
+                margin-bottom: 14px;
+            }
+
+            .rights-question {
+                padding: 16px 20px;
+                gap: 12px;
+            }
+
+            .rights-icon {
+                width: 22px;
+                height: 22px;
+                font-size: 1.1rem;
+            }
+
+            .rights-question-text {
+                font-size: 0.95rem;
+            }
+
+            .rights-item.active .rights-answer {
+                padding: 0 20px 20px 56px;
+                max-height: 600px;
+            }
+
+            .rights-answer-content {
+                font-size: 0.9rem;
+            }
+
+            .dpo-section {
+                padding: 0px 0 50px;
+            }
+
+            .dpo-title {
+                font-size: 2rem;
+                margin-bottom: 22px;
+            }
+
+            .dpo-question {
+                font-size: 1.05rem;
+            }
+
+            .dpo-contact {
+                font-size: 1.05rem;
+            }
+
+            .laptop-icon {
+                width: 240px;
+                height: 160px;
+            }
+
+            .chat-bubble {
+                width: 90px;
+                height: 65px;
+                top: -45px;
+            }
+
+            .chat-line {
+                width: 28px;
+                height: 2.5px;
+            }
+
+            footer {
+                padding: 50px 0 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+                margin-bottom: 35px;
+            }
+
+            .social-links {
+                gap: 15px;
+                margin-top: 18px;
+            }
+
+            .footer-bottom {
+                padding-top: 25px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Mobile Devices (480px and below) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            header {
+                padding: 12px 0;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+
+            .privacy-hero {
+                padding: 110px 0 0px;
+            }
+
+            .privacy-hero-container {
+                padding: 0 12px;
+            }
+
+            .privacy-hero-title {
+                font-size: 2rem;
+                margin-bottom: 12px;
+            }
+
+            .privacy-hero-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 16px;
+            }
+
+            .privacy-hero-description {
+                font-size: 0.95rem;
+            }
+
+            .lock-icon {
+                width: 220px;
+                height: 220px;
+            }
+
+            .lock-body {
+                width: 140px;
+                height: 140px;
+                border-width: 3px;
+            }
+
+            .lock-shackle {
+                width: 90px;
+                height: 60px;
+                top: -50px;
+                border-width: 3px;
+            }
+
+            .lock-keyhole {
+                width: 30px;
+                height: 30px;
+                border-width: 2px;
+            }
+
+            .small-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 0.9rem;
+            }
+
+            .icon-1 {
+                top: 8%;
+                left: 8%;
+            }
+
+            .icon-2 {
+                top: 18%;
+                right: 12%;
+            }
+
+            .icon-3 {
+                bottom: 12%;
+                left: 12%;
+            }
+
+            .icon-4 {
+                bottom: 8%;
+                right: 8%;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .section-container {
+                padding: 0 12px;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+                margin-bottom: 30px;
+            }
+
+            .principles-grid {
+                gap: 18px;
+            }
+
+            .principle-card {
+                padding: 20px;
+                border-radius: 10px;
+            }
+
+            .principle-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+                border-radius: 6px;
+            }
+
+            .principle-title {
+                font-size: 1.05rem;
+                margin-bottom: 8px;
+            }
+
+            .principle-description {
+                font-size: 0.9rem;
+                margin-bottom: 10px;
+            }
+
+            .principle-link {
+                font-size: 0.9rem;
+            }
+
+            .tabs-section {
+                margin-top: 35px;
+            }
+
+            .tabs-nav {
+                margin-bottom: 22px;
+                padding-bottom: 12px;
+            }
+
+            .tab-link {
+                padding: 10px 14px;
+                font-size: 0.9rem;
+            }
+
+            .tab-content.active {
+                gap: 30px;
+            }
+
+            .tab-subsection {
+                margin-bottom: 30px;
+            }
+
+            .tab-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 12px;
+            }
+
+            .tab-description {
+                font-size: 0.9rem;
+                margin-bottom: 18px;
+            }
+
+            .data-icons {
+                gap: 12px;
+                margin-top: 20px;
+            }
+
+            .data-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .privacy-notice-btn {
+                padding: 11px 22px;
+                font-size: 0.9rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .rights-accordion {
+                margin-top: 30px;
+            }
+
+            .rights-item {
+                margin-bottom: 12px;
+                border-radius: 10px;
+            }
+
+            .rights-question {
+                padding: 14px 16px;
+                gap: 10px;
+            }
+
+            .rights-icon {
+                width: 20px;
+                height: 20px;
+                font-size: 1rem;
+            }
+
+            .rights-question-text {
+                font-size: 0.9rem;
+            }
+
+            .rights-item.active .rights-answer {
+                padding: 0 16px 16px 48px;
+                max-height: 700px;
+            }
+
+            .rights-answer-content {
+                font-size: 0.85rem;
+                line-height: 1.7;
+            }
+
+            .rights-link {
+                font-size: 0.9rem;
+                margin-top: 20px;
+            }
+
+            .dpo-section {
+                padding: 0px 0 40px;
+            }
+
+            .dpo-container {
+                gap: 8px;
+            }
+
+            .dpo-title {
+                font-size: 1.75rem;
+                margin-bottom: 20px;
+            }
+
+            .dpo-content {
+                gap: 30px;
+            }
+
+            .dpo-text {
+                gap: 20px;
+            }
+
+            .dpo-question {
+                font-size: 0.95rem;
+                margin-bottom: 12px;
+            }
+
+            .dpo-contact {
+                font-size: 0.95rem;
+            }
+
+            .dpo-graphic {
+                margin-top: 25px;
+            }
+
+            .laptop-icon {
+                width: 200px;
+                height: 140px;
+            }
+
+            .laptop-screen {
+                width: 83%;
+                height: 73%;
+            }
+
+            .laptop-diamond {
+                width: 35px;
+                height: 35px;
+            }
+
+            .chat-bubble {
+                width: 80px;
+                height: 55px;
+                top: -40px;
+                left: 18px;
+            }
+
+            .chat-line {
+                width: 24px;
+                height: 2px;
+            }
+
+            footer {
+                padding: 40px 0 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-bottom: 30px;
+            }
+
+            .footer-logo {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+            }
+
+            .footer-logo img {
+                height: 32px;
+            }
+
+            .footer-column h4 {
+                font-size: 0.95rem;
+                margin-bottom: 15px;
+            }
+
+            .footer-column ul li {
+                margin-bottom: 8px;
+            }
+
+            .footer-column ul li a {
+                font-size: 0.85rem;
+            }
+
+            .social-links {
+                gap: 12px;
+                margin-top: 15px;
+            }
+
+            .social-links a {
+                font-size: 1rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.8rem;
+                padding-top: 20px;
+            }
+        }
+
+        /* Small Mobile Devices (375px and below) */
+        @media (max-width: 375px) {
+            .privacy-hero-title {
+                font-size: 1.75rem;
+            }
+
+            .privacy-hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .privacy-hero-description {
+                font-size: 0.9rem;
+            }
+
+            .lock-icon {
+                width: 200px;
+                height: 200px;
+            }
+
+            .lock-body {
+                width: 130px;
+                height: 130px;
+            }
+
+            .lock-shackle {
+                width: 80px;
+                height: 55px;
+                top: -45px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .principle-card {
+                padding: 18px;
+            }
+
+            .principle-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 1.1rem;
+            }
+
+            .principle-title {
+                font-size: 1rem;
+            }
+
+            .principle-description {
+                font-size: 0.85rem;
+            }
+
+            .tab-link {
+                padding: 9px 12px;
+                font-size: 0.85rem;
+            }
+
+            .tab-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .tab-description {
+                font-size: 0.85rem;
+            }
+
+            .privacy-notice-btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+
+            .rights-question {
+                padding: 12px 14px;
+            }
+
+            .rights-icon {
+                width: 18px;
+                height: 18px;
+                font-size: 0.9rem;
+            }
+
+            .rights-question-text {
+                font-size: 0.85rem;
+            }
+
+            .rights-item.active .rights-answer {
+                padding: 0 14px 14px 44px;
+            }
+
+            .rights-answer-content {
+                font-size: 0.8rem;
+            }
+
+            .dpo-title {
+                font-size: 1.5rem;
+            }
+
+            .dpo-question {
+                font-size: 0.9rem;
+            }
+
+            .dpo-contact {
+                font-size: 0.9rem;
+            }
+
+            .laptop-icon {
+                width: 180px;
+                height: 125px;
+            }
+
+            .chat-bubble {
+                width: 70px;
+                height: 50px;
+                top: -35px;
+            }
+        }
+
+        /* Landscape Orientation for Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .privacy-hero {
+                padding: 100px 0 0px;
+            }
+
+            .privacy-hero-title {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .principles-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .menu-toggle,
+            .mobile-nav,
+            .privacy-hero-graphic,
+            .dpo-graphic,
+            .tab-content-image,
+            .privacy-notice-btn,
+            .principle-link {
+                display: none;
+            }
+
+            .privacy-hero {
+                padding: 20px 0;
+            }
+
+            .privacy-hero-title {
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 20px 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .principle-card,
+            .rights-item {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .rights-item.active .rights-answer {
+                max-height: none;
+                padding: 0 20px 20px 56px;
+            }
+        }
     </style>
 @endsection
 

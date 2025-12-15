@@ -23,7 +23,7 @@
         </div>
 
         @empty(!$commandBar)
-            <div class="px-4 py-3 d-flex justify-content-end rounded-bottom gap-2">
+            <div class="px-4 pb-3 d-flex justify-content-end rounded-bottom gap-2">
                 @foreach($commandBar as $command)
                     <div>
                         {!! $command !!}

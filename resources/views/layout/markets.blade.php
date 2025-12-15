@@ -733,6 +733,426 @@
             font-weight: 500;
             font-size: 0.95rem;
         }
+
+        /* ============================================
+           COMPREHENSIVE RESPONSIVE MEDIA QUERIES
+           ============================================ */
+
+        /* Large Tablets and Small Desktops (1024px and below) */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .crypto-table-section {
+                padding: 90px 0 70px 0;
+            }
+
+            .crypto-table-section h2 {
+                font-size: 3.5rem;
+                margin-top: 30px;
+            }
+
+            .section-subtitle {
+                font-size: 1.15rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .table-controls {
+                margin-bottom: 1.75rem;
+            }
+
+            .search-container {
+                max-width: 350px;
+            }
+
+            .crypto-table {
+                min-width: 650px;
+            }
+
+            .crypto-table th,
+            .crypto-table td {
+                padding: 10px 12px;
+                font-size: 0.95rem;
+            }
+
+            footer {
+                padding: 60px 0 35px;
+            }
+
+            .footer-grid {
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+        }
+
+        /* Tablets (768px and below) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .crypto-table-section {
+                padding: 80px 0 60px 0;
+            }
+
+            .crypto-table-section h2 {
+                font-size: 2.5rem;
+                margin-top: 25px;
+                margin-bottom: 1.25rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .table-controls {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+                margin-bottom: 1.5rem;
+            }
+
+            .search-container {
+                max-width: 100%;
+            }
+
+            .search-input {
+                padding: 0.7rem 1rem 0.7rem 2.3rem;
+                font-size: 0.95rem;
+            }
+
+            .search-icon {
+                left: 0.7rem;
+                font-size: 1rem;
+            }
+
+            .per-page-selector {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            #prevPageBtn,
+            #nextPageBtn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            #pageInfo {
+                font-size: 0.9rem;
+                padding: 8px 0px;
+            }
+
+            .table-container {
+                border-radius: 6px;
+            }
+
+            .crypto-table {
+                min-width: 600px;
+                font-size: 0.9rem;
+            }
+
+            .crypto-table th,
+            .crypto-table td {
+                padding: 10px 10px;
+                font-size: 0.85rem;
+            }
+
+            .coin-logo {
+                width: 20px;
+                height: 20px;
+            }
+
+            .coin-name-col {
+                gap: 8px;
+            }
+
+            .coin-name-col strong {
+                font-size: 0.9rem;
+            }
+
+            footer {
+                padding: 50px 0 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+                margin-bottom: 35px;
+            }
+
+            .social-links {
+                gap: 15px;
+                margin-top: 18px;
+            }
+
+            .footer-bottom {
+                padding-top: 25px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Mobile Devices (480px and below) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            header {
+                padding: 15px 0;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+
+            .crypto-table-section {
+                padding: 70px 0 50px 0;
+            }
+
+            .crypto-table-section h2 {
+                font-size: 2rem;
+                margin-top: 20px;
+                margin-bottom: 1rem;
+                line-height: 1.2;
+            }
+
+            .section-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .table-controls {
+                gap: 12px;
+                margin-bottom: 1.25rem;
+            }
+
+            .search-container {
+                width: 100%;
+            }
+
+            .search-input {
+                padding: 0.65rem 0.9rem 0.65rem 2.2rem;
+                font-size: 0.9rem;
+                border-radius: 20px;
+            }
+
+            .search-icon {
+                left: 0.65rem;
+                font-size: 0.95rem;
+            }
+
+            .per-page-selector {
+                width: 100%;
+                gap: 8px;
+            }
+
+            #prevPageBtn,
+            #nextPageBtn {
+                padding: 7px 14px;
+                font-size: 0.85rem;
+                flex: 1;
+                max-width: 120px;
+            }
+
+            #pageInfo {
+                font-size: 0.85rem;
+                padding: 7px 0px;
+                text-align: center;
+                flex-basis: 100%;
+                order: -1;
+            }
+
+            .table-container {
+                border-radius: 6px;
+                border-width: 1px;
+            }
+
+            .crypto-table {
+                min-width: 550px;
+                font-size: 0.8rem;
+            }
+
+            .crypto-table th,
+            .crypto-table td {
+                padding: 8px 8px;
+                font-size: 0.8rem;
+            }
+
+            .crypto-table thead th {
+                font-size: 0.75rem;
+                padding: 10px 8px;
+            }
+
+            .coin-logo {
+                width: 18px;
+                height: 18px;
+            }
+
+            .coin-name-col {
+                gap: 6px;
+            }
+
+            .coin-name-col strong {
+                font-size: 0.85rem;
+            }
+
+            footer {
+                padding: 40px 0 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-bottom: 30px;
+            }
+
+            .footer-logo {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+            }
+
+            .footer-logo img {
+                height: 32px;
+            }
+
+            .footer-column h4 {
+                font-size: 0.95rem;
+                margin-bottom: 15px;
+            }
+
+            .footer-column ul li {
+                margin-bottom: 8px;
+            }
+
+            .footer-column ul li a {
+                font-size: 0.85rem;
+            }
+
+            .social-links {
+                gap: 12px;
+                margin-top: 15px;
+            }
+
+            .social-links a {
+                font-size: 1rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.8rem;
+                padding-top: 20px;
+            }
+        }
+
+        /* Small Mobile Devices (375px and below) */
+        @media (max-width: 375px) {
+            .crypto-table-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .search-input {
+                padding: 0.6rem 0.8rem 0.6rem 2rem;
+                font-size: 0.85rem;
+            }
+
+            .search-icon {
+                left: 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            #prevPageBtn,
+            #nextPageBtn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            #pageInfo {
+                font-size: 0.8rem;
+            }
+
+            .crypto-table {
+                min-width: 500px;
+            }
+
+            .crypto-table th,
+            .crypto-table td {
+                padding: 6px 6px;
+                font-size: 0.75rem;
+            }
+
+            .crypto-table thead th {
+                font-size: 0.7rem;
+                padding: 8px 6px;
+            }
+
+            .coin-logo {
+                width: 16px;
+                height: 16px;
+            }
+
+            .coin-name-col strong {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Landscape Orientation for Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .crypto-table-section {
+                padding: 70px 0 50px 0;
+            }
+
+            .crypto-table-section h2 {
+                font-size: 2rem;
+            }
+
+            .table-controls {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .per-page-selector {
+                width: auto;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .menu-toggle,
+            .mobile-nav,
+            .table-controls,
+            .pagination,
+            #paginationControls {
+                display: none;
+            }
+
+            .crypto-table-section {
+                padding: 20px 0;
+            }
+
+            .crypto-table-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .table-container {
+                border: none;
+                box-shadow: none;
+            }
+
+            .crypto-table {
+                min-width: 100%;
+            }
+        }
     </style>
 @endsection
 

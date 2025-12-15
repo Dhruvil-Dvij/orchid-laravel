@@ -102,7 +102,7 @@
             @endphp
 
             @for($i = 0; $i < $count; $i++)
-                <div class="row mb-2 crypto-basket-row align-items-center">
+                <div class="row mb-2 crypto-basket-row align-items-center edit-crypto-currency">
                     <div class="col-md-6">
                         <select name="basket[cryptocurrencies][]" class="form-control crypto-select select2 account-all-input" required>
                             <option value="">Select</option>

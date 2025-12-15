@@ -551,6 +551,462 @@
                 font-size: 2.8rem;
             }
         }
+
+        /* ============================================
+           COMPREHENSIVE RESPONSIVE MEDIA QUERIES
+           ============================================ */
+
+        /* Large Tablets and Small Desktops (1024px and below) */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .contact-hero {
+                padding: 150px 0 70px;
+            }
+
+            .contact-hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .contact-hero p {
+                font-size: 1.15rem;
+            }
+
+            .contact-section {
+                padding: 0px 0px 50px 0px;
+            }
+
+            .contact-container {
+                gap: 50px;
+            }
+
+            .contact-info {
+                gap: 25px;
+            }
+
+            .info-card {
+                padding: 25px;
+            }
+
+            .info-card-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .info-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .contact-form-wrapper {
+                padding: 35px;
+            }
+
+            .contact-form-wrapper h2 {
+                font-size: 1.75rem;
+                margin-bottom: 25px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            footer {
+                padding: 60px 0 35px;
+            }
+
+            .footer-grid {
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+        }
+
+        /* Tablets (768px and below) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            header {
+                padding: 15px 0;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .logo img {
+                height: 36px;
+            }
+
+            .contact-hero {
+                padding: 130px 0 60px;
+            }
+
+            .contact-hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+                margin-bottom: 1.25rem;
+            }
+
+            .contact-hero p {
+                font-size: 1rem;
+            }
+
+            .contact-section {
+                padding: 0px 0px 40px 0px;
+            }
+
+            .contact-container {
+                gap: 35px;
+            }
+
+            .contact-info {
+                gap: 20px;
+            }
+
+            .info-card {
+                padding: 22px;
+                border-radius: 18px;
+            }
+
+            .info-card-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.15rem;
+                margin-bottom: 12px;
+            }
+
+            .info-card h3 {
+                font-size: 1.05rem;
+                margin-bottom: 6px;
+            }
+
+            .info-card p {
+                font-size: 0.95rem;
+            }
+
+            .contact-form-wrapper {
+                padding: 30px;
+                border-radius: 20px;
+            }
+
+            .contact-form-wrapper h2 {
+                font-size: 1.5rem;
+                margin-bottom: 22px;
+            }
+
+            .form-group {
+                margin-bottom: 18px;
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
+                margin-bottom: 6px;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 12px 16px;
+                font-size: 0.95rem;
+            }
+
+            .form-group textarea {
+                min-height: 130px;
+            }
+
+            .form-submit {
+                padding: 12px 28px;
+                font-size: 0.95rem;
+            }
+
+            footer {
+                padding: 50px 0 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+                margin-bottom: 35px;
+            }
+
+            .social-links {
+                gap: 15px;
+                margin-top: 18px;
+            }
+
+            .footer-bottom {
+                padding-top: 25px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Mobile Devices (480px and below) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            header {
+                padding: 12px 0;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+
+            .contact-hero {
+                padding: 110px 0 50px;
+            }
+
+            .contact-hero h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .contact-hero p {
+                font-size: 0.95rem;
+            }
+
+            .contact-section {
+                padding: 0px 0px 35px 0px;
+            }
+
+            .contact-container {
+                gap: 30px;
+            }
+
+            .contact-info {
+                gap: 18px;
+            }
+
+            .info-card {
+                padding: 20px;
+                border-radius: 16px;
+            }
+
+            .info-card-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+                border-radius: 10px;
+            }
+
+            .info-card h3 {
+                font-size: 1rem;
+                margin-bottom: 5px;
+            }
+
+            .info-card p {
+                font-size: 0.9rem;
+            }
+
+            .contact-form-wrapper {
+                padding: 22px;
+                border-radius: 18px;
+            }
+
+            .contact-form-wrapper h2 {
+                font-size: 1.35rem;
+                margin-bottom: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 16px;
+            }
+
+            .form-group label {
+                font-size: 0.85rem;
+                margin-bottom: 6px;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 11px 14px;
+                font-size: 0.9rem;
+                border-radius: 10px;
+            }
+
+            .form-group select {
+                padding: 11px 40px 11px 14px;
+            }
+
+            .select-wrapper::after {
+                right: 14px;
+                width: 14px;
+                height: 14px;
+                background-size: 14px 14px;
+            }
+
+            .form-group textarea {
+                min-height: 120px;
+            }
+
+            .form-submit {
+                padding: 11px 24px;
+                font-size: 0.9rem;
+                width: 100%;
+            }
+
+            .form-message {
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+
+            footer {
+                padding: 40px 0 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-bottom: 30px;
+            }
+
+            .footer-logo {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+            }
+
+            .footer-logo img {
+                height: 32px;
+            }
+
+            .footer-column h4 {
+                font-size: 0.95rem;
+                margin-bottom: 15px;
+            }
+
+            .footer-column ul li {
+                margin-bottom: 8px;
+            }
+
+            .footer-column ul li a {
+                font-size: 0.85rem;
+            }
+
+            .social-links {
+                gap: 12px;
+                margin-top: 15px;
+            }
+
+            .social-links a {
+                font-size: 1rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.8rem;
+                padding-top: 20px;
+            }
+        }
+
+        /* Small Mobile Devices (375px and below) */
+        @media (max-width: 375px) {
+            .contact-hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .contact-hero p {
+                font-size: 0.9rem;
+            }
+
+            .info-card {
+                padding: 18px;
+            }
+
+            .info-card-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+
+            .info-card h3 {
+                font-size: 0.95rem;
+            }
+
+            .info-card p {
+                font-size: 0.85rem;
+            }
+
+            .contact-form-wrapper {
+                padding: 18px;
+            }
+
+            .contact-form-wrapper h2 {
+                font-size: 1.25rem;
+                margin-bottom: 18px;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+
+            .form-group select {
+                padding: 10px 38px 10px 12px;
+            }
+
+            .form-group textarea {
+                min-height: 110px;
+            }
+
+            .form-submit {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Landscape Orientation for Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .contact-hero {
+                padding: 100px 0 40px;
+            }
+
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                gap: 30px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .menu-toggle,
+            .mobile-nav,
+            .contact-form-wrapper {
+                display: none;
+            }
+
+            .contact-hero {
+                padding: 20px 0;
+            }
+
+            .contact-hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .contact-section {
+                padding: 20px 0;
+            }
+
+            .info-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
     </style>
 @endsection
 
@@ -596,7 +1052,7 @@
                 </div>
 
                 <div class="contact-form-wrapper">
-                    <h2 style="font-size: 2rem; margin-bottom: 30px; color: var(--text-main);">Send us a Message</h2>
+                    <h2 style="margin-bottom: 30px; color: var(--text-main);">Send us a Message</h2>
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Full Name</label>

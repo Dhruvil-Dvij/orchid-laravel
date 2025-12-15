@@ -1776,3 +1776,171 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 1rem;
     }
 }
+@media (max-width: 768px) {
+    .edit-return-cycles, .edit-crypto-currency {
+        gap: 10px;
+    }
+    .activity-history-btn{
+        margin-bottom: 10px;
+    }
+}
+
+/* Table Responsive Styles - Maintain Desktop Appearance on All Screens */
+@media (max-width: 1920px) {
+    .crypto-baskets-tabel {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .crypto-baskets-tabel .table {
+        width: 100%;
+        min-width: 100%;
+        table-layout: auto;
+    }
+
+    .crypto-baskets-tabel .table thead tr th,
+    .crypto-baskets-tabel .table tbody tr td {
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+    }
+
+    .crypto-baskets-tabel .table tbody tr td:not(:last-child) {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 1536px) {
+    .crypto-baskets-tabel {
+        overflow-x: auto;
+    }
+
+    .crypto-baskets-tabel .table {
+        min-width: max-content;
+    }
+
+    .crypto-baskets-tabel .table thead tr th,
+    .crypto-baskets-tabel .table tbody tr td {
+        white-space: nowrap;
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .crypto-baskets-tabel {
+        overflow-x: auto;
+        display: block;
+    }
+
+    .crypto-baskets-tabel .table {
+        min-width: 100%;
+        display: table;
+    }
+
+    .crypto-baskets-tabel .table thead tr th,
+    .crypto-baskets-tabel .table tbody tr td {
+        white-space: nowrap;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .crypto-baskets-tabel {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .crypto-baskets-tabel .table thead tr th,
+    .crypto-baskets-tabel .table tbody tr td {
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+        padding: 0.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .crypto-baskets-tabel {
+        overflow-x: auto;
+        display: block;
+        width: 100%;
+    }
+
+    .crypto-baskets-tabel .table thead tr th,
+    .crypto-baskets-tabel .table tbody tr td {
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+        padding: 0.65rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .crypto-baskets-tabel {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        display: block;
+    }
+
+    .crypto-baskets-tabel .table {
+        min-width: max-content;
+        display: table;
+    }
+
+    .crypto-baskets-tabel .table thead tr th,
+    .crypto-baskets-tabel .table tbody tr td {
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+        padding: 0.6rem;
+        font-size: 0.85rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .crypto-baskets-tabel {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        display: block;
+        margin: 0 -0.5rem;
+    }
+
+    .crypto-baskets-tabel .table {
+        min-width: max-content;
+        display: table;
+    }
+
+    .crypto-baskets-tabel .table thead tr th,
+    .crypto-baskets-tabel .table tbody tr td {
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+        padding: 0.55rem;
+        font-size: 0.8rem;
+    }
+
+}
+
+@media (max-width: 375px) {
+    .crypto-baskets-tabel {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        display: block;
+    }
+
+    .crypto-baskets-tabel .table {
+        min-width: max-content;
+        display: table;
+    }
+
+    .crypto-baskets-tabel .table thead tr th,
+    .crypto-baskets-tabel .table tbody tr td {
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+}

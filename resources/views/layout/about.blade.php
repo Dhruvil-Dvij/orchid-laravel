@@ -587,6 +587,585 @@
                 font-size: 2.2rem;
             }
         }
+
+        /* ============================================
+           COMPREHENSIVE RESPONSIVE MEDIA QUERIES
+           ============================================ */
+
+        /* Large Tablets and Small Desktops (1024px and below) */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .about-hero {
+                padding: 130px 0 0px;
+            }
+
+            .about-hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .about-hero p {
+                font-size: 1.15rem;
+            }
+
+            .stats-section {
+                padding: 60px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .stat-item {
+                padding: 30px 25px;
+            }
+
+            .stat-value {
+                font-size: 2.5rem;
+            }
+
+            .content-section {
+                padding: 50px 0;
+            }
+
+            .section-header {
+                margin-bottom: 50px;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            .mission-grid {
+                gap: 25px;
+                margin-top: 50px;
+            }
+
+            .mission-card {
+                padding: 35px;
+            }
+
+            .mission-card-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.4rem;
+            }
+
+            .mission-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .ecosystem-grid {
+                gap: 20px;
+                margin-top: 50px;
+            }
+
+            .ecosystem-item {
+                padding: 25px;
+            }
+
+            .ecosystem-item h4 {
+                font-size: 1.1rem;
+            }
+
+            .team-grid {
+                gap: 30px;
+                margin-top: 50px;
+            }
+
+            .team-card {
+                padding: 35px;
+            }
+
+            .team-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+
+            .team-card h3 {
+                font-size: 1.4rem;
+            }
+
+            footer {
+                padding: 60px 0 35px;
+            }
+
+            .footer-grid {
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+        }
+
+        /* Tablets (768px and below) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .about-hero {
+                padding: 120px 0 0px;
+            }
+
+            .about-hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+                margin-bottom: 1.25rem;
+            }
+
+            .about-hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .stats-section {
+                padding: 50px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .stat-item {
+                padding: 25px 20px;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+                margin-bottom: 8px;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+            }
+
+            .content-section {
+                padding: 40px 0;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .section-header p {
+                font-size: 0.95rem;
+            }
+
+            .mission-grid {
+                gap: 20px;
+                margin-top: 40px;
+            }
+
+            .mission-card {
+                padding: 30px;
+            }
+
+            .mission-card-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+                margin-bottom: 18px;
+            }
+
+            .mission-card h3 {
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+            }
+
+            .mission-card p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .ecosystem-grid {
+                gap: 18px;
+                margin-top: 40px;
+            }
+
+            .ecosystem-item {
+                padding: 22px;
+            }
+
+            .ecosystem-item h4 {
+                font-size: 1.05rem;
+                margin-bottom: 8px;
+            }
+
+            .ecosystem-item p {
+                font-size: 0.9rem;
+            }
+
+            .team-grid {
+                gap: 30px;
+                margin-top: 40px;
+            }
+
+            .team-card {
+                padding: 30px;
+            }
+
+            .team-avatar {
+                width: 90px;
+                height: 90px;
+                font-size: 2.25rem;
+                margin-bottom: 18px;
+            }
+
+            .team-card h3 {
+                font-size: 1.3rem;
+                margin-bottom: 6px;
+            }
+
+            .team-card .role {
+                font-size: 0.95rem;
+                margin-bottom: 12px;
+            }
+
+            .team-card p {
+                font-size: 0.95rem;
+            }
+
+            footer {
+                padding: 50px 0 30px;
+            }
+
+            .footer-grid {
+                gap: 30px;
+                margin-bottom: 35px;
+            }
+
+            .social-links {
+                gap: 15px;
+                margin-top: 18px;
+            }
+
+            .footer-bottom {
+                padding-top: 25px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Mobile Devices (480px and below) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            header {
+                padding: 15px 0;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+
+            .about-hero {
+                padding: 110px 0 0px;
+            }
+
+            .about-hero h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .about-hero p {
+                font-size: 0.95rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .stats-section {
+                padding: 40px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .stat-item {
+                padding: 25px 20px;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+            }
+
+            .content-section {
+                padding: 35px 0;
+            }
+
+            .section-header {
+                margin-bottom: 30px;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .section-header p {
+                font-size: 0.9rem;
+            }
+
+            .mission-grid {
+                gap: 18px;
+                margin-top: 30px;
+            }
+
+            .mission-card {
+                padding: 25px;
+                border-radius: 16px;
+            }
+
+            .mission-card-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+                border-radius: 10px;
+            }
+
+            .mission-card h3 {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+
+            .mission-card p {
+                font-size: 0.9rem;
+            }
+
+            .ecosystem-grid {
+                gap: 15px;
+                margin-top: 30px;
+            }
+
+            .ecosystem-item {
+                padding: 20px;
+                border-radius: 14px;
+            }
+
+            .ecosystem-item h4 {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+
+            .ecosystem-item p {
+                font-size: 0.85rem;
+            }
+
+            .team-grid {
+                gap: 25px;
+                margin-top: 30px;
+            }
+
+            .team-card {
+                padding: 25px;
+                border-radius: 16px;
+            }
+
+            .team-avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+
+            .team-card h3 {
+                font-size: 1.2rem;
+                margin-bottom: 5px;
+            }
+
+            .team-card .role {
+                font-size: 0.9rem;
+                margin-bottom: 10px;
+            }
+
+            .team-card p {
+                font-size: 0.9rem;
+            }
+
+            footer {
+                padding: 40px 0 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-bottom: 30px;
+            }
+
+            .footer-logo {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+            }
+
+            .footer-logo img {
+                height: 32px;
+            }
+
+            .footer-column h4 {
+                font-size: 0.95rem;
+                margin-bottom: 15px;
+            }
+
+            .footer-column ul li {
+                margin-bottom: 8px;
+            }
+
+            .footer-column ul li a {
+                font-size: 0.85rem;
+            }
+
+            .social-links {
+                gap: 12px;
+                margin-top: 15px;
+            }
+
+            .social-links a {
+                font-size: 1rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.8rem;
+                padding-top: 20px;
+            }
+        }
+
+        /* Small Mobile Devices (375px and below) */
+        @media (max-width: 375px) {
+            .about-hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .about-hero p {
+                font-size: 0.9rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .stat-value {
+                font-size: 1.75rem;
+            }
+
+            .mission-card {
+                padding: 20px;
+            }
+
+            .mission-card-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .mission-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .mission-card p {
+                font-size: 0.85rem;
+            }
+
+            .ecosystem-item {
+                padding: 18px;
+            }
+
+            .ecosystem-item h4 {
+                font-size: 0.95rem;
+            }
+
+            .ecosystem-item p {
+                font-size: 0.8rem;
+            }
+
+            .team-card {
+                padding: 20px;
+            }
+
+            .team-avatar {
+                width: 70px;
+                height: 70px;
+                font-size: 1.75rem;
+            }
+
+            .team-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .team-card .role {
+                font-size: 0.85rem;
+            }
+
+            .team-card p {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Landscape Orientation for Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .about-hero {
+                padding: 100px 0 0px;
+            }
+
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mission-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ecosystem-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .menu-toggle,
+            .mobile-nav {
+                display: none;
+            }
+
+            .about-hero {
+                padding: 20px 0;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .stats-section,
+            .content-section {
+                padding: 20px 0;
+            }
+        }
     </style>
 @endsection
 

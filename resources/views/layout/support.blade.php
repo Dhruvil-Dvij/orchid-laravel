@@ -255,7 +255,7 @@
             font-size: 1.25rem;
             color: var(--text-muted);
             max-width: 700px;
-            margin: 0 auto 40px;
+            margin: 0 auto 0px;
             line-height: 1.6;
         }
 
@@ -734,6 +734,681 @@
 
             .section-header h2 {
                 font-size: 2rem;
+            }
+        }
+
+        /* ============================================
+           COMPREHENSIVE RESPONSIVE MEDIA QUERIES
+           ============================================ */
+
+        /* Large Tablets and Small Desktops (1024px and below) */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .support-hero {
+                padding: 140px 0 18px;
+            }
+
+            .support-hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .support-hero p {
+                font-size: 1.15rem;
+            }
+
+            .search-container {
+                max-width: 650px;
+            }
+
+            .search-box {
+                padding: 16px 55px 16px 22px;
+                font-size: 0.95rem;
+            }
+
+            .quick-links {
+                padding: 50px 0;
+            }
+
+            .quick-links-grid {
+                gap: 22px;
+            }
+
+            .quick-link-card {
+                padding: 27px;
+            }
+
+            .quick-link-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.4rem;
+            }
+
+            .quick-link-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .faq-section {
+                padding: 50px 0;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .faq-category {
+                padding: 27px;
+            }
+
+            .faq-category h3 {
+                font-size: 1.3rem;
+            }
+
+            .announcements {
+                padding: 50px 0;
+            }
+
+            .announcement-card {
+                padding: 22px;
+            }
+
+            .contact-support {
+                padding: 50px 0;
+            }
+
+            .contact-option {
+                padding: 35px;
+            }
+
+            .contact-icon {
+                width: 65px;
+                height: 65px;
+                font-size: 1.9rem;
+            }
+
+            footer {
+                padding: 60px 0 35px;
+            }
+
+            .footer-grid {
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+        }
+
+        /* Tablets (768px and below) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            header {
+                padding: 15px 0;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .logo img {
+                height: 36px;
+            }
+
+            .support-hero {
+                padding: 130px 0 15px;
+            }
+
+            .support-hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+                margin-bottom: 1.25rem;
+            }
+
+            .support-hero p {
+                font-size: 1rem;
+            }
+
+            .search-container {
+                max-width: 100%;
+            }
+
+            .search-box {
+                padding: 15px 50px 15px 20px;
+                font-size: 0.95rem;
+            }
+
+            .search-icon {
+                right: 20px;
+                font-size: 1.1rem;
+            }
+
+            .quick-links {
+                padding: 40px 0;
+            }
+
+            .quick-links-grid {
+                gap: 20px;
+            }
+
+            .quick-link-card {
+                padding: 25px;
+                border-radius: 14px;
+            }
+
+            .quick-link-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+                margin-bottom: 18px;
+            }
+
+            .quick-link-card h3 {
+                font-size: 1.05rem;
+                margin-bottom: 8px;
+            }
+
+            .quick-link-card p {
+                font-size: 0.9rem;
+            }
+
+            .faq-section {
+                padding: 40px 0;
+            }
+
+            .section-header {
+                margin-bottom: 35px;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            .faq-categories {
+                gap: 25px;
+            }
+
+            .faq-category {
+                padding: 25px;
+                border-radius: 18px;
+            }
+
+            .faq-category h3 {
+                font-size: 1.2rem;
+                margin-bottom: 18px;
+            }
+
+            .faq-item {
+                margin-bottom: 12px;
+            }
+
+            .faq-item a {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            .faq-modal-content {
+                padding: 2rem;
+                max-width: 90%;
+            }
+
+            .faq-modal-question {
+                font-size: 1.3rem;
+                padding-right: 2.5rem;
+            }
+
+            .faq-modal-answer {
+                font-size: 0.95rem;
+            }
+
+            .announcements {
+                padding: 40px 0;
+            }
+
+            .announcement-card {
+                padding: 20px;
+            }
+
+            .announcement-date {
+                font-size: 0.85rem;
+            }
+
+            .announcement-card h4 {
+                font-size: 1.05rem;
+            }
+
+            .announcement-card p {
+                font-size: 0.9rem;
+            }
+
+            .contact-support {
+                padding: 40px 0;
+            }
+
+            .contact-option {
+                padding: 30px;
+            }
+
+            .contact-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.75rem;
+                margin-bottom: 18px;
+            }
+
+            .contact-option h3 {
+                font-size: 1.2rem;
+                margin-bottom: 12px;
+            }
+
+            .contact-option p {
+                font-size: 0.95rem;
+                margin-bottom: 18px;
+            }
+
+            footer {
+                padding: 50px 0 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+                margin-bottom: 35px;
+            }
+
+            .social-links {
+                gap: 15px;
+                margin-top: 18px;
+            }
+
+            .footer-bottom {
+                padding-top: 25px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Mobile Devices (480px and below) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            header {
+                padding: 12px 0;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+
+            .support-hero {
+                padding: 110px 0 12px;
+            }
+
+            .support-hero h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .support-hero p {
+                font-size: 0.95rem;
+            }
+
+            .search-box {
+                padding: 13px 45px 13px 18px;
+                font-size: 0.9rem;
+                border-radius: 10px;
+            }
+
+            .search-icon {
+                right: 18px;
+                font-size: 1rem;
+            }
+
+            .quick-links {
+                padding: 35px 0;
+            }
+
+            .quick-links-grid {
+                gap: 18px;
+            }
+
+            .quick-link-card {
+                padding: 20px;
+                border-radius: 12px;
+            }
+
+            .quick-link-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+                border-radius: 10px;
+            }
+
+            .quick-link-card h3 {
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+
+            .quick-link-card p {
+                font-size: 0.85rem;
+            }
+
+            .faq-section {
+                padding: 35px 0;
+            }
+
+            .section-header {
+                margin-bottom: 30px;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .section-header p {
+                font-size: 0.95rem;
+            }
+
+            .faq-categories {
+                gap: 20px;
+            }
+
+            .faq-category {
+                padding: 20px;
+                border-radius: 14px;
+            }
+
+            .faq-category h3 {
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+            }
+
+            .faq-item {
+                margin-bottom: 10px;
+            }
+
+            .faq-item a {
+                padding: 10px 8px;
+                font-size: 0.85rem;
+                gap: 8px;
+            }
+
+            .faq-item i {
+                font-size: 0.75rem;
+            }
+
+            .faq-modal-content {
+                padding: 1.5rem;
+                max-width: 95%;
+                border-radius: 16px;
+            }
+
+            .faq-modal-close {
+                top: 1rem;
+                right: 1rem;
+                width: 35px;
+                height: 35px;
+                font-size: 1.3rem;
+            }
+
+            .faq-modal-question {
+                font-size: 1.1rem;
+                margin-bottom: 1.25rem;
+                padding-right: 2.5rem;
+            }
+
+            .faq-modal-answer {
+                font-size: 0.9rem;
+                line-height: 1.7;
+            }
+
+            .announcements {
+                padding: 35px 0;
+            }
+
+            .announcement-card {
+                padding: 18px;
+                border-radius: 10px;
+            }
+
+            .announcement-date {
+                font-size: 0.8rem;
+                margin-bottom: 6px;
+            }
+
+            .announcement-card h4 {
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+
+            .announcement-card p {
+                font-size: 0.85rem;
+            }
+
+            .contact-support {
+                padding: 35px 0;
+            }
+
+            .contact-option {
+                padding: 25px;
+                border-radius: 16px;
+            }
+
+            .contact-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+                margin-bottom: 15px;
+            }
+
+            .contact-option h3 {
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+
+            .contact-option p {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+
+            .contact-option .btn {
+                padding: 11px 24px;
+                font-size: 0.9rem;
+            }
+
+            footer {
+                padding: 40px 0 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-bottom: 30px;
+            }
+
+            .footer-logo {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+            }
+
+            .footer-logo img {
+                height: 32px;
+            }
+
+            .footer-column h4 {
+                font-size: 0.95rem;
+                margin-bottom: 15px;
+            }
+
+            .footer-column ul li {
+                margin-bottom: 8px;
+            }
+
+            .footer-column ul li a {
+                font-size: 0.85rem;
+            }
+
+            .social-links {
+                gap: 12px;
+                margin-top: 15px;
+            }
+
+            .social-links a {
+                font-size: 1rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.8rem;
+                padding-top: 20px;
+            }
+        }
+
+        /* Small Mobile Devices (375px and below) */
+        @media (max-width: 375px) {
+            .support-hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .support-hero p {
+                font-size: 0.9rem;
+            }
+
+            .search-box {
+                padding: 12px 42px 12px 16px;
+                font-size: 0.85rem;
+            }
+
+            .quick-link-card {
+                padding: 18px;
+            }
+
+            .quick-link-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 1.1rem;
+            }
+
+            .quick-link-card h3 {
+                font-size: 0.95rem;
+            }
+
+            .quick-link-card p {
+                font-size: 0.8rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .faq-category {
+                padding: 18px;
+            }
+
+            .faq-category h3 {
+                font-size: 1rem;
+            }
+
+            .faq-item a {
+                font-size: 0.8rem;
+            }
+
+            .faq-modal-content {
+                padding: 1.25rem;
+            }
+
+            .faq-modal-question {
+                font-size: 1rem;
+            }
+
+            .faq-modal-answer {
+                font-size: 0.85rem;
+            }
+
+            .announcement-card {
+                padding: 16px;
+            }
+
+            .contact-option {
+                padding: 20px;
+            }
+
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .contact-option h3 {
+                font-size: 1rem;
+            }
+        }
+
+        /* Landscape Orientation for Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .support-hero {
+                padding: 100px 0 12px;
+            }
+
+            .support-hero h1 {
+                font-size: 2rem;
+            }
+
+            .quick-links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faq-categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .menu-toggle,
+            .mobile-nav,
+            .search-container,
+            .faq-modal {
+                display: none;
+            }
+
+            .support-hero {
+                padding: 20px 0;
+            }
+
+            .support-hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .quick-links,
+            .faq-section,
+            .announcements,
+            .contact-support {
+                padding: 20px 0;
+            }
+
+            .quick-link-card,
+            .faq-category,
+            .announcement-card,
+            .contact-option {
+                break-inside: avoid;
+                page-break-inside: avoid;
             }
         }
     </style>

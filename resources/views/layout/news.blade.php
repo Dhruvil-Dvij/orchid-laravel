@@ -677,12 +677,449 @@
     }
 
     .news-footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
     }
 }
 
+        /* ============================================
+           COMPREHENSIVE RESPONSIVE MEDIA QUERIES
+           ============================================ */
+
+        /* Large Tablets and Small Desktops (1024px and below) */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .faq-section-container {
+                padding: 110px 0 70px;
+            }
+
+            .faq-section {
+                padding: 0 20px;
+            }
+
+            .faq-section h2 {
+                font-size: 3rem;
+                margin-bottom: 2rem;
+            }
+
+            .news-grid {
+                gap: 28px;
+                margin-top: 1.75rem;
+            }
+
+            .news-card {
+                border-radius: 20px;
+            }
+
+            .news-image {
+                height: 180px;
+            }
+
+            .news-content {
+                padding: 20px;
+            }
+
+            .news-title {
+                font-size: 1.2rem;
+            }
+
+            footer {
+                padding: 60px 0 35px;
+            }
+
+            .footer-grid {
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+        }
+
+        /* Tablets (768px and below) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            header {
+                padding: 15px 0;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .logo img {
+                height: 36px;
+            }
+
+            .faq-section-container {
+                padding: 100px 0 60px;
+                min-height: auto;
+            }
+
+            .faq-section {
+                padding: 0 16px;
+            }
+
+            .faq-section h2 {
+                font-size: 2.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .faq-header {
+                padding: 16px 20px;
+                font-size: 1rem;
+            }
+
+            .faq-title {
+                font-size: 0.95rem;
+            }
+
+            .faq-icon {
+                font-size: 1.3rem;
+            }
+
+            .faq-content {
+                padding: 0 20px;
+                font-size: 0.95rem;
+            }
+
+            .faq-item.active .faq-content {
+                padding: 12px 20px 16px;
+                max-height: 400px;
+            }
+
+            .news-grid {
+                gap: 20px;
+                margin-top: 1.5rem;
+            }
+
+            .news-card {
+                border-radius: 18px;
+            }
+
+            .news-image {
+                height: 170px;
+            }
+
+            .news-tag {
+                left: 12px;
+                top: 12px;
+                padding: 5px 12px;
+                font-size: 0.7rem;
+            }
+
+            .news-content {
+                padding: 18px;
+                gap: 10px;
+            }
+
+            .news-meta {
+                font-size: 0.75rem;
+            }
+
+            .news-title {
+                font-size: 1.1rem;
+            }
+
+            .news-excerpt {
+                font-size: 0.9rem;
+            }
+
+            .news-footer {
+                font-size: 0.8rem;
+            }
+
+            footer {
+                padding: 50px 0 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+                margin-bottom: 35px;
+            }
+
+            .social-links {
+                gap: 15px;
+                margin-top: 18px;
+            }
+
+            .footer-bottom {
+                padding-top: 25px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Mobile Devices (480px and below) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            header {
+                padding: 12px 0;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+
+            .faq-section-container {
+                padding: 90px 0 50px;
+            }
+
+            .faq-section {
+                padding: 0 12px;
+            }
+
+            .faq-section h2 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+                line-height: 1.2;
+            }
+
+            .faq-item {
+                margin-bottom: 0.75rem;
+                border-radius: 10px;
+            }
+
+            .faq-header {
+                padding: 14px 16px;
+                font-size: 0.9rem;
+                gap: 0.75rem;
+            }
+
+            .faq-number {
+                width: 28px;
+                height: 28px;
+                font-size: 0.85rem;
+            }
+
+            .faq-title {
+                font-size: 0.85rem;
+            }
+
+            .faq-icon {
+                font-size: 1.2rem;
+            }
+
+            .faq-content {
+                padding: 0 16px;
+                font-size: 0.85rem;
+            }
+
+            .faq-item.active .faq-content {
+                padding: 12px 16px 14px;
+                max-height: 500px;
+            }
+
+            .news-grid {
+                gap: 16px;
+                margin-top: 1.25rem;
+            }
+
+            .news-card {
+                border-radius: 16px;
+            }
+
+            .news-image {
+                height: 160px;
+            }
+
+            .news-tag {
+                left: 10px;
+                top: 10px;
+                padding: 4px 10px;
+                font-size: 0.65rem;
+            }
+
+            .news-content {
+                padding: 16px;
+                gap: 10px;
+            }
+
+            .news-meta {
+                font-size: 0.7rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+
+            .news-title {
+                font-size: 1rem;
+                line-height: 1.3;
+            }
+
+            .news-excerpt {
+                font-size: 0.85rem;
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
+            }
+
+            .news-footer {
+                font-size: 0.75rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding-top: 6px;
+            }
+
+            .news-footer .read-more {
+                font-size: 0.75rem;
+            }
+
+            .news-footer .read-more i {
+                font-size: 0.7rem;
+            }
+
+            footer {
+                padding: 40px 0 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-bottom: 30px;
+            }
+
+            .footer-logo {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+            }
+
+            .footer-logo img {
+                height: 32px;
+            }
+
+            .footer-column h4 {
+                font-size: 0.95rem;
+                margin-bottom: 15px;
+            }
+
+            .footer-column ul li {
+                margin-bottom: 8px;
+            }
+
+            .footer-column ul li a {
+                font-size: 0.85rem;
+            }
+
+            .social-links {
+                gap: 12px;
+                margin-top: 15px;
+            }
+
+            .social-links a {
+                font-size: 1rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.8rem;
+                padding-top: 20px;
+            }
+        }
+
+        /* Small Mobile Devices (375px and below) */
+        @media (max-width: 375px) {
+            .faq-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .faq-header {
+                padding: 12px 14px;
+                font-size: 0.85rem;
+            }
+
+            .faq-number {
+                width: 24px;
+                height: 24px;
+                font-size: 0.75rem;
+            }
+
+            .faq-title {
+                font-size: 0.8rem;
+            }
+
+            .faq-content {
+                font-size: 0.8rem;
+            }
+
+            .news-grid {
+                gap: 14px;
+            }
+
+            .news-image {
+                height: 150px;
+            }
+
+            .news-content {
+                padding: 14px;
+            }
+
+            .news-title {
+                font-size: 0.95rem;
+            }
+
+            .news-excerpt {
+                font-size: 0.8rem;
+            }
+
+            .news-footer {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Landscape Orientation for Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .faq-section-container {
+                padding: 80px 0 50px;
+            }
+
+            .faq-section h2 {
+                font-size: 2rem;
+            }
+
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .menu-toggle,
+            .mobile-nav,
+            .news-footer .read-more {
+                display: none;
+            }
+
+            .faq-section-container {
+                padding: 20px 0;
+                min-height: auto;
+            }
+
+            .faq-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .news-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
     </style>
 @endsection
 

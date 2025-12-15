@@ -42,7 +42,7 @@
 
     function createCycleRow(cycle = { months: '', return_percentage: '' }) {
         const container = document.createElement('div');
-        container.className = 'row mb-2 align-items-end return-cycle-row';
+        container.className = 'row mb-2 align-items-end return-cycle-row edit-return-cycles ';
 
         // container.innerHTML = `
         //     <div class="col-md-5">

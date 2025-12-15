@@ -504,6 +504,344 @@
                 font-size: 2.8rem;
             }
         }
+
+        /* ============================================
+           COMPREHENSIVE RESPONSIVE MEDIA QUERIES
+           ============================================ */
+
+        /* Large Tablets and Small Desktops (1024px and below) */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .faq-section-container {
+                padding: 110px 0 70px;
+            }
+
+            .faq-section {
+                padding: 0 20px;
+            }
+
+            .faq-section h2 {
+                font-size: 3rem;
+                margin-bottom: 2rem;
+            }
+
+            .faq-item {
+                margin-bottom: 0.875rem;
+            }
+
+            .faq-header {
+                padding: 16px 20px;
+                font-size: 1.05rem;
+            }
+
+            .faq-content {
+                padding: 0 20px;
+            }
+
+            .faq-item.active .faq-content {
+                padding: 12px 20px 16px;
+                max-height: 350px;
+            }
+
+            footer {
+                padding: 60px 0 35px;
+            }
+
+            .footer-grid {
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+        }
+
+        /* Tablets (768px and below) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            header {
+                padding: 15px 0;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .logo img {
+                height: 36px;
+            }
+
+            .faq-section-container {
+                padding: 100px 0 60px;
+                min-height: auto;
+            }
+
+            .faq-section {
+                padding: 0 16px;
+                width: 100%;
+            }
+
+            .faq-section h2 {
+                font-size: 2.5rem;
+                margin-bottom: 2rem;
+                line-height: 1.2;
+            }
+
+            .faq-item {
+                margin-bottom: 0.75rem;
+                border-radius: 10px;
+            }
+
+            .faq-header {
+                padding: 15px 18px;
+                font-size: 1rem;
+                gap: 0.875rem;
+            }
+
+            .faq-number {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+
+            .faq-title {
+                font-size: 0.95rem;
+            }
+
+            .faq-icon {
+                font-size: 1.3rem;
+            }
+
+            .faq-content {
+                padding: 0 18px;
+                font-size: 0.95rem;
+            }
+
+            .faq-item.active .faq-content {
+                padding: 12px 18px 16px;
+                max-height: 400px;
+            }
+
+            footer {
+                padding: 50px 0 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+                margin-bottom: 35px;
+            }
+
+            .social-links {
+                gap: 15px;
+                margin-top: 18px;
+            }
+
+            .footer-bottom {
+                padding-top: 25px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Mobile Devices (480px and below) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            header {
+                padding: 12px 0;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+
+            .faq-section-container {
+                padding: 90px 0 50px;
+            }
+
+            .faq-section {
+                padding: 0 12px;
+            }
+
+            .faq-section h2 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+                line-height: 1.2;
+            }
+
+            .faq-item {
+                margin-bottom: 0.625rem;
+                border-radius: 10px;
+            }
+
+            .faq-header {
+                padding: 14px 16px;
+                font-size: 0.9rem;
+                gap: 0.75rem;
+            }
+
+            .faq-number {
+                width: 28px;
+                height: 28px;
+                font-size: 0.85rem;
+                border-radius: 5px;
+            }
+
+            .faq-title {
+                font-size: 0.85rem;
+            }
+
+            .faq-icon {
+                font-size: 1.2rem;
+            }
+
+            .faq-content {
+                padding: 0 16px;
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+
+            .faq-item.active .faq-content {
+                padding: 12px 16px 14px;
+                max-height: 500px;
+            }
+
+            footer {
+                padding: 40px 0 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-bottom: 30px;
+            }
+
+            .footer-logo {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+            }
+
+            .footer-logo img {
+                height: 32px;
+            }
+
+            .footer-column h4 {
+                font-size: 0.95rem;
+                margin-bottom: 15px;
+            }
+
+            .footer-column ul li {
+                margin-bottom: 8px;
+            }
+
+            .footer-column ul li a {
+                font-size: 0.85rem;
+            }
+
+            .social-links {
+                gap: 12px;
+                margin-top: 15px;
+            }
+
+            .social-links a {
+                font-size: 1rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.8rem;
+                padding-top: 20px;
+            }
+        }
+
+        /* Small Mobile Devices (375px and below) */
+        @media (max-width: 375px) {
+            .faq-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .faq-header {
+                padding: 12px 14px;
+                font-size: 0.85rem;
+                gap: 0.625rem;
+            }
+
+            .faq-number {
+                width: 24px;
+                height: 24px;
+                font-size: 0.75rem;
+            }
+
+            .faq-title {
+                font-size: 0.8rem;
+            }
+
+            .faq-icon {
+                font-size: 1.1rem;
+            }
+
+            .faq-content {
+                padding: 0 14px;
+                font-size: 0.8rem;
+            }
+
+            .faq-item.active .faq-content {
+                padding: 10px 14px 12px;
+                max-height: 600px;
+            }
+        }
+
+        /* Landscape Orientation for Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .faq-section-container {
+                padding: 80px 0 50px;
+            }
+
+            .faq-section h2 {
+                font-size: 2rem;
+            }
+
+            .faq-item.active .faq-content {
+                max-height: 300px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .menu-toggle,
+            .mobile-nav {
+                display: none;
+            }
+
+            .faq-section-container {
+                padding: 20px 0;
+                min-height: auto;
+                background: transparent;
+            }
+
+            .faq-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .faq-item {
+                break-inside: avoid;
+                page-break-inside: avoid;
+                margin-bottom: 1rem;
+            }
+
+            .faq-item.active .faq-content {
+                max-height: none;
+                opacity: 1;
+            }
+        }
     </style>
 @endsection
 
