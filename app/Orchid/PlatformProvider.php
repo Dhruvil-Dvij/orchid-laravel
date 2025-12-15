@@ -76,6 +76,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->title('Funds')
                 ->route('platform.wallet'),
 
+            Menu::make(__('Add Fund'))
+                ->icon('bs.wallet2')
+                ->route('platform.funds.payment_details')
+                ->permission('platform.funds.payment_details'),
+
             Menu::make('Owned Baskets')
                 ->icon('bs.basket-fill')
                 ->route('platform.owned-baskets')
@@ -102,6 +107,40 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.user.contact.requests')
                 ->permission('platform.user.contact.requests'),
 
+
+            Menu::make(__('Customer Support'))
+                ->icon('bs.headset')
+                ->route('platform.customer.support')
+                ->permissions('platform.customer.support')
+                ->title('Contact Support'),
+
+            Menu::make(__('Support Request'))
+                ->icon('bs.envelope-paper')
+                ->route('platform.customer.support.list')
+                ->permission('platform.customer.support.list'),
+
+            Menu::make(__('Banks Details'))
+                ->icon('bs.bank')
+                ->route('platform.user.bank.list')
+                ->permission('platform.user.bank.list')
+                ->title("Account & Verification"),
+
+            Menu::make(__('KYC'))
+                ->icon('bs.shield-check')
+                ->route('platform.user.kyc.submit')
+                ->permission('platform.user.kyc.submit'),
+
+            
+
+            Menu::make(__('Markets'))
+                ->icon('bs.graph-up-arrow')
+                ->route('platform.markets')
+                ->title('Market & Insights'),
+            
+            Menu::make(__('News'))
+                ->icon('bs.newspaper')
+                ->route('platform.news'),
+            
             Menu::make(__('Users'))
                 ->icon('bs.people')
                 ->route('platform.systems.users')
@@ -149,7 +188,12 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.systems.settings', __('Referral Settings'))
                 ->addPermission('platform.systems.pending.requests', __('Pending Requests'))
                 ->addPermission('platform.user.kyc.requests', __('KYC Requests'))
-                ->addPermission('platform.user.contact.requests', __('Contact Requests')),
+                ->addPermission('platform.user.contact.requests', __('Contact Requests'))
+                ->addPermission('platform.customer.support', __('Customer Support'))
+                ->addPermission('platform.customer.support.list', __('Support Request'))
+                ->addPermission('platform.user.bank.list', __('Banks Details'))
+                ->addPermission('platform.funds.payment_details', __('Add Funds'))
+                ->addPermission('platform.user.kyc.submit', __('KYC Details')),
             ItemPermission::group(__('Funds'))
                 ->addPermission('platform.funds.wallet', __('Wallet'))
                 ->addPermission('platform.funds.edit', __('Wallet Transactions'))

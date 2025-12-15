@@ -2,11 +2,14 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\CustomerSupportController;
 use App\Orchid\Screens\Contact\ContactListScreen;
 use App\Orchid\Screens\User\ActivityHistoryScreen;
 use App\Orchid\Screens\CryptoBasket\CryptoBasketEditScreen;
 use App\Orchid\Screens\CryptoBasket\CryptoBasketListScreen;
 use App\Orchid\Screens\CryptoBasket\OwnedBasketScreen;
+use App\Orchid\Screens\CustomerSupport\SupportFormSubmitScreen;
+use App\Orchid\Screens\CustomerSupport\SupportListScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -21,6 +24,7 @@ use App\Orchid\Screens\Fund\PaymentDetailsScreen;
 use App\Orchid\Screens\Fund\TransactionEditScreen;
 use App\Orchid\Screens\Fund\UserBankDetailScreen;
 use App\Orchid\Screens\Fund\WithdrawRequestsScreen;
+use App\Orchid\Screens\Kyc\KycDetailsScreen;
 use App\Orchid\Screens\Kyc\KycSubmissionListScreen;
 use App\Orchid\Screens\PendingRequestScreen;
 use App\Orchid\Screens\PlatformScreen;
@@ -28,9 +32,11 @@ use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\Kyc\KycSubmissionScreen;
 use App\Orchid\Screens\Kyc\KycSubmissionViewScreen;
+use App\Orchid\Screens\User\UserBankEditScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
+use App\Orchid\Screens\User\UsersBankListScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -207,3 +213,33 @@ Route::screen('contacts', ContactListScreen::class)
     ->breadcrumbs(fn($trail) => $trail
         ->parent('platform.index')
         ->push(__('Contact Requests'), route('platform.user.contact.requests')));
+
+Route::screen('customer-support', SupportFormSubmitScreen::class)
+    ->name('platform.customer.support')
+    ->breadcrumbs(fn($trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Customer Support'), route('platform.customer.support')));
+
+Route::screen('support/list', SupportListScreen::class)
+    ->name('platform.customer.support.list')
+    ->breadcrumbs(fn($trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Support Request'), route('platform.customer.support.list')));
+
+Route::get('support/{support}/download', [CustomerSupportController::class, 'downloadAttachment'])
+    ->name('platform.support.download');
+
+Route::screen('bank-details', UsersBankListScreen::class)
+    ->name('platform.user.bank.list')
+    ->breadcrumbs(fn($trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Customer Support'), route('platform.user.bank.list')));
+
+Route::screen('kyc/bank/{kyc}/edit', UserBankEditScreen::class)
+    ->name('platform.kyc.bank.edit');
+
+Route::screen('kyc-details', KycDetailsScreen::class)
+    ->name('platform.user.kyc.submit')
+    ->breadcrumbs(fn($trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Kyc Details'), route('platform.user.kyc.submit')));

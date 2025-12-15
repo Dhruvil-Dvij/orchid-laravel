@@ -33,6 +33,7 @@ class RoleSeeder extends Seeder
                     'platform.user.contact.requests' => true,
                     'platform.funds.direct.add' => true,
                     'platform.fund.withdraw_requests' => true,
+                    'platform.customer.support' => true,
                 ]
             ],
             [
@@ -47,6 +48,8 @@ class RoleSeeder extends Seeder
                     'platform.funds.wallet' => true,
                     'platform.funds.edit' => false,
                     'platform.index' => true,
+                    'platform.customer.support' => true,
+
                 ]
             ],
         ];
