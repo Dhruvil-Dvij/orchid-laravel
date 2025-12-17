@@ -13,7 +13,8 @@ class KycSubmission extends Model
     protected $fillable = [
         'user_id',
         'pan_card_img',
-        'aadhar_card_img',
+        'aadhar_card_front_img',
+        'aadhar_card_back_img',
         'passport_img',
         'bank_book_img',
         'bank_account_holder',

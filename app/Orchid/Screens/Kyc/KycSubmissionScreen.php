@@ -72,7 +72,8 @@ class KycSubmissionScreen extends Screen
         // Validate the request data
         $request->validate([
             'kyc.pan_card_img'        => 'required|array|max:2048',
-            'kyc.aadhar_card_img'     => 'required|array|max:2048',
+            'kyc.aadhar_card_front_img'    => 'required|array|max:2048',
+            'kyc.aadhar_card_back_img'     => 'required|array|max:2048',
             'kyc.passport_img'        => 'nullable|array|max:2048',
             'kyc.bank_book_img'       => 'nullable|array|max:2048',
 
@@ -98,7 +99,8 @@ class KycSubmissionScreen extends Screen
 
         // fullpath of document files
         $panImg = $getPath($request->input('kyc.pan_card_img')[0] ?? null);
-        $aadharImg = $getPath($request->input('kyc.aadhar_card_img')[0] ?? null);
+        $aadharFrontImg = $getPath($request->input('kyc.aadhar_card_front_img')[0] ?? null);
+        $aadharBackImg = $getPath($request->input('kyc.aadhar_card_back_img')[0] ?? null);
         $passportImg = $getPath($request->input('kyc.passport_img')[0] ?? null);
         $bankBookImg = $getPath($request->input('kyc.bank_book_img')[0] ?? null);
 
@@ -107,7 +109,8 @@ class KycSubmissionScreen extends Screen
             ['user_id' => auth()->user()->id],
             [
                 'pan_card_img'      => $panImg,
-                'aadhar_card_img'   => $aadharImg,
+                'aadhar_card_front_img'  => $aadharFrontImg,
+                'aadhar_card_back_img'   => $aadharBackImg,
                 'passport_img'      => $passportImg,
                 'bank_book_img'     => $bankBookImg,
                 'bank_account_holder' => $request->input('kyc.bank_account_holder'),

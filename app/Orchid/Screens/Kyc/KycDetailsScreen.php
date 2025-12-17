@@ -8,9 +8,17 @@ use App\Orchid\Layouts\Kyc\KycSubmissionViewLayout;
 use Illuminate\Support\Facades\Auth;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
+use Orchid\Support\Facades\Toast;
 
 class KycDetailsScreen extends Screen
 {
+    public function mount(){
+        $kycData = KycSubmission::where('user_id', Auth::id())->first();
+        if(!$kycData) {
+            Toast::info('KYC not complete yet!');
+            return redirect()->back();
+        }
+    }
     /**
      * Fetch data to be displayed on the screen.
      *
@@ -18,9 +26,9 @@ class KycDetailsScreen extends Screen
      */
     public function query(): iterable
     {
-        $kycData = KycSubmission::findOrFail(Auth::id());
+        $kycData = KycSubmission::where('user_id', Auth::id())->first();
         return [
-            'kyc_data' => $kycData->toArray(),
+            'kyc_data' => $kycData,
         ];
     }
 

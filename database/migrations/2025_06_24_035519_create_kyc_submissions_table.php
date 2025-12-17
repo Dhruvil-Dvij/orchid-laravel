@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('pan_card_img')->nullable();
-            $table->string('aadhar_card_img')->nullable();
+            $table->string('aadhar_card_front_img')->nullable();
+            $table->string('aadhar_card_back_img')->nullable();
             $table->string('passport_img')->nullable();
             $table->string('bank_book_img')->nullable();
             $table->string('bank_account_holder')->nullable();

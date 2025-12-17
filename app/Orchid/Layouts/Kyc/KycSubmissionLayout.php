@@ -72,12 +72,20 @@ class KycSubmissionLayout extends Rows
 
             // Aadhar Card Image
             Group::make([
-                Upload::make('kyc.aadhar_card_img')
+                Upload::make('kyc.aadhar_card_front_img')
                     ->required()
-                    ->title(__('Aadhar Card Image'))
+                    ->title(__('Aadhar Card Image (Front side)'))
                     ->acceptedFiles('image/*')
                     ->maxFiles(1),
 
+                Upload::make('kyc.aadhar_card_back_img')
+                    ->required()
+                    ->title(__('Aadhar Card Image (Back side)'))
+                    ->acceptedFiles('image/*')
+                    ->maxFiles(1),
+            ]),
+
+            Group::make([
                 // Passport Size Image
                 Upload::make('kyc.passport_img')
                     ->required()
