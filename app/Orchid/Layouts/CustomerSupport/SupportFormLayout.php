@@ -51,6 +51,7 @@ class SupportFormLayout extends Rows
 
             Upload::make('attachment')
                 ->title('Attachment')
+                ->storage('orchid_public')
                 ->path('customer-support/' . now()->format('Y/m/d'))
                 ->maxFiles(1)
                 ->acceptedFiles('.jpg,.jpeg,.png,.pdf'),

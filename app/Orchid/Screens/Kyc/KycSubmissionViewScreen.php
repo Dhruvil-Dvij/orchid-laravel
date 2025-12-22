@@ -24,9 +24,24 @@ class KycSubmissionViewScreen extends Screen
      */
     public function query(Request $request, $id): iterable
     {
-        $kycData = KycSubmission::findOrFail($id);
+        $kycData = KycSubmission::findOrFail($id)->first();
+
+        $fields = [
+            'bank_book_img',
+            'pan_card_img',
+            'aadhar_card_front_img',
+            'aadhar_card_back_img',
+            'passport_img',
+        ];
+
+        foreach ($fields as $field) {
+            if (!empty($kycData->$field)) {
+                $kycData->$field = asset(ltrim($kycData->$field, '/'));
+            }
+        }
+        
         return [
-            'kyc_data' => $kycData->toArray(),
+            'kyc_data' => $kycData,
         ];
     }
 
@@ -61,7 +76,7 @@ class KycSubmissionViewScreen extends Screen
             Layout::block(KycSubmissionViewLayout::class)
                 ->title(__('Bank Information'))
                 ->description(__("Update your bank information.")),
-                
+
             Layout::block(KycSubmissionImgLayout::class)
                 ->title(__('KYC Documents'))
                 ->description(__("Uploaded KYC documents")),
@@ -91,7 +106,7 @@ class KycSubmissionViewScreen extends Screen
         $kycSubmission->update([
             'status' => $status,
         ]);
-        
+
         // change user's kyc_status
         $user = User::findOrFail($kycSubmission->user_id);
         $user->kyc_status = $status;

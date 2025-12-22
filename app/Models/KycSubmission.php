@@ -21,6 +21,8 @@ class KycSubmission extends Model
         'bank_account_number',
         'bank_ifsc',
         'bank_name',
+        'upi_id',
+        'qr_code_img',
         'status',
     ];
 

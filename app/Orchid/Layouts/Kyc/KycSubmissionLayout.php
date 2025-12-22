@@ -60,6 +60,8 @@ class KycSubmissionLayout extends Rows
                     ->required()
                     ->title(__('Bank Book Image'))
                     ->acceptedFiles('image/*')
+                    ->storage('orchid_public') // 👈 MUST MATCH config/filesystems.php
+                    ->path('kyc/document/' . now()->format('Y/m/d'))
                     ->maxFiles(1),
 
                 // PAN Card Image
@@ -67,6 +69,8 @@ class KycSubmissionLayout extends Rows
                     ->required()
                     ->title(__('PAN Card Image'))
                     ->acceptedFiles('image/*')
+                    ->storage('orchid_public') // 👈 MUST MATCH config/filesystems.php
+                    ->path('kyc/document/' . now()->format('Y/m/d'))
                     ->maxFiles(1),
             ]),
 
@@ -76,12 +80,16 @@ class KycSubmissionLayout extends Rows
                     ->required()
                     ->title(__('Aadhar Card Image (Front side)'))
                     ->acceptedFiles('image/*')
+                    ->storage('orchid_public') // 👈 MUST MATCH config/filesystems.php
+                    ->path('kyc/document/' . now()->format('Y/m/d'))
                     ->maxFiles(1),
 
                 Upload::make('kyc.aadhar_card_back_img')
                     ->required()
                     ->title(__('Aadhar Card Image (Back side)'))
                     ->acceptedFiles('image/*')
+                    ->storage('orchid_public') // 👈 MUST MATCH config/filesystems.php
+                    ->path('kyc/document/' . now()->format('Y/m/d'))
                     ->maxFiles(1),
             ]),
 
@@ -91,6 +99,8 @@ class KycSubmissionLayout extends Rows
                     ->required()
                     ->title(__('Passport Size Image'))
                     ->acceptedFiles('image/*')
+                    ->storage('orchid_public') // 👈 MUST MATCH config/filesystems.php
+                    ->path('kyc/document/' . now()->format('Y/m/d'))
                     ->maxFiles(1),
             ]),
         ];

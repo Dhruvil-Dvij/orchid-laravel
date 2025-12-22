@@ -2,6 +2,7 @@
 
 namespace App\Orchid\Screens\Fund;
 
+use App\Models\KycSubmission;
 use App\Models\WalletTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -23,13 +24,19 @@ class PaymentDetailsScreen extends Screen
      */
     public function query(): iterable
     {
+        $adminBankDetails = KycSubmission::whereHas('user.roles', function ($q) {
+            $q->where('slug', 'admin');
+        })->get(['bank_account_holder', 'bank_account_number', 'bank_ifsc', 'bank_name', 'upi_id', 'qr_code_img'])->toArray();
+
         return [
             'showSuccessModal' => session()->get('showSuccessModal', false),
             'payment_details' => (object) [
-                'bank_name' => 'XYZ Bank',
-                'account_number' => '1234567890',
-                'ifsc_code' => 'XYZ0000001',
-                'upi_id' => 'admin@upi',
+                'bank_account_holder' => $adminBankDetails[0]['bank_account_holder'] ?? '',
+                'bank_name' => $adminBankDetails[0]['bank_name'] ?? '' ,
+                'account_number' => $adminBankDetails[0]['bank_account_number'] ?? '',
+                'ifsc_code' => $adminBankDetails[0]['bank_ifsc'] ?? '',
+                'upi_id' => $adminBankDetails[0]['upi_id'] ?? '',
+                'qr_code_img' => $adminBankDetails[0]['qr_code_img'] ?? '',
             ],
         ];
     }
@@ -73,16 +80,16 @@ class PaymentDetailsScreen extends Screen
             // Layout::legend('payment_details', [
             //     Sight::make('description', '')
             //         ->render(fn () => '<p class="text-muted">Please transfer the amount to the following details:</p>'),
-                
+
             //     Sight::make('bank_name', 'Bank Name')
             //         ->render(fn ($payment) => $payment->bank_name),
-                
+
             //     Sight::make('account_number', 'Account Number')
             //         ->render(fn ($payment) => $payment->account_number),
-                
+
             //     Sight::make('ifsc_code', 'IFSC Code')
             //         ->render(fn ($payment) => $payment->ifsc_code),
-                
+
             //     Sight::make('upi_id', 'UPI ID')
             //         ->render(fn ($payment) => $payment->upi_id),
             // ])->title('Payment Details'),
@@ -108,7 +115,7 @@ class PaymentDetailsScreen extends Screen
             ]))->title('Confirm Payment')
                 ->applyButton('Submit'),
 
-            
+
             Layout::modal('successNoticeModal', [
                 Layout::view('orchid.funds.success_modal'),
             ])
@@ -122,7 +129,7 @@ class PaymentDetailsScreen extends Screen
 
     public function confirmPayment(Request $request)
     {
-        
+
         $request->validate([
             'amount' => 'required|numeric|min:1',
             'payment_screenshot' => 'required|array',

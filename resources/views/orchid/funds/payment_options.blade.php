@@ -115,7 +115,7 @@
                         <div class="upi-qr-content">
                             <div class="qr-code-container">
                                 <div class="qr-code-placeholder">
-                                    <img src="{{ asset('images/qr-code.png') }}" alt="UPI QR Code" class="qr-code-image">
+                                    <img src="{{ !empty($payment_details->qr_code_img) ? asset($payment_details->qr_code_img) : asset('images/qr-code.png') }}" alt="UPI QR Code" class="qr-code-image">
                                 </div>
                             </div>
                             <div class="upi-qr-info">
@@ -145,7 +145,7 @@
                         <h4 class="upi-id-title">UPI ID</h4>
                         <div class="upi-id-row">
                             <div class="upi-id-display">
-                                <span class="upi-id-value">patelkb89-2@okhdfcbank</span>
+                                <span class="upi-id-value">{{$payment_details->upi_id ?? ''}}</span>
                             </div>
                             <button class="upi-id-btn" type="button" id="copyUpiIdBtn">Copy UPI ID</button>
                         </div>
@@ -193,19 +193,19 @@
                             <div class="nb-account-card">
                                 <div class="nb-detail-row">
                                     <span class="nb-detail-label">Bank Name:</span>
-                                    <span class="nb-detail-value" id="bankName">IDBI Bank</span>
+                                    <span class="nb-detail-value" id="bankName">{{$payment_details->bank_name ?? '-'}}</span>
                                 </div>
                                 <div class="nb-detail-row">
                                     <span class="nb-detail-label">Account:</span>
-                                    <span class="nb-detail-value" id="accountNumber">0082104000310666</span>
+                                    <span class="nb-detail-value" id="accountNumber">{{$payment_details->account_number ?? '-'}}</span>
                                 </div>
                                 <div class="nb-detail-row">
                                     <span class="nb-detail-label">IFSC:</span>
-                                    <span class="nb-detail-value" id="ifscCode">IBKL0002303</span>
+                                    <span class="nb-detail-value" id="ifscCode">{{$payment_details->ifsc_code ?? '-'}}</span>
                                 </div>
                                 <div class="nb-detail-row">
                                     <span class="nb-detail-label">A/c Holder Name:</span>
-                                    <span class="nb-detail-value" id="accountHolderName">KETANKUMAR BHARATBHAI PATEL</span>
+                                    <span class="nb-detail-value" id="accountHolderName">{{$payment_details->bank_account_holder ?? '-'}}</span>
                                 </div>
                             </div>
                         </div>
@@ -266,7 +266,7 @@ document.addEventListener('turbo:load', () => {
     const copyUpiIdBtn = document.getElementById('copyUpiIdBtn');
     if (copyUpiIdBtn) {
         copyUpiIdBtn.addEventListener('click', function() {
-            const upiId = 'patelkb89-2@okhdfcbank';
+            const upiId = "{{$payment_details->upi_id ?? 'Coming soon'}}";
             const btn = this;
             const originalText = btn.textContent;
             const originalBg = btn.style.background;

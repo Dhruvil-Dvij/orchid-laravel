@@ -87,7 +87,7 @@ class SupportFormSubmitScreen extends Screen
 
             if ($attachment) {
                 // Example: customer-support/2025/12/13/file.pdf
-                $attachmentPath = $attachment->path . '/' . $attachment->name;
+               $attachmentPath = $attachment->path . $attachment->name . '.' . $attachment->extension;
             }
         }
 

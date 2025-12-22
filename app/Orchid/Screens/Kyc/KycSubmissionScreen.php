@@ -94,7 +94,7 @@ class KycSubmissionScreen extends Screen
                 return null;
             }
 
-            return Storage::url($attachment->path . $attachment->name . '.' . $attachment->extension);
+            return $attachment->path . $attachment->name . '.' . $attachment->extension;
         };
 
         // fullpath of document files
