@@ -23,6 +23,16 @@ class UserListLayout extends Table
      */
     public $target = 'users';
 
+    protected function textNotFound(): string
+    {
+        return __('Users not found');
+    }
+
+    protected function subNotFound(): string
+    {
+        return __('All the users of application will appear here.');
+    }
+
     /**
      * @return TD[]
      */

@@ -233,10 +233,18 @@ Route::screen('bank-details', UsersBankListScreen::class)
     ->name('platform.user.bank.list')
     ->breadcrumbs(fn($trail) => $trail
         ->parent('platform.index')
-        ->push(__('Customer Support'), route('platform.user.bank.list')));
+        ->push(__('Bank Details'), route('platform.user.bank.list')));
 
 Route::screen('kyc/bank/{kyc}/edit', UserBankEditScreen::class)
-    ->name('platform.kyc.bank.edit');
+    ->name('platform.kyc.bank.edit')
+     ->breadcrumbs(function ($trail, $kyc) {
+        $trail
+            ->parent('platform.user.bank.list')
+            ->push(
+                __('Update Bank Details'),
+                route('platform.kyc.bank.edit', ['kyc' => $kyc])
+            );
+    });
 
 Route::screen('kyc-details', KycDetailsScreen::class)
     ->name('platform.user.kyc.submit')

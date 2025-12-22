@@ -23,6 +23,16 @@ class UserBankListLayout extends Table
      */
     public $target = 'kyc';
 
+    protected function textNotFound(): string
+    {
+        return __('Bank details are not available');
+    }
+
+    protected function subNotFound(): string
+    {
+        return __('Once users submit their bank details, they will appear here.');
+    }
+
     /**
      * @return TD[]
      */

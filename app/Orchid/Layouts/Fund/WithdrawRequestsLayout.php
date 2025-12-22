@@ -19,6 +19,16 @@ class WithdrawRequestsLayout extends Table
      */
     public $target = 'WalletWithdrawal';
 
+    protected function textNotFound(): string
+    {
+        return __('There is no withdrawal requests found');
+    }
+
+    protected function subNotFound(): string
+    {
+        return __('Once users submit withdrawal requests, they will appear here.');
+    }
+
     /**
      * @return TD[]
      */

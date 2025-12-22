@@ -22,6 +22,16 @@ class CryptoBasketListLayout extends Table
      */
     public $target = 'cryptoBaskets';
 
+    protected function textNotFound(): string
+    {
+        return __('Crypto Baskets not available');
+    }
+
+    protected function subNotFound(): string
+    {
+        return __('More baskets are on the way.');
+    }
+
     /**
      * @return TD[]
      */

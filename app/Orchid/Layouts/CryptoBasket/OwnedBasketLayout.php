@@ -23,6 +23,17 @@ class OwnedBasketLayout extends Table
      */
     public $target = 'ownedBaskets';
 
+    protected function textNotFound(): string
+    {
+        return __('You haven\'t purchase any baskets');
+    }
+
+    protected function subNotFound(): string
+    {
+        return __("Go to <a href='/crypto-basket' style='color:#00e0ff;'>Crypto Baskets </a> and purchase baskets.");
+    }
+
+
     /**
      * @return TD[]
      */

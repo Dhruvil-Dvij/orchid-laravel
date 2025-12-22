@@ -23,6 +23,16 @@ class ContactListLayout extends Table
      */
     public $target = 'contact';
 
+    protected function textNotFound(): string
+    {
+        return __('There is no contact requests found');
+    }
+
+    protected function subNotFound(): string
+    {
+        return __('Once users submit contact requests, they will appear here.');
+    }
+
     /**
      * @return TD[]
      */

@@ -24,6 +24,16 @@ class PendingRequestLayout extends Table
      */
     public $target = 'pendingData';
 
+    protected function textNotFound(): string
+    {
+        return __('There is no fund requests found');
+    }
+
+    protected function subNotFound(): string
+    {
+        return __('Once users submit fund requests, they will appear here.');
+    }
+
     /**
      * @return TD[]
      */

@@ -18,6 +18,16 @@ class RoleListLayout extends Table
      */
     public $target = 'roles';
 
+    protected function textNotFound(): string
+    {
+        return __('Role not found');
+    }
+
+    protected function subNotFound(): string
+    {
+        return __('Create diferrent roles with diferrent access permissions');
+    }
+
     /**
      * @return TD[]
      */

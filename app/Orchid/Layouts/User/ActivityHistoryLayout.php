@@ -20,6 +20,16 @@ class ActivityHistoryLayout extends Table
      */
     public $target = 'activityHistory';
 
+    protected function textNotFound(): string
+    {
+        return __('You haven\'t done any activity.');
+    }
+
+    protected function subNotFound(): string
+    {
+        return __('Your all the wallet and basket activities will appear here.');
+    }
+
     /**
      * @return TD[]
      */

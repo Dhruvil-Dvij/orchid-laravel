@@ -30,7 +30,7 @@ class UserBankEditScreen extends Screen
 
     public function name(): ?string
     {
-        return 'Bank Details';
+        return 'Update Bank Details';
     }
 
     public function commandBar(): iterable

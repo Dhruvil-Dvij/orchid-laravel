@@ -22,6 +22,16 @@ class FundLayout extends Table
      */
     public $target = 'transactions';
 
+    protected function textNotFound(): string
+    {
+        return __('Transactions not found');
+    }
+
+    protected function subNotFound(): string
+    {
+        return __('All the wallet transaction will appear here.');
+    }
+
     /**
      * @return TD[]
      */
