@@ -147,18 +147,19 @@
 }
 
 .select2-selection .select2-selection__clear {
-    background-color: #080d13 !important;
+    background-color: rgb(37 37 41) !important;
     color: #fff !important;
 }
 
 .select2-selection .select2-selection__clear:hover {
-    background-color: #080d13 !important;
+    background-color: rgb(37 37 41) !important;
     color: #fff !important;
     box-shadow: none !important;
 }
 
 .select2-selection span {
     color: #fff !important;
+    padding-bottom: 3px;
 }
 
 select.form-control.account-all-input {
@@ -226,8 +227,8 @@ select.form-control.account-all-input {
 .account-all-input .ts-control {
     width: 100%;
     padding: 14px 18px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--border);
+    background: rgb(91 90 90 / 30%);
+    border: 1px solid #827c7c;
     border-radius: 12px;
     color: var(--text-main);
     font-size: 1rem;
@@ -250,25 +251,25 @@ select.form-control.account-all-input {
 }
 
 .account-all-input:focus {
-    background-color: rgba(0, 0, 0, 0.3);
-    ;
+    background-color: rgb(91 90 90 / 30%);
     color: white;
 }
 
 .account-all-input .ts-control {
-    background: rgba(0, 0, 0, 0.3) !important;
+    background: rgb(91 90 90 / 30%) !important;
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E") !important;
     background-position: right .75rem center !important;
     background-repeat: no-repeat !important;
     background-size: 16px 12px !important;
     color: white !important;
+    border: 1px solid #827c7c;
 }
 
 .select2-container.select2-container--default .select2-selection--single {
     width: 100%;
     padding: 14px 18px;
-    background: rgba(0, 0, 0, 0.3) !important;
-    border: 1px solid var(--border) !important;
+    background: rgb(91 90 90 / 30%) !important;
+    border: 1px solid #827c7c !important;
     border-radius: 12px;
     color: var(--text-main);
     font-size: 1rem;
@@ -527,8 +528,8 @@ input[type=number]::-webkit-outer-spin-button {
 .rejection-textarea {
     width: 100%;
     padding: 14px 18px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--border);
+    background: rgb(91 90 90 / 30%) !important;
+    border: 1px solid #827c7c;
     border-radius: 12px;
     color: var(--text-main);
     font-size: 1rem;
@@ -536,7 +537,7 @@ input[type=number]::-webkit-outer-spin-button {
     transition: all 0.3s ease;
     outline: none;
 }
-
+ 
 .model-main-div {
     background-color: #16151b !important;
 }
@@ -576,9 +577,96 @@ input[type=number]::-webkit-outer-spin-button {
     color: black !important;
 }
 
-.sidebar-admin,
+.sidebar-admin {
+    background-color: #000 !important;
+    position: relative !important;
+    z-index: 1000 !important;
+    overflow: visible !important; /* Allow dropdown to show */
+}
+ 
 .sidebar-admin .profile-container {
     background-color: #000 !important;
+    position: relative !important;
+    z-index: 1001 !important;
+    overflow: visible !important; /* Allow dropdown to show */
+}
+ 
+.sidebar-admin footer {
+    position: relative !important;
+    z-index: 1000 !important;
+    overflow: visible !important; /* Allow dropdown to show */
+}
+ 
+.dashboard-sidebar footer {
+    overflow: visible !important; /* Allow dropdown to show */
+}
+ 
+/* Three-dot menu button styling */
+.three-dot-menu-btn {
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+ 
+.three-dot-menu-btn:hover {
+    opacity: 0.7 !important;
+    transform: scale(1.1) !important;
+}
+ 
+.three-dot-menu-btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+ 
+/* Dropdown menu styling */
+.profile-container .dropup {
+    position: relative !important;
+    z-index: 9999 !important;
+}
+ 
+.profile-container .dropup .dropdown-menu {
+    background-color: #131420 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 0.5rem 0 !important;
+    z-index: 9999 !important;
+    position: absolute !important;
+    margin-bottom: 0.5rem !important;
+    bottom: 100% !important;
+    top: auto !important;
+    transform: none !important;
+}
+ 
+.profile-container .dropdown-item {
+    color: #fff !important;
+    transition: all 0.2s ease !important;
+    display: flex !important;
+    align-items: center !important;
+}
+ 
+.profile-container .dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+}
+ 
+.profile-container .dropdown-item:focus {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+}
+ 
+.profile-container .dropdown-item button {
+    color: #fff !important;
+}
+ 
+.profile-container .dropdown-item button:hover {
+    background-color: transparent !important;
+}
+ 
+.profile-container .dropdown-divider {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    margin: 0.5rem 0 !important;
 }
 
 .sidebar-bottom {
@@ -587,6 +675,91 @@ input[type=number]::-webkit-outer-spin-button {
 
 .dashboard-sidebar {
     max-width: 240px !important;
+}
+
+/* Independent scrolling for sidebar and main content */
+@media (min-width: 1200px) {
+    /* Prevent body from scrolling */
+    body {
+        overflow: hidden !important;
+        height: 100vh !important;
+    }
+ 
+    /* Sidebar independent scrolling with hidden scrollbar */
+    .dashboard-sidebar {
+        height: 100vh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        position: sticky !important;
+        top: 0 !important;
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        scrollbar-width: none !important; /* Firefox */
+        -ms-overflow-style: none !important; /* IE and Edge */
+    }
+ 
+    /* Allow dropdown to show in sidebar footer */
+    .dashboard-sidebar footer,
+    .dashboard-sidebar .aside-collapse {
+        overflow: visible !important;
+    }
+ 
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .dashboard-sidebar::-webkit-scrollbar {
+        display: none !important;
+    }
+ 
+    /* Main content area independent scrolling with hidden scrollbar */
+    .row.h-100.dashboard-main-comtainer .col-xxl.col-xl-9 {
+        height: 100vh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        padding-bottom: 80px !important; /* Space for fixed footer */
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        scrollbar-width: none !important; /* Firefox */
+        -ms-overflow-style: none !important; /* IE and Edge */
+    }
+ 
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .row.h-100.dashboard-main-comtainer .col-xxl.col-xl-9::-webkit-scrollbar {
+        display: none !important;
+    }
+ 
+    /* Ensure container maintains height */
+    .main-fluid {
+        height: 100vh !important;
+        overflow: hidden !important;
+    }
+ 
+    .row.h-100.dashboard-main-comtainer {
+        height: 100vh !important;
+        overflow: hidden !important;
+    }
+ 
+    /* Footer text at bottom of screen - full width excluding sidebar */
+    .row.h-100.dashboard-main-comtainer {
+        position: relative !important;
+    }
+ 
+    .version-text {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 240px !important; /* Start after sidebar (240px width) */
+        right: 0 !important;
+        width: calc(100vw - 240px) !important; /* Full width minus sidebar */
+        background-color: var(--bg-dark) !important;
+        padding: 1rem 0 !important;
+        z-index: 10 !important;
+        margin: 0 !important;
+        text-align: center !important;
+    }
+ 
+    /* Ensure workspace uses flexbox to push footer to bottom when content is short */
+    .row.h-100.dashboard-main-comtainer .col-xxl.col-xl-9 .workspace {
+        display: flex !important;
+        flex-direction: column !important;
+        min-height: calc(100vh - 80px) !important; /* Account for footer height */
+        padding-bottom: 0 !important;
+    }
 }
 
 .logo-sidebar {
@@ -1806,7 +1979,8 @@ input[type=number]::-webkit-outer-spin-button {
     }
 
     .crypto-baskets-tabel .table tbody tr td:not(:last-child) {
-        white-space: nowrap;
+        white-space: unset;
+        max-width: 200px;
     }
 }
 

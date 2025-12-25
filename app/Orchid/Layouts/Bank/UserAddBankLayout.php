@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Orchid\Layouts\User;
+namespace App\Orchid\Layouts\Bank;
 
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
@@ -11,7 +11,7 @@ use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Layouts\Rows;
 
-class UserBankEditLayout extends Rows
+class UserAddBankLayout extends Rows
 {
     /**
      * The screen's layout elements.
@@ -21,25 +21,33 @@ class UserBankEditLayout extends Rows
     public function fields(): array
     {
         return [
-            Input::make('kyc.bank_account_holder')
+            Input::make('bank.bank_account_holder')
                 ->title('Account Holder Name')
                 ->required()
                 ->class('account-all-input'),
 
-            Input::make('kyc.bank_account_number')
+            Input::make('bank.bank_account_number')
                 ->title('Account Number')
                 ->required()
                 ->class('account-all-input'),
 
-            Input::make('kyc.bank_ifsc')
+            Input::make('bank.bank_ifsc')
                 ->title('IFSC Code')
                 ->required()
                 ->class('account-all-input'),
 
-            Input::make('kyc.bank_name')
+            Input::make('bank.bank_name')
                 ->title('Bank Name')
                 ->required()
                 ->class('account-all-input'),
+
+            Upload::make('bank.passbook_img')
+                ->title('Bank Passbook Image')
+                ->acceptedFiles('image/*')
+                ->storage('orchid_public')
+                ->path('kyc/document/' . now()->format('Y/m/d'))
+                ->maxFiles(1),
+
         ];
     }
 }

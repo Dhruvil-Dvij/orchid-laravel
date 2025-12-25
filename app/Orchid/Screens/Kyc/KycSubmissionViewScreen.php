@@ -2,8 +2,10 @@
 
 namespace App\Orchid\Screens\Kyc;
 
+use App\Models\BankKyc;
 use App\Models\KycSubmission;
 use App\Models\User;
+use App\Models\UserKyc;
 use App\Orchid\Layouts\Kyc\KycStatusLayout;
 use App\Orchid\Layouts\Kyc\KycSubmissionImgLayout;
 use App\Orchid\Layouts\Kyc\KycSubmissionViewLayout;
@@ -24,10 +26,18 @@ class KycSubmissionViewScreen extends Screen
      */
     public function query(Request $request, $id): iterable
     {
-        $kycData = KycSubmission::findOrFail($id)->first();
+        // $kycData = KycSubmission::findOrFail($id)->first();
+        $kycData = UserKyc::with([
+            'user',
+            'user.bankAccounts.bankKyc',
+            'user.primaryBankAccount.bankKyc',
+        ])
+            ->findOrFail($id);
 
+        // dd($kycData);
         $fields = [
-            'bank_book_img',
+            // 'bank_book_img',
+            'passbook_img',
             'pan_card_img',
             'aadhar_card_front_img',
             'aadhar_card_back_img',
@@ -35,11 +45,24 @@ class KycSubmissionViewScreen extends Screen
         ];
 
         foreach ($fields as $field) {
+
             if (!empty($kycData->$field)) {
                 $kycData->$field = asset(ltrim($kycData->$field, '/'));
             }
+
+            if ($field === 'passbook_img') {
+                $primaryBank = $kycData->user->primaryBankAccount;
+
+                if ($primaryBank && $primaryBank->bankKyc) {
+                    $kycData->$field = asset(
+                        ltrim($primaryBank->bankKyc->passbook_img, '/')
+                    );
+                }
+
+                continue;
+            }
         }
-        
+
         return [
             'kyc_data' => $kycData,
         ];
@@ -102,18 +125,32 @@ class KycSubmissionViewScreen extends Screen
             'kyc_data.status' => 'required|in:pending,approved,rejected',
         ]);
         $status = $request->input('kyc_data.status');
-        $kycSubmission = KycSubmission::findOrFail($id);
-        $kycSubmission->update([
+        // Change KYC status
+        $userKyc = UserKyc::with(['user.primaryBankAccount.bankKyc'])->findOrFail($id);
+        $userKyc->update([
             'status' => $status,
         ]);
 
+        // change bank kyc status if exists
+        $primaryBank = $userKyc->user->primaryBankAccount;
+
+        if ($primaryBank && $primaryBank->bankKyc) {
+            $primaryBank->bankKyc->update([
+                'status' => $status,
+            ]);
+        }
+        // $kycSubmission = KycSubmission::findOrFail($id);
+        // $kycSubmission->update([
+        //     'status' => $status,
+        // ]);
+
         // change user's kyc_status
-        $user = User::findOrFail($kycSubmission->user_id);
+        $user = User::findOrFail($userKyc->user_id);
         $user->kyc_status = $status;
         $user->save();
 
         // Flash a success message
-        Toast::info("{$user->name} Kyc {$status}.");
+        Toast::info("{$user->name} Kyc status updated to {$status}.");
         return redirect()->route('platform.user.kyc.requests.view', ['id' => $id]);
     }
 }

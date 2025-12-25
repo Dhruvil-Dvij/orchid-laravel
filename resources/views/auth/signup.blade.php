@@ -30,6 +30,22 @@
 </div>
 
 <div class="mb-3">
+    <label class="form-label login-lables">
+        {{__('Mobile Number')}}
+    </label>
+    {!!  \Orchid\Screen\Fields\Input::make('mobile_number')
+        ->type('tel')
+        ->required()
+        ->tabindex(2)
+        ->autofocus()
+        ->autocomplete('tel')
+        ->inputmode('tel')
+        ->placeholder(__('Enter your mobile number'))
+        ->class("login-input")
+    !!}
+</div>
+
+<div class="mb-3">
     <label class="form-label w-100 login-lables">
         {{__('Password')}}
     </label>

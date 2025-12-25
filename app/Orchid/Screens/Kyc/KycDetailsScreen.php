@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens\Kyc;
 
 use App\Models\KycSubmission;
+use App\Models\UserKyc;
 use App\Orchid\Layouts\Kyc\KycSubmissionImgLayout;
 use App\Orchid\Layouts\Kyc\KycSubmissionViewLayout;
 use Illuminate\Support\Facades\Auth;
@@ -12,9 +13,16 @@ use Orchid\Support\Facades\Toast;
 
 class KycDetailsScreen extends Screen
 {
-    public function mount(){
-        $kycData = KycSubmission::where('user_id', Auth::id())->first();
-        if(!$kycData) {
+    public function mount()
+    {
+        // $kycData = KycSubmission::where('user_id', Auth::id())->first();
+        $kycData = UserKyc::with([
+            'user',
+            'user.bankAccounts.bankKyc',
+            'user.primaryBankAccount.bankKyc',
+        ])->findOrFail(Auth::id());
+
+        if (!$kycData) {
             Toast::info('KYC not complete yet!');
             return redirect()->back();
         }
@@ -26,7 +34,41 @@ class KycDetailsScreen extends Screen
      */
     public function query(): iterable
     {
-        $kycData = KycSubmission::where('user_id', Auth::id())->first();
+        // $kycData = KycSubmission::where('user_id', Auth::id())->first();
+        $kycData = UserKyc::with([
+            'user',
+            'user.bankAccounts.bankKyc',
+            'user.primaryBankAccount.bankKyc',
+        ])->findOrFail(Auth::id());
+        
+        $fields = [
+            // 'bank_book_img',
+            'passbook_img',
+            'pan_card_img',
+            'aadhar_card_front_img',
+            'aadhar_card_back_img',
+            'passport_img',
+        ];
+
+        foreach ($fields as $field) {
+
+            if (!empty($kycData->$field)) {
+                $kycData->$field = asset(ltrim($kycData->$field, '/'));
+            }
+
+            if ($field === 'passbook_img') {
+                $primaryBank = $kycData->user->primaryBankAccount;
+
+                if ($primaryBank && $primaryBank->bankKyc) {
+                    $kycData->$field = asset(
+                        ltrim($primaryBank->bankKyc->passbook_img, '/')
+                    );
+                }
+
+                continue;
+            }
+        }
+        
         return [
             'kyc_data' => $kycData,
         ];
@@ -63,7 +105,7 @@ class KycDetailsScreen extends Screen
             Layout::block(KycSubmissionViewLayout::class)
                 ->title(__('Bank Information'))
                 ->description(__("Update your bank information.")),
-                
+
             Layout::block(KycSubmissionImgLayout::class)
                 ->title(__('KYC Documents'))
                 ->description(__("Uploaded KYC documents")),

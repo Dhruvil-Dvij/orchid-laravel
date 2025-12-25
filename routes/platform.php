@@ -32,11 +32,14 @@ use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\Kyc\KycSubmissionScreen;
 use App\Orchid\Screens\Kyc\KycSubmissionViewScreen;
-use App\Orchid\Screens\User\UserBankEditScreen;
+use App\Orchid\Screens\Bank\UserAddBankScreen;
+use App\Orchid\Screens\Bank\UserBankEditScreen;
+use App\Orchid\Screens\Bank\UserBankKycRequestScreen;
+use App\Orchid\Screens\Bank\UserBankKycViewScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
-use App\Orchid\Screens\User\UsersBankListScreen;
+use App\Orchid\Screens\Bank\UsersBankListScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -235,14 +238,20 @@ Route::screen('bank-details', UsersBankListScreen::class)
         ->parent('platform.index')
         ->push(__('Bank Details'), route('platform.user.bank.list')));
 
-Route::screen('kyc/bank/{kyc}/edit', UserBankEditScreen::class)
+Route::screen('bank-details/add', UserAddBankScreen::class)
+    ->name('platform.user.bank.add')
+    ->breadcrumbs(fn($trail) => $trail
+        ->parent('platform.user.bank.list')
+        ->push(__('Add Bank Account'), route('platform.user.bank.add')));
+
+Route::screen('kyc/bank/{bank}/edit', UserBankEditScreen::class)
     ->name('platform.kyc.bank.edit')
-     ->breadcrumbs(function ($trail, $kyc) {
+     ->breadcrumbs(function ($trail, $bank) {
         $trail
             ->parent('platform.user.bank.list')
             ->push(
                 __('Update Bank Details'),
-                route('platform.kyc.bank.edit', ['kyc' => $kyc])
+                route('platform.kyc.bank.edit', ['bank' => $bank])
             );
     });
 
@@ -251,3 +260,15 @@ Route::screen('kyc-details', KycDetailsScreen::class)
     ->breadcrumbs(fn($trail) => $trail
         ->parent('platform.index')
         ->push(__('Kyc Details'), route('platform.user.kyc.submit')));
+
+Route::screen('bank-kyc', UserBankKycRequestScreen::class)
+    ->name('platform.user.bank.kyc.requests')
+    ->breadcrumbs(fn($trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Bank KYC Requests'), route('platform.user.bank.kyc.requests')));
+
+Route::screen('bank-kyc/view/{id}', UserBankKycViewScreen::class)
+    ->name('platform.user.bank.kyc.requests.view')
+    ->breadcrumbs(fn($trail, $id) => $trail
+        ->parent('platform.user.bank.kyc.requests')
+        ->push('Bank KYC Details', route('platform.user.bank.kyc.requests.view', $id)));

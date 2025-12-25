@@ -43,7 +43,7 @@ class KycSubmissionListLayout extends Table
                 ->sort()
                 ->cantHide()
                 ->filter(Input::make())
-                ->render(fn($KycSubmission) => new Persona($KycSubmission->user->presenter())),
+                ->render(fn($KycSubmission) => new Persona($KycSubmission->presenter())),
 
             TD::make('created_at', __('Created'))
                 ->usingComponent(DateTimeSplit::class)
@@ -53,9 +53,9 @@ class KycSubmissionListLayout extends Table
             TD::make('status', __('Status'))
                 ->sort()
                 ->render(function ($KycSubmission) {
-                    $status = ucfirst($KycSubmission->status); // Assuming status is: 'approved', 'pending', 'rejected'
+                    $status = ucfirst($KycSubmission->userKyc->status); // Assuming status is: 'approved', 'pending', 'rejected'
 
-                    $colorClass = match ($KycSubmission->status) {
+                    $colorClass = match ($KycSubmission->userKyc->status) {
                         'approved' => 'badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2',
                         'completed' => 'badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-2',
                         'pending'  => 'badge bg-warning bg-opacity-10 text-warning rounded-pill px-3 py-2',
@@ -81,7 +81,7 @@ class KycSubmissionListLayout extends Table
                     ->list([
 
                         Link::make(__('View'))
-                            ->route('platform.user.kyc.requests.view', $KycSubmission->id)
+                            ->route('platform.user.kyc.requests.view', $KycSubmission->userKyc->id)
                             ->icon('bs.pencil'),
 
                     ])),

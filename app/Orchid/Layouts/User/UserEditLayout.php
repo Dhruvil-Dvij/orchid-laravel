@@ -32,6 +32,13 @@ class UserEditLayout extends Rows
                 ->title(__('Email'))
                 ->placeholder(__('Email'))
                 ->class('account-all-input'),
+
+            Input::make('user.mobile_number')
+                ->type('tel')
+                ->required()
+                ->title(__('Mobile Number'))
+                ->placeholder(__('Mobile Number'))
+                ->class('account-all-input'),
         ];
     }
 }

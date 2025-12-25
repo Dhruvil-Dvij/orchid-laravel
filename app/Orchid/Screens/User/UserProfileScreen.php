@@ -144,6 +144,10 @@ class UserProfileScreen extends Screen
                 'required',
                 Rule::unique(User::class, 'email')->ignore($request->user()),
             ],
+            'user.mobile_number' => [
+                'required',
+                Rule::unique(User::class, 'mobile_number')->ignore($request->user()),
+            ],
         ]);
 
         $request->user()

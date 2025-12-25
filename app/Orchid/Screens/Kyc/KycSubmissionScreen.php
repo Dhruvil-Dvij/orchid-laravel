@@ -2,7 +2,10 @@
 
 namespace App\Orchid\Screens\Kyc;
 
+use App\Models\BankAccount;
+use App\Models\BankKyc;
 use App\Models\KycSubmission;
+use App\Models\UserKyc;
 use App\Orchid\Layouts\Kyc\KycSubmissionLayout;
 use Illuminate\Http\Request;
 use Orchid\Attachment\Models\Attachment;
@@ -67,7 +70,7 @@ class KycSubmissionScreen extends Screen
         $existingKyc = KycSubmission::where('user_id', auth()->user()->id)->first();
         if ($existingKyc && $existingKyc->status !== 'pending') {
             Toast::warning('You have already submitted your KYC. Please wait for the review.');
-            return redirect()->route('platform.profile'); 
+            return redirect()->route('platform.profile');
         }
         // Validate the request data
         $request->validate([
@@ -104,22 +107,54 @@ class KycSubmissionScreen extends Screen
         $passportImg = $getPath($request->input('kyc.passport_img')[0] ?? null);
         $bankBookImg = $getPath($request->input('kyc.bank_book_img')[0] ?? null);
 
-        // Save or update KYC data
-        KycSubmission::updateOrCreate(
+        // Save or update Bank details here
+        // Bank account details
+        BankAccount::updateOrCreate(
             ['user_id' => auth()->user()->id],
             [
-                'pan_card_img'      => $panImg,
-                'aadhar_card_front_img'  => $aadharFrontImg,
-                'aadhar_card_back_img'   => $aadharBackImg,
-                'passport_img'      => $passportImg,
-                'bank_book_img'     => $bankBookImg,
                 'bank_account_holder' => $request->input('kyc.bank_account_holder'),
                 'bank_account_number' => $request->input('kyc.bank_account_number'),
                 'bank_ifsc'           => $request->input('kyc.bank_ifsc'),
                 'bank_name'           => $request->input('kyc.bank_name'),
-                'status'              => 'pending',
+                'is_primary'          => true,
             ]
         );
+
+        // passbook and bank kyc
+        BankKyc::updateOrCreate(
+            ['bank_account_id' => BankAccount::where('user_id', auth()->user()->id)->where('bank_account_number', $request->input('kyc.bank_account_number'))->first()->id],
+            [
+                'passbook_img'     => $bankBookImg,
+                'status'            => 'pending',
+            ]
+        );
+
+        // Save or update KYC data
+        UserKyc::updateOrCreate(
+            ['user_id' =>  auth()->user()->id],
+            [
+                'pan_card_img'          => $panImg,
+                'aadhar_card_front_img' => $aadharFrontImg,
+                'aadhar_card_back_img'  => $aadharBackImg,
+                'passport_img'          => $passportImg,
+                'status'                => 'pending',
+            ]
+        );
+        // KycSubmission::updateOrCreate(
+        //     ['user_id' => auth()->user()->id],
+        //     [
+        //         'pan_card_img'      => $panImg,
+        //         'aadhar_card_front_img'  => $aadharFrontImg,
+        //         'aadhar_card_back_img'   => $aadharBackImg,
+        //         'passport_img'      => $passportImg,
+        //         'bank_book_img'     => $bankBookImg,
+        //         'bank_account_holder' => $request->input('kyc.bank_account_holder'),
+        //         'bank_account_number' => $request->input('kyc.bank_account_number'),
+        //         'bank_ifsc'           => $request->input('kyc.bank_ifsc'),
+        //         'bank_name'           => $request->input('kyc.bank_name'),
+        //         'status'              => 'pending',
+        //     ]
+        // );
 
         // For now, we will just show a success message
         Toast::info('Leave your KYC submission for review. We will notify you once it is processed.');

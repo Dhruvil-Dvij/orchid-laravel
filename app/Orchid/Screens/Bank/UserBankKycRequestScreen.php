@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Orchid\Screens\User;
+namespace App\Orchid\Screens\Bank;
 
-use App\Models\KycSubmission;
-use App\Orchid\Layouts\User\UserBankListLayout;
+use App\Models\BankAccount;
+use App\Models\BankKyc;
+use App\Orchid\Layouts\Bank\UserBankKycListLayout;
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Toast;
+use Illuminate\Support\Facades\Auth;
 
-class UsersBankListScreen extends Screen
+class UserBankKycRequestScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -15,11 +18,18 @@ class UsersBankListScreen extends Screen
      */
     public function query(): iterable
     {
+        $bankKycs = BankKyc::with([
+            'bankAccount',
+            'user'
+        ])
+            ->where('status', 'pending')
+            ->latest()
+            ->get();
+
+        // dd($bankKycs);
+
         return [
-            'kyc' => KycSubmission::with('user')
-                ->whereNotNull('bank_account_number')
-                ->latest()
-                ->paginate(),
+            'bankKycs' => $bankKycs,
         ];
     }
 
@@ -30,7 +40,7 @@ class UsersBankListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Users Bank Details';
+        return 'Bank KYC Requests';
     }
 
     /**
@@ -51,7 +61,7 @@ class UsersBankListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            UserBankListLayout::class
+            UserBankKycListLayout::class,
         ];
     }
 }

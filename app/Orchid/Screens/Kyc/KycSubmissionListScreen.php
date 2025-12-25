@@ -3,6 +3,8 @@
 namespace App\Orchid\Screens\Kyc;
 
 use App\Models\KycSubmission;
+use App\Models\User;
+use App\Models\UserKyc;
 use App\Orchid\Layouts\Kyc\KycSubmissionListLayout;
 use Orchid\Screen\Screen;
 
@@ -16,10 +18,22 @@ class KycSubmissionListScreen extends Screen
     public function query(): iterable
     {
         // Fetch all KYC submissions with their associated users, ordered by the latest submission
-        $KycSubmission = KycSubmission::with('user')->whereIn('status', ['pending'])->latest()->paginate();
-
+        // $KycSubmission = KycSubmission::with('user')->whereIn('status', ['pending'])->latest()->paginate();
+        // get KYC details along with bank details and images
+        $kycSubmissions = User::query()
+            ->whereHas('userKyc', function ($q) {
+                $q->where('status', 'pending');
+            })
+            ->with([
+                'userKyc',                              // identity KYC + images
+                'bankAccounts.bankKyc',                // all banks + passbook images
+                'primaryBankAccount.bankKyc',          // primary bank + its KYC
+            ])
+            ->latest()
+            ->paginate(10);
+        // dd($kycSubmissions);
         return [
-            'kyc_submissions' => $KycSubmission,
+            'kyc_submissions' => $kycSubmissions,
         ];
     }
 

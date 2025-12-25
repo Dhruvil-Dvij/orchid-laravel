@@ -17,6 +17,7 @@ class RegisterController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
+            'mobile_number' => 'required|string|max:15|unique:users,mobile_number',
             'password' => 'required|confirmed|min:8',
             'referral_code' => 'nullable|string|max:255',
         ]);
@@ -25,6 +26,7 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'mobile_number' => $request->mobile_number,
             'password' => Hash::make($request->password),
             'referral_code' => (new User)->generateReferralCode(),
             'referred_by' => $request->referral_code ? User::where('referral_code', $request->referral_code)->first()->id : null,

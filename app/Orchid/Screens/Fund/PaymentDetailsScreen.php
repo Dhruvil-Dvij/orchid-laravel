@@ -2,6 +2,7 @@
 
 namespace App\Orchid\Screens\Fund;
 
+use App\Models\BankAccount;
 use App\Models\KycSubmission;
 use App\Models\WalletTransaction;
 use Illuminate\Http\Request;
@@ -24,15 +25,29 @@ class PaymentDetailsScreen extends Screen
      */
     public function query(): iterable
     {
-        $adminBankDetails = KycSubmission::whereHas('user.roles', function ($q) {
-            $q->where('slug', 'admin');
-        })->get(['bank_account_holder', 'bank_account_number', 'bank_ifsc', 'bank_name', 'upi_id', 'qr_code_img'])->toArray();
+        // $adminBankDetails = KycSubmission::whereHas('user.roles', function ($q) {
+        //     $q->where('slug', 'admin');
+        // })->get(['bank_account_holder', 'bank_account_number', 'bank_ifsc', 'bank_name', 'upi_id', 'qr_code_img'])->toArray();
+        $adminBankDetails = BankAccount::with(['bankKyc'])
+            ->where('is_primary', true)
+            ->whereHas('user.roles', function ($q) {
+                $q->where('slug', 'admin');
+            })
+            ->get([
+                'user_id',
+                'bank_account_holder',
+                'bank_account_number',
+                'bank_ifsc',
+                'bank_name',
+                'upi_id',
+                'qr_code_img',
+            ])->toArray();
 
         return [
             'showSuccessModal' => session()->get('showSuccessModal', false),
             'payment_details' => (object) [
                 'bank_account_holder' => $adminBankDetails[0]['bank_account_holder'] ?? '',
-                'bank_name' => $adminBankDetails[0]['bank_name'] ?? '' ,
+                'bank_name' => $adminBankDetails[0]['bank_name'] ?? '',
                 'account_number' => $adminBankDetails[0]['bank_account_number'] ?? '',
                 'ifsc_code' => $adminBankDetails[0]['bank_ifsc'] ?? '',
                 'upi_id' => $adminBankDetails[0]['upi_id'] ?? '',

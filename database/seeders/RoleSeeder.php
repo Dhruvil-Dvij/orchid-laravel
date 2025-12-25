@@ -31,6 +31,7 @@ class RoleSeeder extends Seeder
                     'platform.funds.edit' => true,
                     'platform.user.kyc.requests' => true,
                     'platform.user.contact.requests' => true,
+                    'platform.user.bank.kyc.requests' => true,
                     'platform.funds.direct.add' => true,
                     'platform.fund.withdraw_requests' => true,
                     'platform.customer.support' => true,
@@ -55,7 +56,7 @@ class RoleSeeder extends Seeder
                     'platform.customer.support' => true,
                     'platform.funds.payment_details' => true,
                     'platform.user.kyc.submit' => true,
-
+                    'platform.user.bank.list' => true,
                 ]
             ],
         ];

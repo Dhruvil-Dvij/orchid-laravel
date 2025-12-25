@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\KycSubmission;
+use App\Models\UserKyc;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -25,7 +26,11 @@ if (!function_exists('inr_to_usd')) {
 if (!function_exists('isKycApproved')) {
     function isKycApproved($userId)
     {
-        return KycSubmission::where('user_id', $userId)
+        // return KycSubmission::where('user_id', $userId)
+        //     ->where('status', 'approved')
+        //     ->exists();
+
+        return UserKyc::where('user_id', $userId)
             ->where('status', 'approved')
             ->exists();
     }

@@ -101,6 +101,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.shield-lock')
                 ->route('platform.user.kyc.requests')
                 ->permission('platform.user.kyc.requests'),
+            
+            Menu::make(__('Bank KYC Requests'))
+                ->icon('bs.shield-check')
+                ->route('platform.user.bank.kyc.requests')
+                ->permission('platform.user.bank.kyc.requests'),
 
             Menu::make(__('Contact Requests'))
                 ->icon('bs.envelope')
@@ -125,7 +130,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.user.bank.list')
                 ->title("Account & Verification"),
 
-            Menu::make(__('KYC'))
+            Menu::make(__('KYC Details'))
                 ->icon('bs.shield-check')
                 ->route('platform.user.kyc.submit')
                 ->permission('platform.user.kyc.submit'),
@@ -188,6 +193,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.systems.settings', __('Referral Settings'))
                 ->addPermission('platform.systems.pending.requests', __('Pending Requests'))
                 ->addPermission('platform.user.kyc.requests', __('KYC Requests'))
+                ->addPermission('platform.user.bank.kyc.requests', __('Bank KYC Requests'))
                 ->addPermission('platform.user.contact.requests', __('Contact Requests'))
                 ->addPermission('platform.customer.support', __('Customer Support'))
                 ->addPermission('platform.customer.support.list', __('Support Request'))

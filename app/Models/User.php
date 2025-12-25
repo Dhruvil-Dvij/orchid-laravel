@@ -19,6 +19,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'mobile_number',
         'password',
         'referral_code',
         'referred_by',
@@ -54,6 +55,7 @@ class User extends Authenticatable
         'id'         => Where::class,
         'name'       => Like::class,
         'email'      => Like::class,
+        'mobile_number' => Like::class,
         'referral_code' => Like::class,
         'referred_by' => Where::class,
         'updated_at' => WhereDateStartEnd::class,
@@ -69,6 +71,7 @@ class User extends Authenticatable
         'id',
         'name',
         'email',
+        'mobile_number',
         'referral_code',
         'referred_by',
         'updated_at',
@@ -110,5 +113,21 @@ class User extends Authenticatable
     public function walletWithdrawals()
     {
         return $this->hasMany(WalletWithdrawal::class);
+    }
+
+    public function userKyc()
+    {
+        return $this->hasOne(UserKyc::class);
+    }
+
+    public function bankAccounts()
+    {
+        return $this->hasMany(BankAccount::class);
+    }
+
+    public function primaryBankAccount()
+    {
+        return $this->hasOne(BankAccount::class)
+            ->where('is_primary', true);
     }
 }
