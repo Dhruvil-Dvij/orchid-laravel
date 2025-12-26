@@ -13,14 +13,14 @@ use Orchid\Support\Facades\Toast;
 
 class KycDetailsScreen extends Screen
 {
-    public function mount()
+    public function mount($id)
     {
         // $kycData = KycSubmission::where('user_id', Auth::id())->first();
         $kycData = UserKyc::with([
             'user',
             'user.bankAccounts.bankKyc',
             'user.primaryBankAccount.bankKyc',
-        ])->findOrFail(Auth::id());
+        ])->findOrFail($id ?? Auth::id());
 
         if (!$kycData) {
             Toast::info('KYC not complete yet!');
@@ -32,14 +32,14 @@ class KycDetailsScreen extends Screen
      *
      * @return array
      */
-    public function query(): iterable
+    public function query($id): iterable
     {
         // $kycData = KycSubmission::where('user_id', Auth::id())->first();
         $kycData = UserKyc::with([
             'user',
             'user.bankAccounts.bankKyc',
             'user.primaryBankAccount.bankKyc',
-        ])->findOrFail(Auth::id());
+        ])->findOrFail($id ?? Auth::id());
         
         $fields = [
             // 'bank_book_img',

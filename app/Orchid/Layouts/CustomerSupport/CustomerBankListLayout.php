@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Orchid\Layouts\Bank;
+namespace App\Orchid\Layouts\CustomerSupport;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +16,7 @@ use Orchid\Screen\Layouts\Persona;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
-class UserBankListLayout extends Table
+class CustomerBankListLayout extends Table
 {
     /**
      * @var string
@@ -68,40 +68,22 @@ class UserBankListLayout extends Table
                     return "<span class=\"px-3 py-1 rounded-full text-xs font-semibold {$colorClass}\">{$status}</span>";
                 })->align(TD::ALIGN_CENTER),
 
-            TD::make('Actions')
+            TD::make(__('Actions'))
                 ->align(TD::ALIGN_CENTER)
-                ->render(function ($bank_details) {
+                ->render(fn($bank_details) => DropDown::make()
+                    ->icon('bs.three-dots-vertical')
+                    ->list([
+                        Link::make('Edit')
+                            ->icon('bs.pencil')
+                            ->route('platform.customer.banks.details', ['id'=>$bank_details->user_id, 'bank' => $bank_details->id]),
 
-                    $isAdmin = Auth::user()?->inRole('admin');
-
-                    $canEdit = $isAdmin && $bank_details->bankKyc?->status == 'approved';
-
-                    $canSetPrimary =
-                        !$bank_details->is_primary &&
-                        $bank_details->bankKyc?->status === 'approved';
-
-                    // Prevent empty dropdown
-                    if (!$canEdit && !$canSetPrimary) {
-                        return '-';
-                    }
-
-                    return DropDown::make()
-                        ->icon('bs.three-dots-vertical')
-                        ->list([
-                            Link::make('Edit')
-                                ->icon('bs.pencil')
-                                ->route('platform.kyc.bank.edit', $bank_details->id)
-                                ->canSee($canEdit),
-
-                            Button::make('Set as Primary')
-                                ->icon('bs.star')
-                                ->method('setPrimaryBankAccount')
-                                ->parameters([
-                                    'bank_account_id' => $bank_details->id
-                                ])
-                                ->canSee($canSetPrimary),
-                        ]);
-                }),
+                        // add button to set primary bank account
+                        // Button::make('Set as Primary')
+                        //     ->icon('bs.star')
+                        //     ->method('setPrimaryBankAccount')
+                        //     ->parameters(['bank_account_id' => $bank_details->id])
+                        //     ->canSee(!$bank_details->is_primary && $bank_details->bankKyc?->status === 'approved'),
+                    ])),
         ];
     }
 }

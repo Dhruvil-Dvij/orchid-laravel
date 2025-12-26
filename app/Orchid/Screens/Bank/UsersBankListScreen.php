@@ -22,11 +22,7 @@ class UsersBankListScreen extends Screen
         // All bank accounts id role admin else only own bank accounts
 
         $BankDetails = BankAccount::with('user')
-            ->when(
-                Auth::user()->inRole('admin'),
-                fn($q) => $q,
-                fn($q) => $q->where('user_id', Auth::id())
-            )->latest()->get();
+            ->where('user_id', Auth::id())->latest()->get();
 
         return [
             'bank_details' => $BankDetails,

@@ -6,6 +6,7 @@ namespace App\Orchid\Layouts\Bank;
 
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Fields\Upload;
@@ -45,6 +46,11 @@ class UserBankEditLayout extends Rows
                 ->title('Bank Name')
                 ->required()
                 ->class('account-all-input'),
+            
+            Picture::make('bank.bankKyc.passbook_img')
+                ->title('Bank Passbook Image')
+                ->readonly()
+                ->canSee(!empty($this->query['bank']['bankKyc']['passbook_img'])),
         ];
     }
 }

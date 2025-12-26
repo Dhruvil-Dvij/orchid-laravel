@@ -40,6 +40,9 @@ use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use App\Orchid\Screens\Bank\UsersBankListScreen;
+use App\Orchid\Screens\CustomerSupport\CustomerBankEditScreen;
+use App\Orchid\Screens\CustomerSupport\CustomerBankListScreen;
+use App\Orchid\Screens\CustomerSupport\CustomerDetailsScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -272,3 +275,27 @@ Route::screen('bank-kyc/view/{id}', UserBankKycViewScreen::class)
     ->breadcrumbs(fn($trail, $id) => $trail
         ->parent('platform.user.bank.kyc.requests')
         ->push('Bank KYC Details', route('platform.user.bank.kyc.requests.view', $id)));
+
+Route::screen('customer-details', CustomerDetailsScreen::class)
+    ->name('platform.customer.details')
+    ->breadcrumbs(fn($trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Customer Details'), route('platform.customer.details')));
+
+Route::screen('customer-details/{id}/banks', CustomerBankListScreen::class)
+    ->name('platform.customer.banks')
+    ->breadcrumbs(fn($trail, $id) => $trail
+        ->parent('platform.customer.details')
+        ->push(__('Customer Banks'), route('platform.customer.banks', $id)));
+
+Route::screen('customer-details/{id}/banks/{bank}', CustomerBankEditScreen::class)
+    ->name('platform.customer.banks.details')
+    ->breadcrumbs(fn($trail, $id, $bank) => $trail
+        ->parent('platform.customer.banks', $id)
+        ->push(__('Bank Details'), route('platform.customer.banks.details', [$id, $bank])));
+
+Route::screen('customer-details/{id}/kyc', KycDetailsScreen::class)
+    ->name('platform.customer.kyc')
+    ->breadcrumbs(fn($trail, $id) => $trail
+        ->parent('platform.customer.details')
+        ->push(__('Customer KYC'), route('platform.customer.kyc', $id)));

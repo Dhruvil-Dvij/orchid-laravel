@@ -112,6 +112,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.user.contact.requests')
                 ->permission('platform.user.contact.requests'),
 
+            Menu::make(__('Customer Details'))
+                ->icon('bs.person-lines-fill')
+                ->route('platform.customer.details')
+                ->permission('platform.customer.details'),
+
 
             Menu::make(__('Customer Support'))
                 ->icon('bs.headset')
@@ -199,6 +204,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.customer.support.list', __('Support Request'))
                 ->addPermission('platform.user.bank.list', __('Banks Details'))
                 ->addPermission('platform.funds.payment_details', __('Add Funds'))
+                ->addPermission('platform.customer.details', __('Customer Details'))
                 ->addPermission('platform.user.kyc.submit', __('KYC Details')),
             ItemPermission::group(__('Funds'))
                 ->addPermission('platform.funds.wallet', __('Wallet'))
