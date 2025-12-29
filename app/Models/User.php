@@ -7,6 +7,7 @@ use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
 use Orchid\Filters\Types\WhereDateStartEnd;
 use Orchid\Platform\Models\User as Authenticatable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -17,6 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'customer_id',
         'name',
         'email',
         'mobile_number',
@@ -53,6 +55,7 @@ class User extends Authenticatable
      */
     protected $allowedFilters = [
         'id'         => Where::class,
+        'customer_id' => Like::class,
         'name'       => Like::class,
         'email'      => Like::class,
         'mobile_number' => Like::class,
@@ -69,6 +72,7 @@ class User extends Authenticatable
      */
     protected $allowedSorts = [
         'id',
+        'customer_id',
         'name',
         'email',
         'mobile_number',
@@ -88,6 +92,13 @@ class User extends Authenticatable
         } while (static::where('referral_code', $code)->exists());
 
         return $code;
+    }
+
+    protected static function booted()
+    {
+        static::creating(function ($user) {
+            $user->customer_id = 'CUS-' . Str::ulid();
+        });
     }
 
     public function fund(): HasOne
@@ -129,5 +140,15 @@ class User extends Authenticatable
     {
         return $this->hasOne(BankAccount::class)
             ->where('is_primary', true);
+    }
+
+    public function referralsMade()
+    {
+        return $this->hasMany(Referral::class, 'referrer_user_id');
+    }
+
+    public function referredBy()
+    {
+        return $this->hasOne(Referral::class, 'referred_user_id');
     }
 }

@@ -35,6 +35,7 @@ class UserSeeder extends Seeder
 
         User::updateOrInsert([
             'id' => 1, // Ensure the admin user has a specific ID
+            'customer_id' => 'CUS-' . \Illuminate\Support\Str::ulid(),
             'name' => 'Admin',
             'email' => 'admin@yopmail.com',
             'password' => bcrypt('admin@123'), // Ensure you use a secure password

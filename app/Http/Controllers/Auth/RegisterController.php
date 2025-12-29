@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Referral;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -23,13 +24,17 @@ class RegisterController extends Controller
         ]);
 
         // Create user
+        if ($request->referral_code) {
+            $referrer = User::where('referral_code', $request->referral_code)->first();
+        }
+        
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'mobile_number' => $request->mobile_number,
             'password' => Hash::make($request->password),
             'referral_code' => (new User)->generateReferralCode(),
-            'referred_by' => $request->referral_code ? User::where('referral_code', $request->referral_code)->first()->id : null,
+            'referred_by' => $request->referral_code ? $referrer->id : null,
         ]);
 
         // Optionally handle referral code here
@@ -38,6 +43,15 @@ class RegisterController extends Controller
         if ($defaultRole) {
             // Attach the role using the pivot table
             $user->roles()->attach($defaultRole->id);
+        }
+
+        if ($request->referral_code && $referrer) {
+            Referral::create([
+                'referrer_user_id' => $referrer->id,
+                'referred_user_id' => $user->id,
+                'referral_code'    => $request->referral_code,
+                'used_at'          => now(),
+            ]);
         }
 
         // Log the user in

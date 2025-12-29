@@ -13,7 +13,7 @@ use Orchid\Support\Facades\Toast;
 
 class KycDetailsScreen extends Screen
 {
-    public function mount($id)
+    public function mount($id=null)
     {
         // $kycData = KycSubmission::where('user_id', Auth::id())->first();
         $kycData = UserKyc::with([
@@ -32,7 +32,7 @@ class KycDetailsScreen extends Screen
      *
      * @return array
      */
-    public function query($id): iterable
+    public function query($id= null): iterable
     {
         // $kycData = KycSubmission::where('user_id', Auth::id())->first();
         $kycData = UserKyc::with([

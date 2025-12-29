@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\User;
 
+use App\Models\Referral;
 use App\Orchid\Layouts\User\ProfilePasswordLayout;
 use App\Orchid\Layouts\User\UserEditLayout;
 use Illuminate\Http\Request;
@@ -11,10 +12,14 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Orchid\Access\Impersonation;
 use App\Models\User;
+use App\Orchid\Layouts\User\ReferralsListLayout;
 use App\Orchid\Layouts\User\UserReferralLayout;
+use Illuminate\Support\Facades\Auth;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
+use Orchid\Screen\Actions\ModalToggle;
+use Orchid\Screen\Layouts\Modal;
 use Orchid\Screen\Screen;
 use Orchid\Support\Color;
 use Orchid\Support\Facades\Layout;
@@ -48,7 +53,8 @@ class UserProfileScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'Update your account details such as name, email address and password';
+        // return 'Update your account details such as name, email address and password';
+        return 'Customer ID: ' . Auth::user()->customer_id;
     }
 
     /**
@@ -67,20 +73,20 @@ class UserProfileScreen extends Screen
                 ->class('btn btn-info rounded px-4 py-2 fw-bold')
                 ->style('gap: 8px; transition: transform 0.2s ease;'),
 
-            Link::make('KYC')
-                ->novalidate()
-                ->icon('bs.file-earmark-text')
-                ->route('platform.user.kyc')
-                ->class('btn btn-info rounded px-4 py-2 fw-bold')
-                ->style('gap: 8px; transition: transform 0.2s ease;')
-                ->canSee(auth()->user()->kyc_status === 'pending' || auth()->user()->kyc_status === 'rejected'),
+            // Link::make('KYC')
+            //     ->novalidate()
+            //     ->icon('bs.file-earmark-text')
+            //     ->route('platform.user.kyc')
+            //     ->class('btn btn-info rounded px-4 py-2 fw-bold')
+            //     ->style('gap: 8px; transition: transform 0.2s ease;')
+            //     ->canSee(auth()->user()->kyc_status === 'pending' || auth()->user()->kyc_status === 'rejected'),
 
-            Button::make('Sign out')
-                ->novalidate()
-                ->icon('bs.box-arrow-left')
-                ->route('platform.logout')
-                ->class('btn btn-info rounded px-4 py-2 fw-bold')
-                ->style('gap: 8px; transition: transform 0.2s ease;'),
+            // Button::make('Sign out')
+            //     ->novalidate()
+            //     ->icon('bs.box-arrow-left')
+            //     ->route('platform.logout')
+            //     ->class('btn btn-info rounded px-4 py-2 fw-bold')
+            //     ->style('gap: 8px; transition: transform 0.2s ease;'),
 
         ];
     }
@@ -94,7 +100,17 @@ class UserProfileScreen extends Screen
             Layout::block(UserReferralLayout::class)
                 ->title(__('Referral Information'))
                 ->description(__("Referral Code"))
-                ->commands(
+                ->commands([
+
+                    ModalToggle::make('View Referrals')
+                        ->modal('referralsListModal')
+                        ->modalTitle('View Referrals')
+                        ->icon('bs.people')
+                        ->asyncParameters([
+                            'id' => Auth::user()->id,
+                        ])
+                        ->method('loadUserOnOpenModal'),
+
                     Button::make(__('Copy'))
                         ->type(Color::BASIC())
                         ->id('copy-referral-btn')
@@ -104,8 +120,14 @@ class UserProfileScreen extends Screen
                         ->rawAttributes([
                             'type' => 'button',
                             'onclick' => 'copyReferralCode()',
-                        ])
-                ),
+                        ]),
+
+                ]),
+
+            Layout::modal('referralsListModal', ReferralsListLayout::class)
+                ->deferred('loadReferralsOnOpenModal')
+                ->withoutApplyButton()
+                ->withoutCloseButton(),
 
             Layout::block(UserEditLayout::class)
                 ->title(__('Profile Information'))
@@ -133,6 +155,18 @@ class UserProfileScreen extends Screen
 
             Layout::view('vendor.platform.script.custom_script')
 
+        ];
+    }
+
+    public function loadReferralsOnOpenModal($id): array
+    {
+        $referrals = Referral::with([
+            'referrer:id,customer_id,name,email',
+            'referred:id,customer_id,name,email',
+        ])->where('referrer_user_id', $id)->get();
+
+        return [
+            'referrals' => $referrals,
         ];
     }
 

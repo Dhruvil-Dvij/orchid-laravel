@@ -39,12 +39,19 @@ class CustomerListLayout extends Table
     public function columns(): array
     {
         return [
+            
             TD::make('name', __('Name'))
+            ->sort()
+            ->cantHide()
+            ->filter(Input::make())
+            ->render(fn(User $user) => new Persona($user->presenter())),
+            
+            TD::make('customer_id', __('Customer ID'))
                 ->sort()
                 ->cantHide()
                 ->filter(Input::make())
-                ->render(fn(User $user) => new Persona($user->presenter())),
-
+                ->render(fn(User $user) => $user->customer_id),
+                
             TD::make('email', __('Email'))
                 ->sort()
                 ->cantHide()
