@@ -31,15 +31,24 @@
     color: #000 !important;
     }
     .signup-login{
-    padding: 10px 19px !important;
-    border-radius: 6px !important;
-    font-size: 14px !important;
-    width: fit-content !important;
-}
-    @media (max-width: 992px) {
-    .nav-links {
-        gap: 30px !important;
+        padding: 10px 19px !important;
+        border-radius: 6px !important;
+        font-size: 14px !important;
+        width: fit-content !important;
     }
-}
+        @media (max-width: 992px) {
+        .nav-links {
+            gap: 30px !important;
+        }
+
+    }
+    .btn-outline-login {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        color: white;
+        backdrop-filter: var(--glass);
+        border-color: var(--primary);
+        background: rgba(0, 224, 255, 0.1);
+    }
 </style>
 </head>

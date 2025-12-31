@@ -20,7 +20,7 @@ class KycDetailsScreen extends Screen
             'user',
             'user.bankAccounts.bankKyc',
             'user.primaryBankAccount.bankKyc',
-        ])->findOrFail($id ?? Auth::id());
+        ])->where('user_id', $id ?? Auth::id())->get()->first();
 
         if (!$kycData) {
             Toast::info('KYC not complete yet!');
@@ -32,15 +32,15 @@ class KycDetailsScreen extends Screen
      *
      * @return array
      */
-    public function query($id= null): iterable
+    public function query($id = null): iterable
     {
         // $kycData = KycSubmission::where('user_id', Auth::id())->first();
         $kycData = UserKyc::with([
             'user',
             'user.bankAccounts.bankKyc',
             'user.primaryBankAccount.bankKyc',
-        ])->findOrFail($id ?? Auth::id());
-        
+        ])->where('user_id', $id ?? Auth::id())->get()->first();
+
         $fields = [
             // 'bank_book_img',
             'passbook_img',

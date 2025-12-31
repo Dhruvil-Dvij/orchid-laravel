@@ -41,7 +41,6 @@ class ReferralsListLayout extends Table
     {
         return [
             TD::make('referrals.referred.name', __('Name'))
-                ->sort()
                 ->cantHide()
                 ->render(function ($referrals) {
                     if (!$referrals->referred) {
@@ -52,7 +51,6 @@ class ReferralsListLayout extends Table
                 }),
 
             TD::make('referrals.referred.email', __('Email'))
-                ->sort()
                 ->cantHide()
                 ->render(function ($referrals) {
                     return $referrals->referred?->email ?? '—';
@@ -60,8 +58,7 @@ class ReferralsListLayout extends Table
 
             TD::make('created_at', __('Used At'))
                 ->usingComponent(DateTimeSplit::class)
-                ->align(TD::ALIGN_RIGHT)
-                ->sort(),
+                ->align(TD::ALIGN_RIGHT),
 
         ];
     }

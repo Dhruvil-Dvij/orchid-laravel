@@ -56,7 +56,7 @@
                             Sign out</button>
                     </form>
                 @else
-                    <a href="{{ route('platform.login') }}" class="btn btn-outline signup-login">Log In</a>
+                    <a href="{{ route('platform.login') }}" class="btn btn-outline-login signup-login">Log In</a>
                     <a href="{{ route('platform.register') }}" class="btn btn-primary signup-login">Sign Up</a>
                 @endif
             </div>
@@ -96,7 +96,7 @@
                             Sign out</button>
                     </form>
                 @else
-                    <a href="{{ route('platform.login') }}" class="btn btn-outline signup-login">Log In</a>
+                    <a href="{{ route('platform.login') }}" class="btn btn-outline-login signup-login">Log In</a>
                     <a href="{{ route('platform.register') }}" class="btn btn-primary signup-login">Sign Up</a>
                 @endif
             </div>

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -35,7 +36,7 @@ class UserSeeder extends Seeder
 
         User::updateOrInsert([
             'id' => 1, // Ensure the admin user has a specific ID
-            'customer_id' => 'CUS-' . \Illuminate\Support\Str::ulid(),
+            'customer_id' => Str::upper(Str::random(6)),
             'name' => 'Admin',
             'email' => 'admin@yopmail.com',
             'password' => bcrypt('admin@123'), // Ensure you use a secure password

@@ -87,7 +87,7 @@
             border: 1px solid var(--border);
             color: white;
             backdrop-filter: var(--glass);
-            border-color: var(--primary);
+            /* border-color: var(--primary); */
             background: rgba(0, 224, 255, 0.1);
         }
 
@@ -1504,820 +1504,821 @@
         .faq-item.active .faq-icon {
             transform: rotate(45deg);
         }
-        
-/* ============================================
-   COMPREHENSIVE RESPONSIVE MEDIA QUERIES
-   ============================================ */
-
-/* Large Tablets and Small Desktops (1024px and below) */
-@media (max-width: 1024px) {
-    .container {
-        padding: 0 20px;
-    }
-
-    .hero {
-        padding: 160px 0 80px;
-    }
-
-    .hero h1 {
-        font-size: 3.5rem;
-    }
-
-    .hero p {
-        font-size: 1.15rem;
-    }
-
-    .section-header h2 {
-        font-size: 2.5rem;
-    }
-
-    .calc-container {
-        padding: 40px;
-        gap: 40px;
-    }
-
-    .calc-controls h2 {
-        font-size: 2rem;
-    }
-
-    .roi-text {
-        font-size: 3rem;
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-    }
-
-    .stat-value {
-        font-size: 2.5rem;
-    }
-
-    .course-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-    }
-
-    .testimonial-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-    }
-
-    .footer-grid {
-        grid-template-columns: 2fr 1fr 1fr;
-        gap: 30px;
-    }
-
-    .timeline-items {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-
-    .countdown {
-        gap: 20px;
-    }
-
-    .time-box h2 {
-        font-size: 36px;
-    }
-
-    .hero-title {
-        font-size: 38px;
-    }
-
-    .faq-section {
-        width: 90%;
-    }
-}
-
-/* Tablets (768px and below) */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 16px;
-    }
-
-    .hero {
-        padding: 140px 0 60px;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-        line-height: 1.2;
-    }
-
-    .hero p {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        gap: 12px;
-        align-items: center;
-    }
-
-    .hero-buttons .btn {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
-    }
-
-    .section-header {
-        margin-bottom: 40px;
-    }
-
-    .section-header h2 {
-        font-size: 2rem;
-    }
-
-    .stats-section {
-        padding: 50px 0;
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-
-    .stat-item {
-        padding: 20px;
-    }
-
-    .stat-value {
-        font-size: 2rem;
-    }
-
-    .calculator-section {
-        padding: 60px 0;
-    }
-
-    .calc-container {
-        padding: 30px;
-        gap: 30px;
-    }
-
-    .calc-controls h2 {
-        font-size: 1.75rem;
-    }
-
-    .roi-text {
-        font-size: 2.5rem;
-    }
-
-    .how-it-works-section {
-        padding: 60px 0;
-    }
-
-    .learn-section {
-        padding: 60px 0;
-    }
-
-    .course-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .roadmap-section {
-        padding: 50px 0;
-    }
-
-    .roadmap-heading {
-        font-size: 2rem;
-    }
-
-    .timeline-items {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .timeline-icon {
-        width: 60px;
-        height: 60px;
-        margin: 0 auto 20px;
-    }
-
-    .timeline-year {
-        font-size: 1.5rem;
-    }
-
-    .testimonials-section {
-        padding: 60px 0;
-    }
-
-    .testimonial-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .crypto-table-section {
-        padding: 60px 0;
-    }
-
-    .crypto-table-section h2 {
-        font-size: 2rem;
-    }
-
-    .section-subtitle {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-    }
-
-    .table-controls {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
-    }
-
-    .search-container {
-        max-width: 100%;
-    }
-
-    .hero-section {
-        padding: 60px 0;
-    }
-
-    .hero-container {
-        width: 90%;
-        gap: 30px;
-    }
-
-    .hero-left img {
-        width: 100%;
-        max-width: 400px;
-    }
-
-    .hero-title {
-        font-size: 32px;
-    }
-
-    .hero-description {
-        font-size: 14px;
-    }
-
-    .countdown {
-        gap: 15px;
-        justify-content: center;
-    }
-
-    .time-box h2 {
-        font-size: 32px;
-    }
-
-    .time-box p {
-        font-size: 12px;
-    }
-
-    .faq-section-container {
-        padding: 60px 0;
-    }
-
-    .faq-section {
-        width: 95%;
-    }
-
-    .faq-section h2 {
-        font-size: 1.75rem;
-        margin-bottom: 2rem;
-    }
-
-    .faq-header {
-        padding: 15px 18px;
-        font-size: 1rem;
-    }
-
-    .faq-title {
-        font-size: 0.95rem;
-    }
-
-    footer {
-        padding: 60px 0 30px;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-        margin-bottom: 40px;
-    }
-
-    .social-links {
-        gap: 15px;
-    }
-
-    .floating-coin {
-        width: 50px;
-        height: 50px;
-    }
-
-    .floating-coin i {
-        font-size: 20px;
-    }
-}
-
-/* Mobile Devices (480px and below) */
-@media (max-width: 480px) {
-    .container {
-        padding: 0 12px;
-    }
-
-    header {
-        padding: 15px 0;
-    }
-
-    .logo {
-        font-size: 1.5rem;
-    }
-
-    .logo img {
-        height: 32px;
-    }
-
-    .hero {
-        padding: 120px 0 50px;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-    }
-
-    .hero p {
-        font-size: 0.95rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .badge-new {
-        font-size: 0.75rem;
-        padding: 5px 12px;
-        margin-bottom: 15px;
-    }
-
-    .section-header {
-        margin-bottom: 30px;
-    }
-
-    .section-header h2 {
-        font-size: 1.75rem;
-    }
-
-    .stats-section {
-        padding: 40px 0;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .stat-item {
-        padding: 20px;
-    }
-
-    .stat-value {
-        font-size: 2rem;
-    }
-
-    .stat-label {
-        font-size: 0.9rem;
-    }
-
-    .calculator-section {
-        padding: 50px 0;
-    }
-
-    .calc-container {
-        padding: 20px;
-        gap: 25px;
-        border-radius: 20px;
-    }
-
-    .calc-controls h2 {
-        font-size: 1.5rem;
-    }
-
-    .calc-label {
-        font-size: 0.9rem;
-        margin-bottom: 12px;
-    }
-
-    .roi-text {
-        font-size: 2rem;
-    }
-
-    .calc-result-card {
-        padding: 25px;
-    }
-
-    .how-it-works-section {
-        padding: 50px 0;
-    }
-
-    .step-item {
-        padding-top: 0;
-    }
-
-    .step-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.25rem;
-    }
-
-    .step-item h3 {
-        font-size: 1.1rem;
-        margin: 12px 0 8px;
-    }
-
-    .step-item p {
-        font-size: 0.85rem;
-    }
-
-    .learn-section {
-        padding: 50px 0;
-    }
-
-    .course-card {
-        border-radius: 16px;
-    }
-
-    .course-image {
-        height: 150px;
-    }
-
-    .course-image i {
-        font-size: 2rem;
-    }
-
-    .course-content {
-        padding: 20px;
-    }
-
-    .course-content h3 {
-        font-size: 1.1rem;
-    }
-
-    .course-content p {
-        font-size: 0.85rem;
-    }
-
-    .reward-tag {
-        font-size: 0.7rem;
-        padding: 4px 10px;
-    }
-
-    .roadmap-section {
-        padding: 40px 0;
-    }
-
-    .roadmap-badge {
-        font-size: 0.75rem;
-        padding: 6px 16px;
-        margin-bottom: 15px;
-    }
-
-    .roadmap-heading {
-        font-size: 1.5rem;
-        margin-bottom: 30px;
-    }
-
-    .timeline-items {
-        gap: 30px;
-    }
-
-    .timeline-icon {
-        width: 50px;
-        height: 50px;
-    }
-
-    .timeline-year {
-        font-size: 1.25rem;
-        margin-bottom: 10px;
-        margin-top: 15px;
-    }
-
-    .timeline-description {
-        font-size: 0.9rem;
-    }
-
-    .testimonials-section {
-        padding: 50px 0;
-    }
-
-    .testimonial-card {
-        padding: 20px;
-    }
-
-    .quote-icon {
-        font-size: 1.5rem;
-        margin-bottom: 12px;
-    }
-
-    .author-avatar {
-        width: 40px;
-        height: 40px;
-        font-size: 0.9rem;
-    }
-
-    .author-details p {
-        font-size: 0.9rem;
-    }
-
-    .author-details span {
-        font-size: 0.8rem;
-    }
-
-    .crypto-table-section {
-        padding: 50px 0;
-    }
-
-    .crypto-table-section h2 {
-        font-size: 1.75rem;
-    }
-
-    .section-subtitle {
-        font-size: 0.9rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .per-page-selector {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .crypto-table {
-        font-size: 0.85rem;
-    }
-
-    .crypto-table th,
-    .crypto-table td {
-        padding: 8px 10px;
-    }
-
-    .coin-logo {
-        width: 20px;
-        height: 20px;
-    }
-
-    .pagination {
-        gap: 0.25rem;
-    }
-
-    .pagination .page-link {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-    }
-
-    .hero-section {
-        padding: 50px 0;
-    }
-
-    .hero-container {
-        width: 95%;
-        gap: 25px;
-    }
-
-    .hero-left img {
-        max-width: 280px;
-    }
-
-    .hero-title {
-        font-size: 1.75rem;
-        line-height: 1.3;
-        margin-bottom: 15px;
-    }
-
-    .hero-description {
-        font-size: 0.9rem;
-        margin-bottom: 20px;
-    }
-
-    .hero-btn {
-        padding: 12px 24px;
-        font-size: 0.9rem;
-        width: 100%;
-        max-width: 250px;
-        justify-content: center;
-    }
-
-    .countdown {
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-
-    .time-box h2 {
-        font-size: 28px;
-    }
-
-    .time-box p {
-        font-size: 11px;
-    }
-
-    .faq-section-container {
-        padding: 50px 0;
-    }
-
-    .faq-section {
-        width: 100%;
-        padding: 0 12px;
-    }
-
-    .faq-section h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .faq-item {
-        margin-bottom: 0.75rem;
-    }
-
-    .faq-header {
-        padding: 12px 15px;
-        font-size: 0.9rem;
-        gap: 0.75rem;
-    }
-
-    .faq-number {
-        width: 28px;
-        height: 28px;
-        font-size: 0.85rem;
-    }
-
-    .faq-title {
-        font-size: 0.85rem;
-    }
-
-    .faq-icon {
-        font-size: 1.25rem;
-    }
-
-    .faq-content {
-        padding: 0 15px;
-        font-size: 0.85rem;
-    }
-
-    .faq-item.active .faq-content {
-        padding: 12px 15px 15px;
-        max-height: 400px;
-    }
-
-    footer {
-        padding: 50px 0 25px;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        margin-bottom: 30px;
-    }
-
-    .footer-logo {
-        font-size: 1.5rem;
-    }
-
-    .footer-logo img {
-        height: 32px;
-    }
-
-    .footer-column h4 {
-        font-size: 0.95rem;
-        margin-bottom: 15px;
-    }
-
-    .footer-column ul li a {
-        font-size: 0.85rem;
-    }
-
-    .social-links {
-        gap: 12px;
-        margin-top: 15px;
-    }
-
-    .social-links a {
-        font-size: 1rem;
-    }
-
-    .footer-bottom {
-        font-size: 0.8rem;
-        padding-top: 20px;
-    }
-
-    .floating-coin {
-        width: 40px;
-        height: 40px;
-    }
-
-    .floating-coin i {
-        font-size: 18px;
-    }
-
-    .c1 {
-        top: 15%;
-        left: 5%;
-    }
-
-    .c2 {
-        top: 25%;
-        right: 5%;
-    }
-
-    .c3 {
-        bottom: 15%;
-        left: 10%;
-    }
-}
-
-/* Small Mobile Devices (375px and below) */
-@media (max-width: 375px) {
-    .hero h1 {
-        font-size: 1.75rem;
-    }
-
-    .hero p {
-        font-size: 0.9rem;
-    }
-
-    .section-header h2 {
-        font-size: 1.5rem;
-    }
-
-    .calc-container {
-        padding: 15px;
-    }
-
-    .calc-controls h2 {
-        font-size: 1.25rem;
-    }
-
-    .roi-text {
-        font-size: 1.75rem;
-    }
-
-    .hero-title {
-        font-size: 1.5rem;
-    }
-
-    .hero-left img {
-        max-width: 250px;
-    }
-
-    .time-box h2 {
-        font-size: 24px;
-    }
-
-    .faq-section h2 {
-        font-size: 1.25rem;
-    }
-
-    .faq-header {
-        padding: 10px 12px;
-        font-size: 0.85rem;
-    }
-
-    .faq-number {
-        width: 24px;
-        height: 24px;
-        font-size: 0.75rem;
-    }
-
-    .faq-title {
-        font-size: 0.8rem;
-    }
-}
-
-/* Landscape Orientation for Mobile */
-@media (max-width: 768px) and (orientation: landscape) {
-    .hero {
-        padding: 100px 0 40px;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .course-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Print Styles */
-@media print {
-    .hero-cards,
-    .floating-coin,
-    .menu-toggle,
-    .mobile-nav {
-        display: none;
-    }
-
-    .hero {
-        padding: 40px 0;
-    }
-
-    .section-header h2 {
-        font-size: 1.5rem;
-    }
-}
+
+        /* ============================================
+       COMPREHENSIVE RESPONSIVE MEDIA QUERIES
+       ============================================ */
+
+        /* Large Tablets and Small Desktops (1024px and below) */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero {
+                padding: 160px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero p {
+                font-size: 1.15rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .calc-container {
+                padding: 40px;
+                gap: 40px;
+            }
+
+            .calc-controls h2 {
+                font-size: 2rem;
+            }
+
+            .roi-text {
+                font-size: 3rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .stat-value {
+                font-size: 2.5rem;
+            }
+
+            .course-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 30px;
+            }
+
+            .timeline-items {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .countdown {
+                gap: 20px;
+            }
+
+            .time-box h2 {
+                font-size: 36px;
+            }
+
+            .hero-title {
+                font-size: 38px;
+            }
+
+            .faq-section {
+                width: 90%;
+            }
+        }
+
+        /* Tablets (768px and below) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 140px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .stats-section {
+                padding: 50px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .stat-item {
+                padding: 20px;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .calculator-section {
+                padding: 60px 0;
+            }
+
+            .calc-container {
+                padding: 30px;
+                gap: 30px;
+            }
+
+            .calc-controls h2 {
+                font-size: 1.75rem;
+            }
+
+            .roi-text {
+                font-size: 2.5rem;
+            }
+
+            .how-it-works-section {
+                padding: 60px 0;
+            }
+
+            .learn-section {
+                padding: 60px 0;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .roadmap-section {
+                padding: 50px 0;
+            }
+
+            .roadmap-heading {
+                font-size: 2rem;
+            }
+
+            .timeline-items {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .timeline-icon {
+                width: 60px;
+                height: 60px;
+                margin: 0 auto 20px;
+            }
+
+            .timeline-year {
+                font-size: 1.5rem;
+            }
+
+            .testimonials-section {
+                padding: 60px 0;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .crypto-table-section {
+                padding: 60px 0;
+            }
+
+            .crypto-table-section h2 {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .table-controls {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+
+            .search-container {
+                max-width: 100%;
+            }
+
+            .hero-section {
+                padding: 60px 0;
+            }
+
+            .hero-container {
+                width: 90%;
+                gap: 30px;
+            }
+
+            .hero-left img {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .countdown {
+                gap: 15px;
+                justify-content: center;
+            }
+
+            .time-box h2 {
+                font-size: 32px;
+            }
+
+            .time-box p {
+                font-size: 12px;
+            }
+
+            .faq-section-container {
+                padding: 60px 0;
+            }
+
+            .faq-section {
+                width: 95%;
+            }
+
+            .faq-section h2 {
+                font-size: 1.75rem;
+                margin-bottom: 2rem;
+            }
+
+            .faq-header {
+                padding: 15px 18px;
+                font-size: 1rem;
+            }
+
+            .faq-title {
+                font-size: 0.95rem;
+            }
+
+            footer {
+                padding: 60px 0 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+                margin-bottom: 40px;
+            }
+
+            .social-links {
+                gap: 15px;
+            }
+
+            .floating-coin {
+                width: 50px;
+                height: 50px;
+            }
+
+            .floating-coin i {
+                font-size: 20px;
+            }
+        }
+
+        /* Mobile Devices (480px and below) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            header {
+                padding: 15px 0;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+
+            .hero {
+                padding: 120px 0 50px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .badge-new {
+                font-size: 0.75rem;
+                padding: 5px 12px;
+                margin-bottom: 15px;
+            }
+
+            .section-header {
+                margin-bottom: 30px;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .stats-section {
+                padding: 40px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .stat-item {
+                padding: 20px;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+            }
+
+            .calculator-section {
+                padding: 50px 0;
+            }
+
+            .calc-container {
+                padding: 20px;
+                gap: 25px;
+                border-radius: 20px;
+            }
+
+            .calc-controls h2 {
+                font-size: 1.5rem;
+            }
+
+            .calc-label {
+                font-size: 0.9rem;
+                margin-bottom: 12px;
+            }
+
+            .roi-text {
+                font-size: 2rem;
+            }
+
+            .calc-result-card {
+                padding: 25px;
+            }
+
+            .how-it-works-section {
+                padding: 50px 0;
+            }
+
+            .step-item {
+                padding-top: 0;
+            }
+
+            .step-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.25rem;
+            }
+
+            .step-item h3 {
+                font-size: 1.1rem;
+                margin: 12px 0 8px;
+            }
+
+            .step-item p {
+                font-size: 0.85rem;
+            }
+
+            .learn-section {
+                padding: 50px 0;
+            }
+
+            .course-card {
+                border-radius: 16px;
+            }
+
+            .course-image {
+                height: 150px;
+            }
+
+            .course-image i {
+                font-size: 2rem;
+            }
+
+            .course-content {
+                padding: 20px;
+            }
+
+            .course-content h3 {
+                font-size: 1.1rem;
+            }
+
+            .course-content p {
+                font-size: 0.85rem;
+            }
+
+            .reward-tag {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
+
+            .roadmap-section {
+                padding: 40px 0;
+            }
+
+            .roadmap-badge {
+                font-size: 0.75rem;
+                padding: 6px 16px;
+                margin-bottom: 15px;
+            }
+
+            .roadmap-heading {
+                font-size: 1.5rem;
+                margin-bottom: 30px;
+            }
+
+            .timeline-items {
+                gap: 30px;
+            }
+
+            .timeline-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .timeline-year {
+                font-size: 1.25rem;
+                margin-bottom: 10px;
+                margin-top: 15px;
+            }
+
+            .timeline-description {
+                font-size: 0.9rem;
+            }
+
+            .testimonials-section {
+                padding: 50px 0;
+            }
+
+            .testimonial-card {
+                padding: 20px;
+            }
+
+            .quote-icon {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+            }
+
+            .author-avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+
+            .author-details p {
+                font-size: 0.9rem;
+            }
+
+            .author-details span {
+                font-size: 0.8rem;
+            }
+
+            .crypto-table-section {
+                padding: 50px 0;
+            }
+
+            .crypto-table-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .per-page-selector {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .crypto-table {
+                font-size: 0.85rem;
+            }
+
+            .crypto-table th,
+            .crypto-table td {
+                padding: 8px 10px;
+            }
+
+            .coin-logo {
+                width: 20px;
+                height: 20px;
+            }
+
+            .pagination {
+                gap: 0.25rem;
+            }
+
+            .pagination .page-link {
+                padding: 6px 10px;
+                font-size: 0.85rem;
+            }
+
+            .hero-section {
+                padding: 50px 0;
+            }
+
+            .hero-container {
+                width: 95%;
+                gap: 25px;
+            }
+
+            .hero-left img {
+                max-width: 280px;
+            }
+
+            .hero-title {
+                font-size: 1.75rem;
+                line-height: 1.3;
+                margin-bottom: 15px;
+            }
+
+            .hero-description {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+
+            .hero-btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+
+            .countdown {
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+
+            .time-box h2 {
+                font-size: 28px;
+            }
+
+            .time-box p {
+                font-size: 11px;
+            }
+
+            .faq-section-container {
+                padding: 50px 0;
+            }
+
+            .faq-section {
+                width: 100%;
+                padding: 0 12px;
+            }
+
+            .faq-section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .faq-item {
+                margin-bottom: 0.75rem;
+            }
+
+            .faq-header {
+                padding: 12px 15px;
+                font-size: 0.9rem;
+                gap: 0.75rem;
+            }
+
+            .faq-number {
+                width: 28px;
+                height: 28px;
+                font-size: 0.85rem;
+            }
+
+            .faq-title {
+                font-size: 0.85rem;
+            }
+
+            .faq-icon {
+                font-size: 1.25rem;
+            }
+
+            .faq-content {
+                padding: 0 15px;
+                font-size: 0.85rem;
+            }
+
+            .faq-item.active .faq-content {
+                padding: 12px 15px 15px;
+                max-height: 400px;
+            }
+
+            footer {
+                padding: 50px 0 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-bottom: 30px;
+            }
+
+            .footer-logo {
+                font-size: 1.5rem;
+            }
+
+            .footer-logo img {
+                height: 32px;
+            }
+
+            .footer-column h4 {
+                font-size: 0.95rem;
+                margin-bottom: 15px;
+            }
+
+            .footer-column ul li a {
+                font-size: 0.85rem;
+            }
+
+            .social-links {
+                gap: 12px;
+                margin-top: 15px;
+            }
+
+            .social-links a {
+                font-size: 1rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.8rem;
+                padding-top: 20px;
+            }
+
+            .floating-coin {
+                width: 40px;
+                height: 40px;
+            }
+
+            .floating-coin i {
+                font-size: 18px;
+            }
+
+            .c1 {
+                top: 15%;
+                left: 5%;
+            }
+
+            .c2 {
+                top: 25%;
+                right: 5%;
+            }
+
+            .c3 {
+                bottom: 15%;
+                left: 10%;
+            }
+        }
+
+        /* Small Mobile Devices (375px and below) */
+        @media (max-width: 375px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .calc-container {
+                padding: 15px;
+            }
+
+            .calc-controls h2 {
+                font-size: 1.25rem;
+            }
+
+            .roi-text {
+                font-size: 1.75rem;
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .hero-left img {
+                max-width: 250px;
+            }
+
+            .time-box h2 {
+                font-size: 24px;
+            }
+
+            .faq-section h2 {
+                font-size: 1.25rem;
+            }
+
+            .faq-header {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+
+            .faq-number {
+                width: 24px;
+                height: 24px;
+                font-size: 0.75rem;
+            }
+
+            .faq-title {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Landscape Orientation for Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                padding: 100px 0 40px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .course-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+
+            .hero-cards,
+            .floating-coin,
+            .menu-toggle,
+            .mobile-nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 40px 0;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 @endsection
 @section('content')
@@ -2336,84 +2337,11 @@
                 our audited smart baskets.</p>
             <div class="hero-buttons">
                 <a href="#staking" class="btn btn-primary">Start Earning <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="{{route('platform.baskets')}}" class="btn btn-outline">View Baskets</a>
+                <a href="{{ route('platform.baskets') }}" class="btn btn-outline-login">View Baskets</a>
             </div>
         </div>
     </section>
 
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-value text-gradient">$85M+</div>
-                    <div class="stat-label">Total Value Locked (TVL)</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value text-gradient">12%</div>
-                    <div class="stat-label">Max Stablecoin APY</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value text-gradient">50,000+</div>
-                    <div class="stat-label">Active Users</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value text-gradient">24/7</div>
-                    <div class="stat-label">AI Rebalancing</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="calculator-section" id="staking">
-        <div class="container">
-            <div class="calc-container">
-                <div class="calc-controls">
-                    <h2 class="text-gradient">Calculate Earnings</h2>
-                    <p style="color:var(--text-muted);">See how much your crypto could grow with our auto-compounding
-                        vaults.</p>
-
-                    <div class="calc-input-group">
-                        <div class="calc-label">
-                            <span>Investment Amount</span>
-                            <span id="amountDisplay">$10,000</span>
-                        </div>
-                        <input type="range" min="100" max="100000" value="10000" class="range-slider"
-                            id="amountSlider">
-                    </div>
-
-                    <div class="calc-input-group">
-                        <div class="calc-label">
-                            <span>Duration (Months)</span>
-                            <span id="timeDisplay">12 Months</span>
-                        </div>
-                        <input type="range" min="1" max="60" value="12" class="range-slider"
-                            id="timeSlider">
-                    </div>
-
-                    <div class="calc-input-group">
-                        <div class="calc-label">
-                            <span>Asset Type</span>
-                        </div>
-                        <div style="display:flex; gap:10px;">
-                            <button class="btn btn-outline" onclick="setAPY(0.20, this)"
-                                style="border-color:var(--primary);">ETH (20%)</button>
-                            <button class="btn btn-outline" onclick="setAPY(0.12, this)">USDC (12%)</button>
-                            <button class="btn btn-outline" onclick="setAPY(0.18, this)">SOL (18%)</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="calc-result-card">
-                    <div style="font-size: 1.1rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">
-                        Est. Total Return</div>
-                    <div class="roi-text" id="totalReturn">$10,500</div>
-                    <p style="color:var(--text-muted);">Profit: <span id="profitDisplay" style="color:#fff;">+$500</span>
-                    </p>
-                    <a href="{{route('platform.baskets')}}" class="btn btn-primary" style="margin-top: 30px; justify-content:center;">Stake
-                        Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="crypto-table-section" id="crypto-prices">
         <div class="container">
             <h2>Live Crypto Prices</h2>
@@ -2462,9 +2390,61 @@
                 <!-- Show More Button -->
             </div>
             <div style="text-align: center; margin-top: 30px;">
-                <a href="{{route('platform.markets')}}" class="btn btn-primary">Show More</a>
+                <a href="{{ route('platform.markets') }}" class="btn btn-primary">Show More</a>
             </div>
 
+        </div>
+    </section>
+    <section class="calculator-section" id="staking">
+        <div class="container">
+            <div class="calc-container">
+                <div class="calc-controls">
+                    <h2 class="text-gradient">Calculate Earnings</h2>
+                    <p style="color:var(--text-muted);">See how much your crypto could grow with our auto-compounding
+                        vaults.</p>
+
+                    <div class="calc-input-group">
+                        <div class="calc-label">
+                            <span>Investment Amount</span>
+                            <span id="amountDisplay">$10,000</span>
+                        </div>
+                        <input type="range" min="100" max="100000" value="10000" class="range-slider"
+                            id="amountSlider">
+                    </div>
+
+                    <div class="calc-input-group">
+                        <div class="calc-label">
+                            <span>Duration (Months)</span>
+                            <span id="timeDisplay">12 Months</span>
+                        </div>
+                        <input type="range" min="1" max="60" value="12" class="range-slider"
+                            id="timeSlider">
+                    </div>
+
+                    <div class="calc-input-group">
+                        <div class="calc-label">
+                            <span>Asset Type</span>
+                        </div>
+                        <div style="display:flex; gap:10px;">
+                            <button class="btn btn-outline" onclick="setAPY(0.20, this)"
+                                style="border-color:var(--primary);">ETH (20%)</button>
+                            <button class="btn btn-outline" onclick="setAPY(0.12, this)">USDC (12%)</button>
+                            <button class="btn btn-outline" onclick="setAPY(0.18, this)">SOL (18%)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-result-card">
+                    <div style="font-size: 1.1rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">
+                        Est. Total Return</div>
+                    <div class="roi-text" id="totalReturn">$10,500</div>
+                    <p style="color:var(--text-muted);">Profit: <span id="profitDisplay" style="color:#fff;">+$500</span>
+                    </p>
+                    <a href="{{ route('platform.baskets') }}" class="btn btn-primary"
+                        style="margin-top: 30px; justify-content:center;">Stake
+                        Now</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2587,10 +2567,11 @@
                 </h1>
 
                 <p class="hero-description">
-                    Create a personalized crypto basket with top-performing assets. Diversify your holdings, manage risk effectively, and invest in the future of digital finance with confidence.
+                    Create a personalized crypto basket with top-performing assets. Diversify your holdings, manage risk
+                    effectively, and invest in the future of digital finance with confidence.
                 </p>
 
-                <a href="{{route('platform.baskets')}}" class="hero-btn">Buy Now</a>
+                <a href="{{ route('platform.baskets') }}" class="hero-btn">Buy Now</a>
 
             </div>
 
@@ -2709,7 +2690,8 @@
                 </button>
                 <div class="faq-content">
                     <p>
-                        Vcoins stands out for crypto traders with its low fees, fast transaction speeds, and support for 350+ coins including Bitcoin, Ethereum, and Tether.
+                        Vcoins stands out for crypto traders with its low fees, fast transaction speeds, and support for
+                        350+ coins including Bitcoin, Ethereum, and Tether.
                     </p>
                 </div>
             </div>
@@ -2721,7 +2703,8 @@
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-content">
-                    <p>Vcoins provides a crypto basket product that allows users to invest in a diversified selection of digital assets effortlessly.</p>
+                    <p>Vcoins provides a crypto basket product that allows users to invest in a diversified selection of
+                        digital assets effortlessly.</p>
                 </div>
             </div>
 
@@ -2732,7 +2715,9 @@
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-content">
-                    <p>You can buy a crypto basket by creating an account on Vcoins, completing verification, adding funds to your wallet, and selecting the basket you want to invest in. Once you confirm the purchase, your basket will be added to your portfolio instantly.</p>
+                    <p>You can buy a crypto basket by creating an account on Vcoins, completing verification, adding funds
+                        to your wallet, and selecting the basket you want to invest in. Once you confirm the purchase, your
+                        basket will be added to your portfolio instantly.</p>
                 </div>
             </div>
 
@@ -2743,7 +2728,9 @@
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-content">
-                    <p>You can easily monitor real-time market movements using our live market dashboard. Vcoins provides instant price updates, market trends, volume changes, and other key metrics so you can stay informed and make smarter trading decisions at any moment.</p>
+                    <p>You can easily monitor real-time market movements using our live market dashboard. Vcoins provides
+                        instant price updates, market trends, volume changes, and other key metrics so you can stay informed
+                        and make smarter trading decisions at any moment.</p>
                 </div>
             </div>
 
@@ -2765,7 +2752,8 @@
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-content">
-                    <p>diversify your portfolio instantly with curated baskets designed around themes, performance, and risk levels. This reduces volatility and increases long-term earning potential.</p>
+                    <p>diversify your portfolio instantly with curated baskets designed around themes, performance, and risk
+                        levels. This reduces volatility and increases long-term earning potential.</p>
                 </div>
             </div>
 

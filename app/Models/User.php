@@ -97,7 +97,31 @@ class User extends Authenticatable
     protected static function booted()
     {
         static::creating(function ($user) {
-            $user->customer_id = 'CUS-' . Str::ulid();
+            do {
+                // Decide counts
+                $numbersCount = rand(2, 3);
+                $lettersCount = 6 - $numbersCount; // 3 or 4, but we will limit later
+
+                // Ensure letters are also between 2–3
+                if ($lettersCount > 3) {
+                    $lettersCount = 3;
+                    $numbersCount = 3;
+                }
+
+                // Generate parts
+                $numbers = collect(range(0, 9))->random($numbersCount)->implode('');
+                $letters = collect(range('A', 'Z'))->random($lettersCount)->implode('');
+
+                // Shuffle and build final ID
+                $customerId = collect(str_split($numbers . $letters))
+                    ->shuffle()
+                    ->implode('');
+            } while (
+                strlen($customerId) !== 6 ||
+                self::where('customer_id', $customerId)->exists()
+            );
+
+            $user->customer_id = $customerId;
         });
     }
 

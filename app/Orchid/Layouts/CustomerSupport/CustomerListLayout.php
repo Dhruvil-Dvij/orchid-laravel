@@ -81,7 +81,7 @@ class CustomerListLayout extends Table
                             ->icon('bs.bank2'),
                         
                         Link::make(__('KYC Details'))
-                            ->route('platform.customer.kyc', $user->id)
+                            ->route('platform.customer.kyc', ['id' => $user->id])
                             ->icon('bs.file-earmark-check'),
 
                         // Link::make(__('Activity History'))

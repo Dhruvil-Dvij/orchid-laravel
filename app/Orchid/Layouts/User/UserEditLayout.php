@@ -35,7 +35,6 @@ class UserEditLayout extends Rows
 
             Input::make('user.mobile_number')
                 ->type('tel')
-                ->required()
                 ->title(__('Mobile Number'))
                 ->placeholder(__('Mobile Number'))
                 ->class('account-all-input'),

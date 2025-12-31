@@ -344,7 +344,7 @@ select.form-control.account-all-input {
 }
 
 .modal .modal-footer.model-delete {
-    background-color: var(--bg-card) !important;
+    background-color: #252839 !important;
     border: 1px solid var(--border) rgba(255, 255, 255, 0.08) !important;
     border-radius: 0.5rem;
     color: #fff;
@@ -539,7 +539,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
  
 .model-main-div {
-    background-color: #16151b !important;
+    background-color: #252839 !important;
 }
 
 .tabel-label {
@@ -2117,4 +2117,8 @@ input[type=number]::-webkit-outer-spin-button {
         padding: 0.5rem;
         font-size: 0.75rem;
     }
+}
+
+.referrals-modal-table{
+    margin: 0 10px;
 }
