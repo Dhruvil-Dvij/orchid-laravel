@@ -2319,6 +2319,11 @@
                 font-size: 1.5rem;
             }
         }
+
+        .course-content a {
+            color: white;
+            text-decoration: none;
+        }
     </style>
 @endsection
 @section('content')
@@ -2495,11 +2500,11 @@
             <div class="course-grid">
                 <div class="course-card">
                     <div class="course-image">
-                        <div class="reward-tag"> $5 VCN</div>
+                        {{-- <div class="reward-tag"> $5 VCN</div> --}}
                         <i class="fa-brands fa-bitcoin"></i>
                     </div>
                     <div class="course-content">
-                        <h3>Intro to Bitcoin</h3>
+                        <a href="{{ route('learn.bitcoin') }}"><h3>Intro to Bitcoin</h3></a>
                         <p>Understand the history of money and how blockchain solves the double-spend problem.</p>
                         {{-- <a href="#" class="btn btn-outline"
                             style="width:100%; justify-content:center; font-size:0.9rem;">Start Lesson</a> --}}
@@ -2508,11 +2513,11 @@
 
                 <div class="course-card">
                     <div class="course-image">
-                        <div class="reward-tag"> $10 VCN</div>
+                        {{-- <div class="reward-tag"> $10 VCN</div> --}}
                         <i class="fa-solid fa-layer-group"></i>
                     </div>
                     <div class="course-content">
-                        <h3>DeFi Liquidity Pools</h3>
+                        <a href="{{ route('learn.defi-liquidity') }}"><h3>DeFi Liquidity Pools</h3></a>
                         <p>Learn how Automated Market Makers (AMMs) work and how to earn yield as a provider.</p>
                         {{-- <a href="#" class="btn btn-outline"
                             style="width:100%; justify-content:center; font-size:0.9rem;">Start Lesson</a> --}}
@@ -2521,11 +2526,11 @@
 
                 <div class="course-card">
                     <div class="course-image">
-                        <div class="reward-tag"> NFT Badge</div>
+                        {{-- <div class="reward-tag"> NFT Badge</div> --}}
                         <i class="fa-solid fa-fingerprint"></i>
                     </div>
                     <div class="course-content">
-                        <h3>Wallet Security 101</h3>
+                        <a href="{{ route('learn.wallet-security') }}"><h3>Wallet Security 101</h3></a>
                         <p>Essential tips for keeping your private keys safe and avoiding phishing scams.</p>
                         {{-- <a href="#" class="btn btn-outline"
                             style="width:100%; justify-content:center; font-size:0.9rem;">Start Lesson</a> --}}

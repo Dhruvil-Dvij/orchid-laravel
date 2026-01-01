@@ -105,3 +105,15 @@ Route::get('/news', function () {
 })->name('platform.news')
     ->breadcrumbs(fn($trail) => $trail
         ->push(__('News'), route('platform.news')));
+
+Route::get('/learn/bitcoin', function () {
+    return view('static.bitcoin');
+})->name('learn.bitcoin');
+
+Route::get('/learn/defi-liquidity', function () {
+    return view('static.defi-liquidity');
+})->name('learn.defi-liquidity');
+
+Route::get('/learn/wallet-security', function () {
+    return view('static.wallet-security');
+})->name('learn.wallet-security');
