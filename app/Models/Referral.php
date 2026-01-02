@@ -18,6 +18,7 @@ class Referral extends Model
         'used_at',
     ];
 
+    // referrer_user_id refers to the user who made the referral (whose code was used)
     public function referrer()
     {
         return $this->belongsTo(User::class, 'referrer_user_id');

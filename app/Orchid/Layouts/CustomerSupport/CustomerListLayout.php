@@ -39,19 +39,19 @@ class CustomerListLayout extends Table
     public function columns(): array
     {
         return [
-            
+
             TD::make('name', __('Name'))
-            ->sort()
-            ->cantHide()
-            ->filter(Input::make())
-            ->render(fn(User $user) => new Persona($user->presenter())),
-            
+                ->sort()
+                ->cantHide()
+                ->filter(Input::make())
+                ->render(fn(User $user) => new Persona($user->presenter())),
+
             TD::make('customer_id', __('Customer ID'))
                 ->sort()
                 ->cantHide()
                 ->filter(Input::make())
                 ->render(fn(User $user) => $user->customer_id),
-                
+
             TD::make('email', __('Email'))
                 ->sort()
                 ->cantHide()
@@ -79,10 +79,20 @@ class CustomerListLayout extends Table
                         Link::make(__('Bank accounts'))
                             ->route('platform.customer.banks', $user->id)
                             ->icon('bs.bank2'),
-                        
+
                         Link::make(__('KYC Details'))
                             ->route('platform.customer.kyc', ['id' => $user->id])
                             ->icon('bs.file-earmark-check'),
+
+                        ModalToggle::make('Invited By')
+                            ->modal('referralsListModal')
+                            ->modalTitle('Invited By')
+                            ->icon('bs.people')
+                            ->asyncParameters([
+                                'id' => $user->id,
+                            ])
+                            ->method('loadUserOnOpenModal')
+                            ->canSee(Auth::user()->inRole('admin') && $user->referred_by !== null),
 
                         // Link::make(__('Activity History'))
                         //     ->route('platform.user.activity_history', ['activity' => $user->id])

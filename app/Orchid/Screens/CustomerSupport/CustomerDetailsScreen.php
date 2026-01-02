@@ -2,9 +2,13 @@
 
 namespace App\Orchid\Screens\CustomerSupport;
 
+use App\Models\Referral;
 use App\Models\User;
 use App\Orchid\Layouts\CustomerSupport\CustomerListLayout;
+use App\Orchid\Layouts\User\InvitedByListLayout;
+use App\Orchid\Layouts\User\ReferralsListLayout;
 use App\Orchid\Layouts\User\UserFiltersLayout;
+use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Screen;
 
 class CustomerDetailsScreen extends Screen
@@ -53,6 +57,23 @@ class CustomerDetailsScreen extends Screen
     {
         return [
             CustomerListLayout::class,
+
+            Layout::modal('referralsListModal', InvitedByListLayout::class)
+                ->deferred('loadReferralsOnOpenModal')
+                ->withoutApplyButton()
+                ->withoutCloseButton(),
         ];
     }
+
+    public function loadReferralsOnOpenModal($id): array
+    {
+        $referrals = Referral::with([
+            'referrer:id,customer_id,name,email',
+        ])->where('referred_user_id', $id)->get();
+
+        return [
+            'referrals' => $referrals,
+        ];
+    }
+
 }
